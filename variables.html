@@ -186,6 +186,11 @@
             When <kbd>a</kbd> and <kbd>b</kbd> are both positive, this is
             identical to calculating the remainder of a &divide; b.
         </p>
+
+        <p>
+            Note that the <code>floor()</code> function produces the value
+            of <code>a / b</code> rounded down (i.e. towards negative infinity).
+        </p>
     </div>
 
     <div class='frame'>
@@ -830,6 +835,37 @@ Line 2</samp>
 
     <hr/>
     
+    <div class='frame'>
+        <p>
+            In order to complete the following projects, you will need to
+            read values from standard input using the <code>input()</code>
+            function described previously. It is important to note that
+            the result of <code>input()</code> is always a string value.
+            However, some of these projects require you to perform integer
+            or float operations on these values. In order to do this, you
+            will have to convert the original values into the correct data
+            type using the <code>int()</code> and <code>float()</code>
+            functions.
+        </p>
+
+        <p>
+            For example, suppose that we have already stored one of the input
+            values in a variable named <var>x</var>. To convert <var>x</var>
+            to an integer, we could execute the statement <code>x = int(x)</code>.
+            Similarly, to convert <var>x</var> to a float, we could execute the
+            statement <code>x = float(x)</code>
+        </p>
+
+        <p>
+            Another fact that will be useful in completing these projects is
+            that we can provide multiple values to <code>print()</code> by
+            separating them with commas. Each of these values will be written
+            (i.e. printed) to standard output with a space inserted after each
+            value. For example, <code>print('One', 'Two', 'Three')</code> will
+            print <samp>One Two Three</samp>.
+        </p>
+    </div>
+
     <div class='aux-section-group'>
         <div class='dropdown-section'>
             <h3 class='dropdown'>Projects</h3>
@@ -852,27 +888,141 @@ Line 2</samp>
 <samp>3 * 6 = 18</samp>
 </pre>
                     </div>
+                </li>
+                <li class='frame'>
+                    <span class='label'>Distances</span>
+                    <p>
+                        Imagine you are developing a 2D game where two characters
+                        must be within a certain distance in order to interact
+                        with each other. Say we care about two characters, A and B.
+                        Your goal is to read in four values from standard input,
+                        representing the X coordinate of A, the Y coordinate of A,
+                        the X coordinate of B, and the Y coordinate of B
+                        respectively. Once this is done, calculate the distance
+                        between A and B, and write it to standard output. If
+                        you'd like, give names to your characters. Refer to
+                        the sample below.
+                    </p>
+                    
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python distance.py</kbd>
+<samp>Enter Tom's X coordinate: </samp><kbd class='user-input'>1.98</kbd>
+<samp>Enter Tom's Y coordinate: </samp><kbd class='user-input'>-1.72</kbd>
+<samp>Enter Jerry's X coordinate: </samp><kbd class='user-input'>3.11</kbd>
+<samp>Enter Jerry's Y coordinate: </samp><kbd class='user-input'>7.49</kbd>
+<samp>The distance between Tom and Jerry is 9.279062452640353</samp>
+</pre>
+                    </div>
 
                     <p>
-                        Note: Since user input is stored in a variable as a
-                        string, we have to convert it to an integer if we want
-                        to perform any integer operations on it. To do this,
-                        we have to the <code>int()</code> command to convert
-                        the string value to an integer value. Suppose we have
-                        already stored one of the inputs in a variable named
-                        <var>num1</var>. We can convert the value in
-                        <var>num1</var> to an integer with the statement
-                        <code>num1 = int(num1)</code>.
+                        To perform this calculation, you'll need to find the
+                        square root of a number. Luckily, Python provides a
+                        function for that. To access the square root function,
+                        type <code>import math</code> into the very first line
+                        of your program. Once that's done, you can write
+                        statements such as <code>x = math.sqrt(4)</code> to
+                        use the square root function. Don't worry if you don't
+                        understand the details of all of this right now, just
+                        use the square root function as demonstrated for the
+                        time being.
                     </p>
 
                     <p>
-                        Note: You can provide multiple values to
-                        <code>print()</code> by separating them with commas.
-                        Each of these values will be written (i.e. printed)
-                        to standard output with a space inserted after each value.
-                        For example, <code>print("One", "Two", "Three")</code>
-                        will print <samp>One Two Three</samp>.
+                        Recall that the formula for calculating the distance
+                        between two 2D points <var>(x1, y1)</var> and
+                        <var>(x2, y2)</var> is
+
+                        <span class='display'>sqrt((x2 - x1)**2 + (y2 - y1)**2)</span>
                     </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>The Division Formula</span>
+                    
+                    <p>
+                        There is a theorem in mathematics called the Division
+                        Formula which states that given any two integers
+                        <var>a</var> and <var>b</var>, there are unique
+                        integers <var>q</var> and <var>r</var> such that
+                        
+                        <span class='display'>a = bq + r</span>
+
+                        We call <var>q</var> the "quotient", and <var>r</var>
+                        the "remainder".
+                    </p>
+
+                    <p>
+                        For example, if <var>a</var> is 14 and <var>b</var> is
+                        5, then we have
+
+                        <span class='display'>14 = 5(2) + 4</span>
+
+                        So the quotient is 2, and the remainder is 4.
+                    </p>
+
+                    <p>
+                        Your task is to write a program that will read two
+                        positive integers, say <var>a</var> and <var>b</var>,
+                        from standard input, and calculate the quotient and
+                        remainder of <var>a</var> divided by <var>b</var>.
+                        Once the quotient and remainder have been calculated,
+                        write the division formula equation to standard output,
+                        substituting the proper values for <var>a</var>,
+                        <var>b</var>, <var>q</var>, and <var>r</var>.
+                        Refer to the sample below.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python division.py</kbd>
+<samp>Please enter positive integers only.</samp>
+<samp>Enter a: </samp><kbd class='user-input'>14</kbd>
+<samp>Enter b: </samp><kbd class='user-input'>5</kbd>
+<samp>14 = 5 * 2 + 4</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Loading Bar (Challenging)</span>
+
+                    <p>
+                        Imagine we are moving a database of patient records
+                        for a hospital from one system to another. Since
+                        this process can potentially take a long time, we want
+                        to display a loading bar to the user so that they can
+                        track progress of the data transfer. We can simulate a
+                        loading bar in standard output by printing a sequence of pipe
+                        characters (<kbd>|</kbd>). We will say that 0 pipe
+                        characters represents 0% loaded, and 50 pipe characters
+                        represents 100% loaded (i.e. each pipe represents 100%
+                        &divide; 50 = 2% load progress).
+                    </p>
+                    <p>
+                        Your job is to read two values from standard input
+                        representing the total number of records to be
+                        transferred and the number of records that have
+                        already been transferred, respectively. Using these
+                        values, print to standard output a loading bar using
+                        pipe characters to indicate the current progress and
+                        periods to indicate the remaining progress. In addition
+                        to the loading bar, you must also print some statistics
+                        of the data transfer. These statistics will include the
+                        current number of files transferred, the total number
+                        of files to be transferred, and the percent progress
+                        (represented as an integer). The progress percentage
+                        will be rounded down to the nearest integer.
+                    </p>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python loadbar.py</kbd>
+<samp>Enter the total number of records: </samp><kbd class='user-input'>31152</kbd>
+<samp>Enter the number of records transferred: </samp><kbd class='user-input'>26437</kbd>
+<samp>26433 / 31152 files transferred ( 84 % )</samp>
+<samp>||||||||||||||||||||||||||||||||||||||||||........</samp>
+</pre>
+                    </div>
                 </li>
             </ul>
         </div>
