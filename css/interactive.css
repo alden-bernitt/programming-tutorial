@@ -1,0 +1,70 @@
+.dropdown {
+    user-select: none;
+}
+
+.aux-section-group {
+    background-color: #999;
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 32px 0;
+    border: solid #777 1px;
+    border-radius: 3px;
+
+    > .dropdown-section > .dropdown {
+        background-color: #333;
+        margin: 8px;
+        padding: 8px;
+        padding-left: 24px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: #444;
+        }
+    }
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-and-solution {
+    background-color: #eee;
+    color: black;
+    padding: 8px;
+    padding-left: 16px;
+    margin: 8px;
+    border: solid #222 2px;
+    border-inline-start-width: 8px;
+    border-inline-start-color: #444;
+    border-radius: 3px;
+
+    h3 {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .solution {
+        margin: 8px 0;
+
+        .dropdown {
+            border: solid #222 2px;
+            border-radius: 3px;
+            padding: 4px 16px;
+
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+.examples, .projects {
+    list-style: none;
+    padding: 0;  
+}
+

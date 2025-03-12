@@ -1,0 +1,67 @@
+pre {
+    white-space: pre-wrap;
+}
+
+.terminal {
+    background-color: #333;
+    color: white;
+    margin: 8px 0;
+    padding: 4px;
+    border: solid #222 1px;
+    border-radius: 3px;
+    line-height: 1.5;
+
+    .prompt {
+        user-select: none;
+        color: #e00;
+        margin-inline-end: 0.5em;
+    }
+
+    .user-input {
+        color: #00ed3f;
+    }
+
+    pre {
+        margin: 0;
+    }
+}
+
+.snippet {
+    background-color: #333;
+    color: white;
+    border: solid #222 1px;
+    border-radius: 3px;
+    margin: 8px 0;
+
+    .filename {
+        background-color: #ccc;
+        color: #222;
+        border-bottom: solid #666 1px;
+        padding: 4px;
+        font-size: 0.9em;
+    }
+
+    .program-text {
+        margin: 8px 4px;
+    }
+}
+
+
+.lnum {
+    user-select: none;
+    color: #999;
+    margin-right: 1em;
+}
+
+.str {
+    color: #d4d400;
+}
+
+.op {
+    color: #ff9500;
+}
+
+.lit {
+    color: #b300ff;
+}
+
