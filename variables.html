@@ -21,7 +21,7 @@
     <h2>Background</h2>
     <p>
         While all programs can be viewed as a sequence of statements, there is
-        another key element involved: data. <strong>Data</strong> are the
+        another key element involved: data. <dfn>Data</dfn> are the
         values that we operate upon within our statements.
     </p>
 
@@ -55,9 +55,9 @@
     <h2>Data Types</h2>
     <p>
         In accordance to how we view data in the real world, programming
-        languages use <strong>data types</strong> to distinguish between the
+        languages use <i>data types</i> to distinguish between the
         various types of data. Each data type is defined by a set of possible
-        values and a set of <strong>operations</strong> to perform on those
+        values and a set of <i>operations</i> to perform on those
         values.
     </p>
 
@@ -69,7 +69,7 @@
                     <p>
                         When we count objects (such as sheep), we do so
                         using a set of numbers known as
-                        <strong>integers</strong>. Integers include values
+                        <i>integers</i>. Integers include values
                         such as <kbd>1</kbd>, <kbd>9001</kbd>,
                         <kbd>0</kbd>, and <kbd>-69</kbd>. Operations on
                         integers include addition <kbd>+</kbd>,
@@ -113,7 +113,7 @@
     <h3>Integer</h3>
 
     <p>
-        The integer, or <strong>int</strong>, data type represents the set of
+        The integer, or <i>int</i>, data type represents the set of
         integers, and includes values such as <kbd>1</kbd>,
         <kbd>9001</kbd>, <kbd>0</kbd>, and <kbd>-69</kbd>. In mathematics,
         this set might be denoted <kbd>{..., -1, 0, 1, ...}</kbd>.
@@ -167,10 +167,10 @@
     <p>
         The most noteworthy of these are the <kbd>//</kbd> and <kbd>%</kbd>
         operators. The <kbd>//</kbd> operator performs an operation known as
-        <strong>floor division</strong>. The result of this operation
+        <i>floor division</i>. The result of this operation
         is equal to the division of the first operand by the second
         <em>rounded down</em> (i.e. towards negative infinity) to the nearest
-        integer. The <kbd>%</kbd> operator, called the <strong>modulo</strong>
+        integer. The <kbd>%</kbd> operator, called the <i>modulo</i>
         operator, essentially produces the <em>remainder</em> of the first
         operand divided by the second operand.
     </p>
@@ -211,7 +211,7 @@
     <h3>Float</h3>
 
     <p>
-        The <strong>float</strong> data type represents the set of real
+        The <i>float</i> data type represents the set of real
         numbers. This set includes integer values, such as the ones shown
         previously, as well as values with decimal points, such as <kbd>1.5</kbd>,
         <kbd>-99.99</kbd>, and <kbd>3.14159</kbd>. The float data type
@@ -271,13 +271,13 @@
 
     <p>
         The final data type we will discuss in this guide is the
-        <strong>string</strong> data type. A string is simply a sequence of
+        <i>string</i> data type. A <dfn>string</dfn> is simply a sequence of
         characters, and represents text. Strings in Python are denoted by
         characters enclosed in either single quotes (<kbd>'</kbd>), or double
         quotes (<kbd>"</kbd>). Examples include <kbd>"Beans"</kbd>,
         <kbd>'To be, or not to be'</kbd>, and <kbd>""</kbd> (this is
         a sequence of zero characters, and is referred to as an
-        <strong>empty string</strong> or <strong>null string</strong>).
+        <i>empty string</i> or <i>null string</i>).
     </p>
 
     <div class='frame'>
@@ -315,9 +315,9 @@
     </table>
 
     <p>
-        The <strong>concatenation</strong> operation combines its two string
+        The <i>concatenation</i> operation combines its two string
         operands into one string by appending the second string directly to
-        the end of the first. The <strong>repeat</strong> operation takes one
+        the end of the first. The <i>repeat</i> operation takes one
         string operand and one integer operand, and produces a new string by
         repeating the original string the specified number of times.
     </p>
@@ -326,7 +326,7 @@
         What if we want a string to contain special characters such as a tab
         character or line break character? What if we want to include quotes
         <em>within</em> the string itself? To accomplish this, we use
-        something called an <strong>escape sequence</strong>. In Python, along
+        something called an <i>escape sequence</i>. In Python, along
         with many other programming languages, an escape sequence begins with
         a <kbd>\</kbd> character followed by one or more other characters
         which specify the special character.
@@ -442,13 +442,13 @@ Line 2</samp>
 
     <p>
         Variables are one of the most fundamental concepts in computer
-        programming. Conceptually, In Python, a <strong>variable</strong> is a
+        programming. Conceptually, In Python, a <dfn>variable</dfn> is a
         name that we give to a storage unit which stores a single value of a
-        single data type. That is, we <strong>initialize</strong> a name with
+        single data type. That is, we <i>initialize</i> a name with
         a storage unit containing a value. You might visualize this as asking
         Python to give you a box, placing the value inside, and sticking a
         label on it with your chosen name. In Python, this entire process is
-        done using the <strong>assignment</strong> (<kbd>=</kbd>) operator.
+        done using the <i>assignment</i> (<kbd>=</kbd>) operator.
         Once we have created a variable, we are able to assign any new value of
         any data type to it, and we are able to use it as an operand as if it
         were a regular value.
@@ -595,7 +595,7 @@ Line 2</samp>
     <div class='frame'>
         <p>
             It is sometimes useful to distinguish between variables and
-            literals. Simply put, <strong>literals</strong> are plain values
+            literals. Simply put, <dfn>literals</dfn> are plain values
             such as <kbd>7</kbd> (an integer literal), or <kbd>3.14</kbd> (a
             float literal), and <kbd>"Python"</kbd> (a string literal).
             Variables, on the other hand, refer to the names which store
@@ -607,11 +607,11 @@ Line 2</samp>
 
     <p>
         There are rules as to what constitutes a valid
-        <strong>identifier</strong> (i.e. name). Although these rules in Python
+        <i>identifier</i> (i.e. name). Although these rules in Python
         are rather complicated, let it suffice to say that identifiers may
         only contain letters, digits, and underscores (<kbd>_</kbd>), and
         must begin with either a letter or underscore. Furthermore,
-        <strong>reserved words</strong> may not be used as identifiers. We
+        <i>reserved words</i> may not be used as identifiers. We
         will learn many reserved words in time, but if you are curious now,
         you can reference the
         <a href='https://docs.python.org/3/reference/lexical_analysis.html#keywords'>
@@ -667,7 +667,7 @@ Line 2</samp>
     <h2>Expressions</h2>
     
     <p>
-        <strong>Expressions</strong> are a group of operations that evaluate
+        <dfn>Expressions</dfn> are a group of operations that evaluate
         to a single value. We can assign the results of expressions to
         variables, or use them in statements like the <code>print()</code>
         statement. Expressions can contain variables, literals, or a mixture
@@ -801,12 +801,12 @@ Line 2</samp>
         So far, every program we've written executes exactly the same every
         time it's run, which is boring. Now that we know about variables, we
         can take input from the user and store it in a variable to alter the
-        results of a program. In Python, we can <strong>read</strong> (i.e.
+        results of a program. In Python, we can <i>read</i> (i.e.
         receive) user input by using the <code>input()</code> function, and store
         it in a variable as is done with the statement
         <code>name = input()</code>. When this statement is executed, the
         program will wait until text is available on
-        <strong>standard input</strong>, and then store that text as a string in
+        <i>standard input</i>, and then store that text as a string in
         <var>name</var>. If we are running this program at a terminal, we can
         make text available to standard input by typing into the terminal and
         pressing the <kbd>Return</kbd> (i.e. <kbd>Enter</kbd>) key.
@@ -816,7 +816,7 @@ Line 2</samp>
         Choosing the variable identifier <var>name</var> suggests that the
         programmer is expecting the user to supply the program with some kind
         of name. The user, however, has no way of knowing this. To solve this
-        problem, we can supply a <strong>prompt</strong> to the user to guide
+        problem, we can supply a <i>prompt</i> to the user to guide
         them when entering a value. This is done by including a string value
         in between the parentheses of <code>input()</code>. For example, it
         may be helpful to use <code>input("Please enter your first name: ")</code>.

@@ -15,14 +15,15 @@
     <script src='scripts/dropdown.js' defer></script>
 </head>
 <body>
+<main>
     <h1>Programming Basics</h1>
 
     <h2>Background</h2>
     <p>
-        At its core, <strong>programming</strong> is the practice of writing
-        instructions for a computer to <em>execute</em> (perform). Thus, a
-        <strong>program</strong> is a sequence of instructions, usually
-        written by a <strong>programmer</strong> (e.g. <em>you</em>), with the
+        At its core, <dfn>programming</dfn> is the practice of writing
+        instructions for a computer to <i>execute</i> (perform). Thus, a
+        <dfn>program</dfn> is a sequence of instructions, usually
+        written by a <i>programmer</i> (e.g. <em>you</em>), with the
         intent of having a computer execute those instructions.
     </p>
     <p>
@@ -37,10 +38,11 @@
         As previously stated, a program is a sequence of instructions for a
         computer to execute. We most often write programs as text stored in
         text files. In Python, we give these text files a ".py" file
-        extension (as in "hello.py"), and invoke a Python <strong>interpreter</strong>
-        to run the program on our behalf. A Python program is often referred to as a
-        <strong>script</strong>. As an example, let's take a look at the ubiquitous
-        "Hello, world!" program, written in Python.
+        extension (as in "hello.py"), and invoke a Python <i>interpreter</i>
+        to run the program on our behalf. A text file containing a Python program
+        is often referred to as a <i>script</i>. As an example,
+        let's take a look at the ubiquitous "Hello, world!" program,
+        written in Python.
     </p>
     <div class='snippet'>
         <div class='filename'>hello.py</div>
@@ -49,13 +51,13 @@
 </pre>
     </div>
     <p>
-        This program consists of one single <strong>statement</strong>. Even if you've
+        This program consists of one single <i>statement</i>. Even if you've
         never programmed before, you can probably guess what this program
         does: it prints the text "Hello, world!". Rather than printing the
         text onto a piece of paper using a device such as a printer, however,
-        this program prints to what is known as <strong>standard output</strong>
-        (often abbreviated as <strong>stdout</strong>). If you run this program on a
-        <strong>terminal</strong>, such as the Windows <em>Command Prompt</em>, you'll
+        this program prints to what is known as <i>standard output</i>
+        (often abbreviated as <i>stdout</i>). If you run this program on a
+        <i>terminal</i>, such as the Windows <i>Command Prompt</i>, you'll
         find that standard output is connected to the terminal's display.
     </p>
 
@@ -64,7 +66,7 @@
         our programs usually consist of many, many statements.
         In the most basic setting, a program executes one statement at a time
         in the order that the statements are written. Once the last statement
-        has been executed, the program <em>terminates</em> (completes). In
+        has been executed, the program <i>terminates</i> (completes). In
         Python, we place each statement on its own line.
     </p>
 
@@ -158,7 +160,7 @@
     <h3>Statements</h3>
     <p>
         Generally speaking, each statement in Python sits on its own line,
-        without any preceding <em>whitespace</em> characters. The term
+        without any preceding <i>whitespace</i> characters. The term
         "whitespace" refers to characters such as spaces and tabs. Trying to
         run a program that violates this rule will result in an error message
         being displayed on the terminal. The following example shows a
@@ -269,5 +271,6 @@ IndentationError: unexpected indent</samp>
             </div>
         </div>
     </div>
+</main>
 </body>
 </html>

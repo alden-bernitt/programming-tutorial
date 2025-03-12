@@ -33,6 +33,11 @@ h3 {
     font-size: 1.4em;
 }
 
+dfn {
+    font-weight: bold;
+    font-style: normal;
+}
+
 img.diagram {
     display: block;
     max-width: 100%;

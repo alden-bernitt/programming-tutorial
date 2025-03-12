@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang='en-us'>
+<head>
+    <title>Python | Using A Python Interpreter</title>
+
+    <meta name='author' content='Alden Bernitt'/>
+    <meta
+        name='description'
+        content='An introduction on how to use a Python interpreter.'
+    />
+
+    <link rel='stylesheet' href='css/site.css'/>
+
+    <script src='scripts/dropdown.js' defer></script>
+</head>
+<body>
+<main>
+    <h1>Using A Python Interpreter</h1>
+    
+    <p>
+        Before starting this guide, make sure that you have a Python
+        interpreter installed. If you are unsure of whether you have an
+        an interpreter installed, refer to the
+        <a href='setup.html'>Installing Python</a> guide.
+    </p>
+
+    <h2>Interpreter Basics</h2>
+
+    <h3>Starting the Interepreter</h3>
+    
+    <p>
+        To start your Python interpreter, open a terminal (such as Windows
+        <i>Command Prompt</i>), and enter <kbd>python3</kbd>.
+        When the interpreter starts, you will likely be greeted by a message.
+        This is what we see when we run our interpreter.
+    </p>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python3</kbd>
+<samp>Python 3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)] on win32
+<samp>Type "help", "copyright", "credits" or "license" for more information.</samp>
+<span class='prompt'>&gt;&gt;&gt;</span>
+</pre>
+    </div>
+
+    <h3>Using the Interpreter</h3>
+    
+    <p>
+        The <samp>&gt;&gt;&gt;</samp> is called the <dfn>primary prompt</dfn>,
+        and indicates that the interpreter is waiting for you to enter some
+        input. We can oblige by entering a <code>print()</code> statement as
+        follows.
+    </p>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print("Hi, Python!")</kbd>
+<samp>Hi, Python!</samp>
+</pre>
+    </div>
+
+    <p>
+        As you can see, the interpreter has displayed the text that we placed
+        inside of the parentheses of the <code>print()</code> statement. You
+        can also enter mathematical expressions, and the interpreter will
+        evaluate them and display the results to us.
+    </p>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>3.14 * 13 * 13</kbd>
+<samp>530.66</samp>
+</pre>
+    </div>
+
+    <p>
+        We will learn much more about the types of statements we can write in
+        Python in later guides.
+    </p>
+
+    <p>
+        For now, to end the interpreter session, we can enter <kbd>exit()</kbd> or
+        <kbd>quit()</kbd>.
+    </p>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>quit()</kbd>
+<span class='prompt'>$</span>
+</pre>
+    </div>
+
+    <div class='frame'>
+        <p>
+            Some interpreters do not require the parentheses for <kbd>exit()</kbd>
+            and <kbd>quit()</kbd>; Simply entering <kbd>exit</kbd> or <kbd>quit</kbd>
+            will suffice.
+        </p>
+    </div>
+
+    <h2>Bonus Features</h2>
+
+    <p>
+        Python interpreters come with some handy additional built-in features.
+        While these features will probably not be useful to you now, they may
+        be in the future, so we've added them here just so that you know they
+        exist.
+    </p>
+
+    <p>
+        If you've already entered some commands into the interpreter, you can
+        use the <kbd>Up-Arrow</kbd> key to scroll through those commands,
+        starting from the most recent. You might use this to re-enter a
+        previously entered command without having to re-type the whole thing.
+        Once you've scrolled to your desired command, press <kbd>Enter</kbd>
+        again to re-enter it.
+        If you've scrolled back into your history some, and you want to
+        return to more recent entries, you can use the <kbd>Down-Arrow</kbd> key.
+    </p>
+
+    <p>
+        You can enter <kbd>F1</kbd> to open an interactive help menu within the
+        interpreter. The help menu will provide plenty of information on how to
+        get started using it.
+    </p>
+
+    <p>
+        Pressing <kbd>F2</kbd> allows you to browse your command history
+        without displaying any results from statements nor any prompts
+        (e.g. <samp>&gt;&gt;&gt;</samp>).
+        This can be useful, for example, for copying a block of commands that
+        you entered in the interpreter, and pasting them into a Python script
+        so that they can be run again automatically (more on scripts in a later
+        guide).
+    </p>
+
+    <p>
+        By pressing <kbd>F3</kbd>, you can enter "paste" mode, which
+        allows you to paste blocks of text into the interpreter. You could
+        use this to paste a sequence of commands copied from a script, for
+        example, directly into the interpreter. By pressing <kbd>F3</kbd>
+        again, we can exit paste mode. If you notice the prompt has changed
+        to the <i>secondary prompt</i> (usually <samp>...</samp>), pressing
+        <kbd>Enter</kbd> one more time should cause the interpreter to run all
+        of the commands you pasted, and then display the primary prompt again.
+    </p>
+</main>
+</body>
+</html>
