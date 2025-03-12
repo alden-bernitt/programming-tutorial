@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang='en-us'>
+<head>
+    <title>Python | Running Python Scripts</title>
+
+    <meta name='author' content='Alden Bernitt'/>
+    <meta
+        name='description'
+        content='A guide on how to run Python scripts from a terminal.'
+    />
+
+    <link rel='stylesheet' href='css/site.css'/>
+</head>
+<body>
+    <h1>Running Python Scripts</h1>
+    <p>
+        In this guide, we will discuss how to run Python scripts from a
+        terminal. As a prerequisite, make sure that you've already successfully
+        <a href='setup.html'>installed Python</a>, and you know how to open a
+        terminal, such as the Windows <em>Command Prompt</em>.
+    </p>
+
+    <h2>Create A Python Script</h2>
+    <p>
+        If you haven't already, download a suitable text editor for writing
+        Python scripts. Once that's done, create a new file (name it
+        "test.py"), and enter the following Python code.
+    </p>
+
+    <div class='snippet'>
+        <div class='filename'>test.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"It works!"</span>)</code>
+</pre>
+    </div>
+
+    <p>
+        Save the file and make note of its
+        <a href='https://en.wikipedia.org/wiki/Path_(computing)'>file path</a>.
+        On Windows, this is done by first locating the file in the
+        <em>File Explorer</em>. Then, right click the file and select
+        "Properties". The file path is listed next to the "Location" field
+        (it might be helpful to copy it from here).
+    </p>
+
+    <img
+        src='images/run/filepath.png'
+        alt='The location of a file, as shown in the Properties menu'
+        width='596'
+        height='127'/>
+
+    <h2>Run A Python Script</h2>
+
+    <p>
+        Now that you've created the Python script, open a terminal and navigate
+        to the directory (folder) that it's saved in. Assuming we are on a
+        Window's computer, and the script is saved in the directory located at
+        <kbd>C:\Users\anon\scripts</kbd>, we can do this by using the
+        <kbd>cd</kbd> command and entering (or pasting) the path as shown.
+    </p>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>cd C:\Users\anon\scripts</kbd>
+</pre>
+    </div>
+
+    <p>
+        Many terminals will update the prompt to indicate which directory
+        you're in, so you should be able to tell that the command worked.
+    </p>
+    <p>
+        Finally, enter the command <kbd>python test.py</kbd>. If you see
+        the output <samp>It works!</samp>, then congratulations! You've
+        successfully written and run (presumably) your first Python script!
+    </p>
+
+    <div class='frame'>
+        <p>
+            If you are using Python 3, then you might also be able to use
+            the <kbd>python3</kbd> command in addition to <kbd>python</kbd>.
+        </p>
+    </div>
+
+    <div class='frame'>
+        <p>
+            The key takeaway is that when using a terminal, you must
+            navigate to the directory that your script is located in
+            to run it. Failing to do so will result in an error message
+            similar to the following.
+        </p>
+        <div class='terminal'>
+<pre>
+<samp>python3: can't open file 'C:\\Users\\anon\\scripts\\myscript.py': [Errno 2] No such file or directory</samp>
+</pre>
+        </div>
+
+        <p>
+            Alternatively, instead of navigating to the directory of your script
+            as shown previously, you can simply enter the full path of the script
+            directly with the <kbd>python</kbd> command as follows.
+        </p>
+
+        <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python C:\Users\anon\scripts\test.py</kbd>
+</pre>
+        </div>
+        
+    </div>
+</body>
+</html>

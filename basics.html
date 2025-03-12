@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang='en-us'>
+<head>
+    <title>Python | Programming Basics</title>
+
+    <meta name='author' content='Alden Bernitt'/>
+    <meta
+        name='description'
+        content='An introduction on the basics of programming using Python.'
+    />
+
+    <link rel='stylesheet' href='css/site.css'/>
+
+    <script src='scripts/dropdown.js' defer></script>
+</head>
+<body>
+    <h1>Programming Basics</h1>
+
+    <h2>Background</h2>
+    <p>
+        At its core, <strong>programming</strong> is the practice of writing
+        instructions for a computer to <em>execute</em> (perform). Thus, a
+        <strong>program</strong> is a sequence of instructions, usually
+        written by a <strong>programmer</strong> (e.g. <em>you</em>), with the
+        intent of having a computer execute those instructions.
+    </p>
+    <p>
+        Although it is often said that computers are "smart", they are, in
+        fact, quite dumb. Computers are only capable of executing instructions
+        <em>exactly</em> as given to them by the programmer. Therefore, it is
+        the job of smart programmers to make computers to do smart things.
+    </p>
+
+    <h2>Programs</h2>
+    <p>
+        As previously stated, a program is a sequence of instructions for a
+        computer to execute. We most often write programs as text stored in
+        text files. In Python, we give these text files a ".py" file
+        extension (as in "hello.py"), and invoke a Python <strong>interpreter</strong>
+        to run the program on our behalf. A Python program is often referred to as a
+        <strong>script</strong>. As an example, let's take a look at the ubiquitous
+        "Hello, world!" program, written in Python.
+    </p>
+    <div class='snippet'>
+        <div class='filename'>hello.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+</pre>
+    </div>
+    <p>
+        This program consists of one single <strong>statement</strong>. Even if you've
+        never programmed before, you can probably guess what this program
+        does: it prints the text "Hello, world!". Rather than printing the
+        text onto a piece of paper using a device such as a printer, however,
+        this program prints to what is known as <strong>standard output</strong>
+        (often abbreviated as <strong>stdout</strong>). If you run this program on a
+        <strong>terminal</strong>, such as the Windows <em>Command Prompt</em>, you'll
+        find that standard output is connected to the terminal's display.
+    </p>
+
+    <p>
+        Although the "Hello, world!" program consists of a single statement,
+        our programs usually consist of many, many statements.
+        In the most basic setting, a program executes one statement at a time
+        in the order that the statements are written. Once the last statement
+        has been executed, the program <em>terminates</em> (completes). In
+        Python, we place each statement on its own line.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 1.1</span>
+                        <p>
+                            Copy the "Hello, world!" program into the text editor of your
+                            choice and save it under a name such as "hello.py". Then, run
+                            it using a terminal.
+                        </p>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python3 hello.py</kbd>
+<samp>Hello, world!</samp>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 1.2</span>
+                        <p>
+                            See if you can modify the "Hello, world!" program to print a
+                            new message, such as "Goodbye, world!".
+                        </p>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>goodbye.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Goodbye, world!"</span>)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 1.3</span>
+                        <p>
+                            Modify the "Hello, world!" program to print "Hello, world!" to
+                            standard output multiple times (say, three times) by duplicating
+                            the <code>print()</code> statement.
+                        </p>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>hello3.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+<span class='lnum'>2</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+<span class='lnum'>3</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Python Specifics</h2>
+    <p>
+        In this section, we discuss some details that are specific to
+        programming in Python, along with some issues that you may across when
+        running Python programs.
+    </p>
+
+    <h3>Statements</h3>
+    <p>
+        Generally speaking, each statement in Python sits on its own line,
+        without any preceding <em>whitespace</em> characters. The term
+        "whitespace" refers to characters such as spaces and tabs. Trying to
+        run a program that violates this rule will result in an error message
+        being displayed on the terminal. The following example shows a
+        program violating this rule and the resulting terminal output. Note
+        that the second statement in the program is preceded by a single space
+        character.
+    </p>
+
+    <div class='snippet'>
+        <div class='filename'>line_error.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Line 1"</span>)</code>
+<span class='lnum'>2</span><code> print(<span class='str'>"Line 2"</span>)</code>
+</pre>
+    </div>
+
+    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python3 line_error.py</kbd>
+<samp> File "/home/alden/test/test.py", line 2
+    print("Line 2")
+IndentationError: unexpected indent</samp>
+</pre>
+    </div>
+
+    <p>
+        However, there is no issue with placing multiple empty lines between
+        statements, as shown in the following example.
+    </p>
+
+    <div class='snippet'>
+        <div class='filename'>blank_lines.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Line 1"</span>)</code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code>print(<span class='str'>"Line 3"</span>)</code>
+</pre>
+    </div>
+
+    <h3>Errors</h3>
+    <p>
+        If it hasn't already, there will come a time when you try to run a
+        program and receive an error message instead. While these error
+        messages may be annoying and hard to understand, they will become much
+        easier to read as you gain more knowledge and experience.
+    </p>
+    <p>
+        Many of the errors you will encounter may seem trivial. You may wonder
+        why the computer can't use "common sense" to understand what your
+        intentions are. Even if the computer were capable of such a thing, you
+        would surely be much more annoyed if the computer were to guess your
+        intentions incorrectly and execute a program erroneously. For better or
+        worse, working with computers is a very exact science, so we must learn
+        to cope.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <div class='dropdown-contents frame' hidden>
+                <p>
+                    All of the following programs contain some kind of error. Try
+                    running them to see what kind of error messages get displayed. See
+                    if you can correct the programs so that they run properly.
+                </p>
+                <ul class='examples'>
+                    <li>
+                        <div class='snippet'>
+                            <div class='filename'>error1.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!)</span></code>
+</pre>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <div class='snippet'>
+                            <div class='filename'>error2.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(Hello, world!)</code>
+</pre>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <div class='snippet'>
+                            <div class='filename'>error3.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print <span class='str'>"Hello, world!"</span></code>
+</pre>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <div class='snippet'>
+                            <div class='filename'>error4.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>prit(<span class='str'>"Hello, world!"</span>)</code>
+</pre>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <div class='snippet'>
+                            <div class='filename'>error5.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span></code>
+</pre>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+:root {
+    font-family: Arial, sans-serif;
+    font-size: 13pt;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    width: 800px;
+    margin: 8px 64px;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+    background-color: #222;
+    color: white;
+}
+
+h2 {
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border: solid #222 1px;
+    border-radius: 3px;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+p, td, .display {
+    kbd, samp, code, var {
+        background-color: #ccc;
+        padding: 0 4px;
+        border-radius: 3px;
+        font-style: normal;
+    }
+}
+
+table {
+    background-color: #222;
+    color: white;
+    table-layout: fixed;
+    width: 100%;
+    border: solid black 1px;
+    border-collapse: collapse;
+    margin: 32px 0;
+
+    kbd, samp, code {
+        background-color: #ccc;
+        color: black;
+    }
+    
+    caption {
+        background-color: #111;
+        border: solid black 1px;
+        padding: 4px;
+    }
+
+    th, td {
+        border-inline-end: solid black 1px;
+        padding: 4px 0;
+    }
+
+    th {
+        border-block-end: solid black 1px;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #333;
+    }
+
+    thead th:nth-child(1) {
+        width: 20%;
+    }
+
+    thead th:nth-child(2) {
+        width: 80%;
+    }
+
+    tbody td:nth-child(1) {
+        text-align: center;
+    }
+    
+    tbody td:nth-child(2) {
+        padding-inline-start: 1em;
+    }
+}
+
+main {
+    padding-bottom: 64px;
+}
+
+span.label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+table.operations-table {
+    thead th:nth-child(1) {
+        width: 10%;
+    }
+
+    thead th:nth-child(2) {
+        width: 50%;
+    }
+
+    tbody td:nth-child(1) {
+        text-align: center;
+    }
+
+    tbody td:nth-child(2), tbody td:nth-child(3) {
+        padding-inline-start: 1em;
+    }
+}
+
+.snippet {
+    background-color: #333;
+    color: white;
+    border: solid #222 1px;
+    border-radius: 3px;
+    margin: 8px 0;
+
+    .filename {
+        background-color: #ccc;
+        color: #222;
+        border-bottom: solid #666 1px;
+        padding: 4px;
+        font-size: 0.9em;
+    }
+
+    .program-text {
+        margin: 8px 4px;
+    }
+}
+
+.lnum {
+    user-select: none;
+    color: #999;
+    margin-right: 1em;
+}
+
+.str {
+    color: #d4d400;
+}
+
+.op {
+    color: #ff9500;
+}
+
+.lit {
+    color: #b300ff;
+}
+
+.terminal {
+    background-color: #333;
+    color: white;
+    margin: 8px 0;
+    padding: 4px;
+    border: solid #222 1px;
+    border-radius: 3px;
+    line-height: 1.5;
+
+    .prompt {
+        user-select: none;
+        color: #e00;
+        margin-inline-end: 0.5em;
+    }
+
+    .user-input {
+        color: #00ed3f;
+    }
+
+    pre {
+        margin: 0;
+    }
+}
+
+.dropdown {
+    user-select: none;
+}
+
+.aux-section-group {
+    background-color: #999;
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 32px 0;
+    border: solid #777 1px;
+    border-radius: 3px;
+
+    > .dropdown-section > .dropdown {
+        background-color: #333;
+        margin: 8px;
+        padding: 8px;
+        padding-left: 24px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: #444;
+        }
+    }
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-and-solution {
+    background-color: #eee;
+    color: black;
+    padding: 8px;
+    padding-left: 16px;
+    margin: 8px;
+    border: solid #222 2px;
+    border-inline-start-width: 8px;
+    border-inline-start-color: #444;
+    border-radius: 3px;
+
+    h3 {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .solution {
+        margin: 8px 0;
+
+        .dropdown {
+            border: solid #222 2px;
+            border-radius: 3px;
+            padding: 4px 16px;
+
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+.examples, .projects {
+    list-style: none;
+    padding: 0;  
+}
+
+.frame {
+    background-color: #eee;
+    color: black;
+    border: solid #222 1px;
+    border-radius: 3px;
+    margin: 32px; 8px;
+    padding: 8px;
+}
+
+.display {
+    display: block;
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+.list-title {
+    font-weight: bold;
+    font-size: 1.5em;
+}

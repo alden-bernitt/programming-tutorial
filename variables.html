@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+<html lang='en-us'>
+<head>
+    <title>Python | Data and Variables</title>
+
+    <meta name='author' content='Alden Bernitt'/>
+    <meta
+        name='description'
+        content='An introduction on variables and how to use them in Python.'
+    />
+
+    <link rel='stylesheet' href='css/site.css'/>
+
+    <script src='scripts/dropdown.js' defer></script>
+</head>
+<body>
+<main>
+    <h1>Data and Variables</h1>
+
+    <h2>Background</h2>
+    <p>
+        While all programs can be viewed as a sequence of statements, there is
+        another key element involved: data. <strong>Data</strong> are the
+        values that statements operate upon.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        Consider the following addition operation:
+                        <kbd>4 + 5</kbd>
+                        <br/>
+                        The "statement" is addition, and the "data" are
+                        the values 4 and 5.
+                    </p>
+                </li>
+                <li class='frame'>
+                    <p>
+                        In the "Hello, world!" program from the
+                        <a href='basics.html'>Programming Basics</a>
+                        guide, we used the single <kbd>print</kbd>
+                        statement <kbd>print("Hello, world!")</kbd>. The
+                        data we used with this statement was the text
+                        "Hello, world!".
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Data Types</h2>
+    <p>
+        In accordance to how we view data in the real world, programming
+        languages use <strong>data types</strong> to distinguish between the
+        various types of data. Each data type is defined by a set of possible
+        values and a set of <strong>operations</strong> to perform on those
+        values.
+    </p>
+
+     <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        When we count objects (such as sheep), we do so
+                        using a set of numbers known as
+                        <strong>integers</strong>. Integers include values
+                        such as <kbd>1</kbd>, <kbd>9001</kbd>,
+                        <kbd>0</kbd>, and <kbd>-69</kbd>. Operations on
+                        integers include addition <kbd>+</kbd>,
+                        subtraction <kbd>-</kbd>, and multiplication
+                        <kbd>*</kbd>
+                        <br/>
+                        Notably, integer values do <strong>not</strong>
+                        include values such as <kbd>0.5</kbd> and the
+                        square root of 2 (often denoted
+                        <kbd>sqrt(2)</kbd>). Operations that are
+                        <strong>not</strong> defined on integers include
+                        the usual version of division <kbd>&divide;</kbd>
+                        (this is because, for example, the result of
+                        dividing the integers <kbd>1</kbd> and
+                        <kbd>2</kbd>, that is <kbd>1 &divide; 2</kbd>,
+                        results in a value that is not an integer).
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <p>
+        Python provides a rich set of data types to make the job of the
+        programmer easier. As we introduce the following data types, note that
+        we do not describe all of the data types provided by Python, nor do we
+        describe all operations included with each data type. However, take
+        heart in that many of these data types will be introduced in later
+        guides, and we will give you the tools necessary to perform your own
+        research when the time comes.
+    </p>
+
+    <div class='frame'>
+        <p>
+            As you read the following sections, it may be helpful to try your
+            own examples using a
+            <a href='interpreter.html'>Python interpreter</a>.
+        </p>
+    </div>
+
+    <h3>Integer</h3>
+
+    <p>
+        The integer, or <strong>int</strong>, data type represents the set of
+        integers, and includes values such as <kbd>1</kbd>,
+        <kbd>9001</kbd>, <kbd>0</kbd>, and <kbd>-69</kbd>. In mathematics,
+        this set might be denoted <kbd>{..., -1, 0, 1, ...}</kbd>.
+        Python provides the expected operations on integers, along with a few
+        obscure ones.
+    </p>
+
+    <table class='operations-table'>
+        <caption>Integer Operators in Python</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Op</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>+</kbd></td>
+                <td>Addition</td>
+                <td><samp>9 + 5 = 14</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>-</kbd></td>
+                <td>Subtraction</td>
+                <td><samp>9 - 5 = 4</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>*</kbd></td>
+                <td>Multiplication</td>
+                <td><samp>9 * 5 = 45</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>//</kbd></td>
+                <td>Floor Division</td>
+                <td><samp>9 // 5 = 1</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>**</kbd></td>
+                <td>Exponentiation</td>
+                <td><samp>9 ** 2 = 81</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>%</kbd></td>
+                <td>Remainder</td>
+                <td><samp>9 % 5 = 4</samp></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        The most noteworthy of these are the <kbd>//</kbd> and <kbd>%</kbd>
+        operators. The <kbd>//</kbd> operator performs an operation known as
+        <strong>floor division</strong>. The result of this operation
+        is equal to the division of the first operand by the second
+        <em>rounded down</em>. The <kbd>%</kbd> operator, called the
+        <strong>modulo</strong> operator, essentially produces the
+        <em>remainder</em> of the first operand divided by the second operand.
+    </p>
+
+    <div class='frame'>
+        <p>
+            You might find that the <kbd>%</kbd> operator produces strange
+            results when one or both of the operands are negative. This is
+            because the operation <kbd>a % b</kbd> actually performs the
+            calculation
+
+            <span class='display'><kbd>a - b * floor(a / b)</kbd></span>
+
+            When <kbd>a</kbd> and <kbd>b</kbd> are both positive, this is
+            identical to calculating the remainder of a &divide; b.
+        </p>
+    </div>
+
+    <div class='frame'>
+        <p>
+            We recommend testing <kbd>//</kbd> and <kbd>%</kbd> using a
+            positive and negative value, a negative and positive value, and
+            two negative values. You may be surprised at the results. See if
+            you can figure out why the results are what they are.
+        </p>
+    </div>
+
+    <h3>Float</h3>
+
+    <p>
+        The <strong>float</strong> data type represents the set of real
+        numbers. This set includes integer values, such as the ones shown
+        previously, as well as decimal values, such as <kbd>1.5</kbd>,
+        <kbd>-99.99</kbd>, and <kbd>3.14159</kbd>. The float data type
+        supports mostly the same operations as the int data type. Notably,
+        float values also support division.
+    </p>
+
+    <table class='operations-table'>
+        <caption>Float Operators in Python</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Op</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>+</kbd></td>
+                <td>Addition</td>
+                <td><samp>2.75 + 1.25 = 4.0</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>-</kbd></td>
+                <td>Subtraction</td>
+                <td><samp>2.75 - 1.25 = 1.5</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>*</kbd></td>
+                <td>Multiplication</td>
+                <td><samp>2.75 * 1.25 = 3.4375</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>//</kbd></td>
+                <td>Floor Division</td>
+                <td><samp>2.75 // 1.25 = 2.0</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>/</kbd></td>
+                <td>Division</td>
+                <td><samp>2.75 / 1.25 = 2.2</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>**</kbd></td>
+                <td>Exponentiation</td>
+                <td><samp>2.75 ** 1.25 = 3.5413...</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>%</kbd></td>
+                <td>Remainder</td>
+                <td><samp>2.75 % 1.25 = 0.25</samp></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>String</h3>
+
+    <p>
+        The final data type we will discuss in this guide is the
+        <strong>string</strong> data type. A string is simply a sequence of
+        characters, and represents text. Strings in Python are denoted by
+        characters enclosed in either single quotes (<kbd>'</kbd>), or double
+        quotes (<kbd>"</kbd>). Examples include <kbd>"Beans"</kbd>,
+        <kbd>'To be, or not to be'</kbd>, and <kbd>""</kbd> (this is
+        a sequence of zero characters, and is referred to as an
+        <strong>empty string</strong> or <strong>null string</strong>).
+    </p>
+
+    <div class='frame'>
+        <p>
+            What happens if we want to place quotes <em>within</em> a string? How
+            will the interpreter know which quotes are supposed to close a string
+            and which quotes are supposed to be part of the string? Consider the
+            example <kbd>"I had a "great" time"</kbd>. The Python interpreter
+            would see two strings in this case: <samp>"I had a "</samp>, and
+            <samp>" time"</samp>. These questions are answered in the next section.
+        </p>
+    </div>
+
+     <table class='operations-table'>
+        <caption>String Operators in Python</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Op</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>+</kbd></td>
+                <td>Concatenation</td>
+                <td><samp>'Py' + 'thon' = 'Python'</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>*</kbd></td>
+                <td>Repetition</td>
+                <td><samp>'Py' * 3 = 'PyPyPy'</samp></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        The <strong>concatenation</strong> operation combines its two string
+        operands into one string by appending the second string directly to
+        the end of the first. The <strong>repeat</strong> operation takes one
+        string operand and one integer operand, and produces a new string by
+        repeating the original string the specified number of times.
+    </p>
+
+    <p>
+        What if we want a string to contain special characters such as a tab
+        character or line break character? What if we want to include quotes
+        <em>within</em> the string itself? To accomplish this, we use
+        something called an <strong>escape sequence</strong>. In Python, along
+        with many other programming languages, an escape sequence begins with
+        a <kbd>\</kbd> character followed by one or more other characters
+        which specify the special character.
+    </p>
+
+     <table class='escapeseq-table'>
+        <caption>Common Escape Sequences</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Sequence</th>
+                <th scope='col'>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>\n</kbd></td>
+                <td>Newline (line break)</td>
+            </tr>
+            <tr>
+                <td><kbd>\t</kbd></td>
+                <td>Tab</td>
+            </tr>
+            <tr>
+                <td><kbd>\"</kbd></td>
+                <td>Double quote</td>
+            </tr>
+            <tr>
+                <td><kbd>\'</kbd></td>
+                <td>Single quote</td>
+            </tr>
+            <tr>
+                <td><kbd>\\</kbd></td>
+                <td>Backslash</td>
+            </tr>
+        </tbody>
+    </table>
+ 
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        To embed a quote within a string, we could write
+                        <kbd>"Dwayne \"The Rock\" Johnson"</kbd>. We might
+                        use this string with a <kbd>print()</kbd>
+                        statement to print a string containing quotes.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>"Dwayne \"The Rock\" Johnson"</span>)</code>
+<samp>Dwayne "The Rock" Johnson</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        It's worth mentioning, however, that the same
+                        result can be achieved by using single quotes to
+                        quote the string instead of double quotes. By
+                        doing so, it is no longer ambiguous which quote
+                        closes the string.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>'Dwayne "The Rock" Johnson'</span>)</code>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 2.1</span>
+                        <p>
+                            Using a single <kbd>print()</kbd> statement,
+                            write a program that produces the following
+                            output.
+                        </p>
+
+                        <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python two_lines.py</kbd>
+<samp>Line 1
+Line 2</samp>
+</pre>
+                        </div>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>two_lines.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Line 1\nLine 2"</span>)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Variables</h2>
+
+    <p>
+        Variables are one of the most fundamental concepts in computer
+        programming. Conceptually, In Python, a <strong>variable</strong> is a
+        name that we give to a storage unit which stores a single value of a
+        single data type. That is, we <strong>initialize</strong> a name with
+        a storage unit containing a value. You might visualize this as asking
+        Python to give you a box and placing the value inside, and sticking a
+        label on it with your chosen name. In Python, this entire process is
+        done using the <strong>assignment</strong> (<kbd>=</kbd>) operator.
+        Once we have created a variable, we are able to assign any new value
+        it, and we are able to use it in operations as if it were a plain
+        value.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><code>name <span class='op'>=</span> <span class='str'>"John Doe"</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>age <span class='op'>=</span> <span class='lit'>35</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that the first statement assigns a name to a string,
+                        and the second statement assigns a name a to an integer.
+                    </p>
+
+                    <p>
+                        These statements may be visualized as follows.
+                    </p>
+                    
+                    <img
+                        src='images/variables/assignment.png'
+                        alt='A diagram illustrating the assigment process.'
+                        width='1325'
+                        height='235'/>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We are allowed to assign new values to variables,
+                        even if the data types are different.
+                    </p>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='str'>"John Doe"</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='lit'>35</span></code>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We can use variables as part of operations, as if they
+                        were regular values.
+                    </p>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><code>width <span class='op'>=</span> <span class='lit'>3</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>height <span class='op'>=</span> <span class='lit'>4</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>area <span class='op'>=</span> width <span class='op'>*</span> height</code>
+</pre>
+                    </div>
+ 
+                    <p>
+                        Once the third statement executes, we will have a
+                        variable named <var>area</var> containing the value
+                        <kbd>12</kbd>.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 2.2</span>
+                        <p>
+                            Write a program that creates a variable and then
+                            prints the value of that variable using
+                            <kbd>print()</kbd>.
+                        </p>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>print_var.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>message <span class='op'>=</span> <span class='str'>"Hello, world!"</span></code>
+<span class='lnum'>2</span><code>print(message)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+                        
+    <div class='frame'>
+        <p>
+            Although in mathematics <kbd>=</kbd> is used to mean
+            <em>equality</em>, many programming languages do not share these
+            semantics. This is the reason why statements such as
+            <code>x = x + 1</code> make sense in Python and other programming
+            languages. In words, this statement means "retrieve the value
+            stored in <code>x</code> and add <code>1</code> to it, then
+            <em>assign</em> the name <code>x</code> to that new value.
+        </p>
+        <p>
+            If <code>x</code> originally contained the value <code>4</code>
+            before the statement executed, it will contain the value
+            <code>5</code> after.
+        </p>
+        <img
+            src='images/variables/assignment2.png'
+            alt='A diagram illustrating the assignment of x to x plus one.'
+            width='685'
+            height='405'/>
+    </div>
+
+    <div class='frame'>
+        <p>
+            It is sometimes useful to distinguish between variables and
+            literals. Simply put, <strong>literals</strong> are plain values
+            such as <kbd>7</kbd> (an integer literal), or <kbd>3.14</kbd> (a
+            float literal), and <kbd>"Python"</kbd> (a string literal).
+            Variables, on the other hand, refer to the names storing those
+            values, such as <var>x</var>, <var>num</var>, or <var>area</var>.
+        </p>
+    </div>
+    
+    <h3>Variable Names</h3>
+
+    <p>
+        There are rules as to what constitutes a valid
+        <strong>identifier</strong> (i.e. name). Although the rules are
+        rather complicated, let it suffice to say that identifiers may
+        only contain letters, digits, and underscores (<kbd>_</kbd>), and
+        must begin with either a letter or underscore. Furthermore,
+        <strong>reserved words</strong> may not be used as identifiers. We
+        will learn many reserved words in time, but if you are curious now,
+        you can reference the
+        <a href='https://docs.python.org/3/reference/lexical_analysis.html#keywords'>
+        official Python website </a> for a list.
+    </p>
+
+    <div class='frame'>
+        <p>
+            Although not strictly necessary, we <em>highly recommend</em> that
+            you adhere to the following naming conventions.
+        </p>
+
+        <ul>
+            <div class='list-title'>Do</div>
+            <li>
+                <p>
+                    Use only English letters (capital and lowercase A through Z),
+                    numbers, and underscores.
+                </p>
+            </li>
+            <li>
+               <p>Begin an identifier with a lowercase letter.</p>
+            </li>
+        </ul>
+
+        <ul>
+            <div class='list-title'>Do Not</div>
+            <li>
+                <p>Begin an identifier with an underscore (e.g. <var>_num</var>)</p>
+            </li>
+            <li>
+                <p>Use foreign characters (e.g. <var>すうじ</var>)</p>
+            </li>
+            <li>
+                <p>Use predefined names (e.g. <var>print</var>)</p>
+            </li>
+            <li>
+                <p>Begin an identifier with a capital letter (e.g. <var>Num</var>)</p>
+            </li>
+        </ul>
+
+        <p>
+            As always, some exceptions will be made in some circumstances, but
+            that will have to wait until you have sufficient knowledge and
+            experience.
+        </p>
+    </div>
+
+    <h2>Expressions</h2>
+    
+    <p>
+        <strong>Expressions</strong> are a group of operations that evaluate
+        to a single value. We can assign the results of expressions to
+        variables, or use them in statements like the <code>print()</code>
+        statement. Expressions can contain variables, literals, or a mixture
+        of both.
+    </p>
+
+    <p>
+        Just like mathematics (recall
+        <a href='https://en.wikipedia.org/wiki/Order_of_operations'>PEMDAS</a>
+        ), Python specifies a precedence for its operators. Operators with
+        higher precedence are evaluated before operators with lower precedence.
+        Like in mathematics, operations that are enclosed in parentheses are
+        treated with the highest precedence. A table displaying the precedence
+        of some of Python's operators is shown below.
+    </p>
+
+    <table class='oporder-table'>
+        <caption>Operator Precedence (Highest to Lowest)</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Operator</th>
+                <th scope='col'>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>()</kbd></td>
+                <td>Parentheses</td>
+            </tr>
+            <tr>
+                <td><kbd>**</kbd></td>
+                <td>Exponentiation</td>
+            </tr>
+            <tr>
+                <td><kbd>*</kbd>, <kbd>/</kbd>, <kbd>//</kbd>, <kbd>%</kbd></td>
+                <td>Multiplication (repeat), division, floor division, remainder</td>
+            </tr>
+            <tr>
+                <td><kbd>+</kbd>, <kbd>-</kbd></td>
+                <td>Addition (concatenation), subtraction</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class='frame'>
+        <p>
+            Operators with the same precedence are evaluated from left to
+            right with the exception of the exponentiation operator, which
+            is evaluated from right to left.
+        </p>
+    </div>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * 3 + 4</kbd>
+<samp>10</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * (3 + 4)</kbd>
+<samp>14</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>2 ** 3 ** 2</kbd>
+<samp>512</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>(2 ** 3) ** 2</kbd>
+<samp>64</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * 'Py' + 'thon'</kbd>
+<samp>'PyPyPython'</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * ('Py' + 'thon')</kbd>
+<samp>'PythonPythonPython'</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 3</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y = x * 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x + y</kbd>
+<samp>9</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>fruit = 'apples'</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print('I really love ' + fruit)</kbd>
+<samp>I really love apples</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Input</h2>
+
+    <p>
+        So far, every program we've written executes exactly the same every
+        time it's run, which is boring. Now that we know about variables, we
+        can take input from the user and store it in a variable to alter the
+        results of a program. In Python, we can <strong>read</strong> (i.e.
+        receive) user input by using the <code>input()</code> function, and store
+        it in a variable as is done with the statement
+        <code>name = input()</code>. When this statement is executed, the
+        program will wait until text is available on
+        <strong>standard input</strong>, and then store that text in
+        <var>name</var>. If we are running this program at a terminal, we can
+        make text available to standard input by typing into the terminal and
+        pressing the <kbd>Return</kbd> (i.e. <kbd>Enter</kbd>) key.
+    </p>
+
+    <p>
+        Choosing the variable identifier <var>name</var> suggests that the
+        programmer is expecting the user to supply the program with some kind
+        of name. The user, however, has no way of knowing this. To solve this
+        problem, we can supply a <strong>prompt</strong> to the user to guide
+        them when entering a value. This is done by including a string value
+        in between the parentheses of <code>input()</code>. For example, it
+        may be helpful to use <code>input("Please enter your first name: ")</code>.
+        This prints the given text to standard output before waiting for the
+        user's input. By including this prompt, the programmer can communicate
+        to the user the kind of input that is expected from them.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 2.3</span>
+                        <p>
+                            Write a program that reads a name from standard input
+                            and writes (prints) a message back to the user. Refer
+                            to the example run below.
+                        </p>
+                        <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python greet.py</kbd>
+<samp>Enter your name: </samp><kbd class='user-input'>Sara</kbd>
+<samp>Hello, Sara!</samp>
+</pre>
+                        </div>
+                    </div>
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>greet.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>name <span class='op'>=</span> input(<span class='str'>"Enter your name: "</span>)</code></code>
+<span class='lnum'>3</span><code>print(<span class='str'>"Hello, "</span> <span class='op'>+</span> name)</code>
+</pre>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr/>
+    
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Projects</h3>
+            <ul class='dropdown-contents projects' hidden>
+                <li class='frame'>
+                    <span class='label'>Calculator 1</span>
+                    <p>
+                        Write a program that prompts the user to enter two
+                        integers and prints the sum, difference, and product
+                        of those two numbers. Refer to the sample below.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python calc1.py</kbd>
+<samp>Enter the first number: </samp><kbd class='user-input'>3</kbd>
+<samp>Enter the second number: </samp><kbd class='user-input'>6</kbd>
+<samp>3 + 6 = 9</samp>
+<samp>3 - 6 = -3</samp>
+<samp>3 * 6 = 18</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Note: Since user input is stored in a variable as a
+                        string, we have to convert it to an integer if we want
+                        to perform any integer operations on it. To do this,
+                        we have to the <code>int()</code> command to convert
+                        the string value to an integer value. Suppose we have
+                        already stored one of the inputs in a variable named
+                        <var>num1</var>. We can convert the value in
+                        <var>num1</var> to an integer with the statement
+                        <code>num1 = int(num1)</code>.
+                    </p>
+
+                    <p>
+                        Note: You can provide multiple values to
+                        <code>print()</code> by separating them with commas.
+                        Each of these values will be written (i.e. printed)
+                        to standard output with a space inserted after each value.
+                        For example, <code>print("One", "Two", "Three")</code>
+                        will print <samp>One Two Three</samp>.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+</body>
+</html>
