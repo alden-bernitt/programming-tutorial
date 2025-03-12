@@ -33,11 +33,15 @@ h3 {
     font-size: 1.4em;
 }
 
-img {
-    width: 100%;
+img.diagram {
+    display: block;
+    max-width: 100%;
     height: auto;
     border: solid #222 1px;
     border-radius: 3px;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 pre {

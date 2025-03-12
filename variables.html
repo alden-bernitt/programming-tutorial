@@ -22,7 +22,7 @@
     <p>
         While all programs can be viewed as a sequence of statements, there is
         another key element involved: data. <strong>Data</strong> are the
-        values that statements operate upon.
+        values that we operate upon within our statements.
     </p>
 
     <div class='aux-section-group'>
@@ -31,10 +31,10 @@
             <ul class='dropdown-contents examples' hidden>
                 <li class='frame'>
                     <p>
-                        Consider the following addition operation:
+                        Consider the following expression:
                         <kbd>4 + 5</kbd>
                         <br/>
-                        The "statement" is addition, and the "data" are
+                        The "operation" is addition, the "data" are
                         the values 4 and 5.
                     </p>
                 </li>
@@ -97,9 +97,9 @@
         programmer easier. As we introduce the following data types, note that
         we do not describe all of the data types provided by Python, nor do we
         describe all operations included with each data type. However, take
-        heart in that many of these data types will be introduced in later
-        guides, and we will give you the tools necessary to perform your own
-        research when the time comes.
+        heart in that many of these data types and opertions will be introduced
+        in later guides, and we will give you the tools necessary to perform
+        your own research when the time comes.
     </p>
 
     <div class='frame'>
@@ -169,10 +169,19 @@
         operators. The <kbd>//</kbd> operator performs an operation known as
         <strong>floor division</strong>. The result of this operation
         is equal to the division of the first operand by the second
-        <em>rounded down</em>. The <kbd>%</kbd> operator, called the
-        <strong>modulo</strong> operator, essentially produces the
-        <em>remainder</em> of the first operand divided by the second operand.
+        <em>rounded down</em> (i.e. towards negative infinity) to the nearest
+        integer. The <kbd>%</kbd> operator, called the <strong>modulo</strong>
+        operator, essentially produces the <em>remainder</em> of the first
+        operand divided by the second operand.
     </p>
+
+    <div class='frame'>
+        <p>
+            We recommend testing <kbd>//</kbd> and <kbd>%</kbd> using a
+            positive and negative value, a negative and positive value, and
+            two negative values. You may be surprised at the results.
+        </p>
+    </div>
 
     <div class='frame'>
         <p>
@@ -188,17 +197,14 @@
         </p>
 
         <p>
+            You do not need to memorize this. Just understand that you may not
+            get the result you expect when using <kbd>%</kbd> with negative
+            operands.
+        </p>
+
+        <p>
             Note that the <code>floor()</code> function produces the value
             of <code>a / b</code> rounded down (i.e. towards negative infinity).
-        </p>
-    </div>
-
-    <div class='frame'>
-        <p>
-            We recommend testing <kbd>//</kbd> and <kbd>%</kbd> using a
-            positive and negative value, a negative and positive value, and
-            two negative values. You may be surprised at the results. See if
-            you can figure out why the results are what they are.
         </p>
     </div>
 
@@ -207,7 +213,7 @@
     <p>
         The <strong>float</strong> data type represents the set of real
         numbers. This set includes integer values, such as the ones shown
-        previously, as well as decimal values, such as <kbd>1.5</kbd>,
+        previously, as well as values with decimal points, such as <kbd>1.5</kbd>,
         <kbd>-99.99</kbd>, and <kbd>3.14159</kbd>. The float data type
         supports mostly the same operations as the int data type. Notably,
         float values also support division.
@@ -364,7 +370,7 @@
             <ul class='dropdown-contents examples' hidden>
                 <li class='frame'>
                     <p>
-                        To embed a quote within a string, we could write
+                        To embed quotes within a string, we could write
                         <kbd>"Dwayne \"The Rock\" Johnson"</kbd>. We might
                         use this string with a <kbd>print()</kbd>
                         statement to print a string containing quotes.
@@ -440,12 +446,12 @@ Line 2</samp>
         name that we give to a storage unit which stores a single value of a
         single data type. That is, we <strong>initialize</strong> a name with
         a storage unit containing a value. You might visualize this as asking
-        Python to give you a box and placing the value inside, and sticking a
+        Python to give you a box, placing the value inside, and sticking a
         label on it with your chosen name. In Python, this entire process is
         done using the <strong>assignment</strong> (<kbd>=</kbd>) operator.
-        Once we have created a variable, we are able to assign any new value
-        it, and we are able to use it in operations as if it were a plain
-        value.
+        Once we have created a variable, we are able to assign any new value of
+        any data type to it, and we are able to use it as an operand as if it
+        were a regular value.
     </p>
 
     <div class='aux-section-group'>
@@ -469,7 +475,7 @@ Line 2</samp>
                         These statements may be visualized as follows.
                     </p>
                     
-                    <img
+                    <img class='diagram'
                         src='images/variables/assignment.png'
                         alt='A diagram illustrating the assigment process.'
                         width='1325'
@@ -508,8 +514,30 @@ Line 2</samp>
                         <kbd>12</kbd>.
                     </p>
                 </li>
+
+                <li class='frame'>
+                    <p>
+                        We can assign variables to other variables. Python
+                        treats this as though we had attached another tag with
+                        a new name to the same box as the first variable.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x <span class='op'>=</span> <span class='lit'>3</span></kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y <span class='op'>=</span> x</kbd>
+</pre>
+                    </div>
+
+                    <img class='diagram'
+                        src='images/variables/double_assignment.png'
+                        alt='A diagram illustrating the assignment of one variable to another in Python.'
+                        width='345'
+                        height='205'/>
+                </li>
             </ul>
         </div>
+
 
         <div class='dropdown-section'>
             <h3 class='dropdown'>Tasks</h3>
@@ -557,7 +585,7 @@ Line 2</samp>
             before the statement executed, it will contain the value
             <code>5</code> after.
         </p>
-        <img
+        <img class='diagram'
             src='images/variables/assignment2.png'
             alt='A diagram illustrating the assignment of x to x plus one.'
             width='685'
@@ -570,8 +598,8 @@ Line 2</samp>
             literals. Simply put, <strong>literals</strong> are plain values
             such as <kbd>7</kbd> (an integer literal), or <kbd>3.14</kbd> (a
             float literal), and <kbd>"Python"</kbd> (a string literal).
-            Variables, on the other hand, refer to the names storing those
-            values, such as <var>x</var>, <var>num</var>, or <var>area</var>.
+            Variables, on the other hand, refer to the names which store
+            values, such as <var>num</var>, <var>pi</var>, or <var>language</var>.
         </p>
     </div>
     
@@ -579,8 +607,8 @@ Line 2</samp>
 
     <p>
         There are rules as to what constitutes a valid
-        <strong>identifier</strong> (i.e. name). Although the rules are
-        rather complicated, let it suffice to say that identifiers may
+        <strong>identifier</strong> (i.e. name). Although these rules in Python
+        are rather complicated, let it suffice to say that identifiers may
         only contain letters, digits, and underscores (<kbd>_</kbd>), and
         must begin with either a letter or underscore. Furthermore,
         <strong>reserved words</strong> may not be used as identifiers. We
@@ -593,7 +621,8 @@ Line 2</samp>
     <div class='frame'>
         <p>
             Although not strictly necessary, we <em>highly recommend</em> that
-            you adhere to the following naming conventions.
+            you adhere to the following naming conventions when naming your
+            variables.
         </p>
 
         <ul>
@@ -612,7 +641,7 @@ Line 2</samp>
         <ul>
             <div class='list-title'>Do Not</div>
             <li>
-                <p>Begin an identifier with an underscore (e.g. <var>_num</var>)</p>
+                <p>Begin or end an identifier with an underscore (e.g. <var>_num_</var>)</p>
             </li>
             <li>
                 <p>Use foreign characters (e.g. <var>すうじ</var>)</p>
@@ -622,6 +651,9 @@ Line 2</samp>
             </li>
             <li>
                 <p>Begin an identifier with a capital letter (e.g. <var>Num</var>)</p>
+            </li>
+            <li>
+                <p>Use all capital letters (e.g. <var>FIRST_NAME</var>)</p>
             </li>
         </ul>
 
@@ -643,13 +675,13 @@ Line 2</samp>
     </p>
 
     <p>
-        Just like mathematics (recall
+        Just like in mathematics, Python specifies a precedence for its
+        operators (recall
         <a href='https://en.wikipedia.org/wiki/Order_of_operations'>PEMDAS</a>
-        ), Python specifies a precedence for its operators. Operators with
-        higher precedence are evaluated before operators with lower precedence.
-        Like in mathematics, operations that are enclosed in parentheses are
-        treated with the highest precedence. A table displaying the precedence
-        of some of Python's operators is shown below.
+        ). Operators with higher precedence are evaluated before operators with
+        lower precedence.  Like in mathematics, operations that are enclosed in
+        parentheses are treated with the highest precedence. A table displaying
+        the precedence of some of Python's operators is shown below.
     </p>
 
     <table class='oporder-table'>
@@ -774,7 +806,7 @@ Line 2</samp>
         it in a variable as is done with the statement
         <code>name = input()</code>. When this statement is executed, the
         program will wait until text is available on
-        <strong>standard input</strong>, and then store that text in
+        <strong>standard input</strong>, and then store that text as a string in
         <var>name</var>. If we are running this program at a terminal, we can
         make text available to standard input by typing into the terminal and
         pressing the <kbd>Return</kbd> (i.e. <kbd>Enter</kbd>) key.
@@ -849,8 +881,8 @@ Line 2</samp>
         </p>
 
         <p>
-            For example, suppose that we have already stored one of the input
-            values in a variable named <var>x</var>. To convert <var>x</var>
+            For example, suppose that we have already stored an input
+            string in a variable named <var>x</var>. To convert <var>x</var>
             to an integer, we could execute the statement <code>x = int(x)</code>.
             Similarly, to convert <var>x</var> to a float, we could execute the
             statement <code>x = float(x)</code>
@@ -1006,20 +1038,26 @@ Line 2</samp>
                         already been transferred, respectively. Using these
                         values, print to standard output a loading bar using
                         pipe characters to indicate the current progress and
-                        periods to indicate the remaining progress. In addition
-                        to the loading bar, you must also print some statistics
-                        of the data transfer. These statistics will include the
-                        current number of files transferred, the total number
-                        of files to be transferred, and the percent progress
-                        (represented as an integer). The progress percentage
-                        will be rounded down to the nearest integer.
+                        periods to indicate the remaining progress (round down to
+                        the nearest 2%). For example, if 11% of the records have been
+                        transferred, print five pipe characters followed by forty-five
+                        periods.
+                    </p>
+                    <p>
+                        In addition to the loading bar, you must also
+                        print some statistics of the data transfer. These
+                        statistics will include the current number of records
+                        transferred, the total number of records to be
+                        transferred, and the percent progress (represented as
+                        an integer). The progress percentage will be rounded
+                        down to the nearest integer.
                     </p>
                     <div class='terminal'>
 <pre>
 <span class='prompt'>$</span><kbd>python loadbar.py</kbd>
 <samp>Enter the total number of records: </samp><kbd class='user-input'>31152</kbd>
 <samp>Enter the number of records transferred: </samp><kbd class='user-input'>26437</kbd>
-<samp>26433 / 31152 files transferred ( 84 % )</samp>
+<samp>26437 / 31152 records transferred ( 84 % )</samp>
 <samp>||||||||||||||||||||||||||||||||||||||||||........</samp>
 </pre>
                     </div>
