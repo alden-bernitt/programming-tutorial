@@ -742,6 +742,22 @@ Line 2</samp>
         </p>
     </div>
 
+    <div class='frame'>
+        The bottom line is that all expressions evaluate down to a single value
+        of a single data type. This means that we can use expressions in place
+        of <em>any</em> value that has the same data type as the result of the
+        expression. For example, we can replace the value given to a
+        <code>print()</code> command with an expression.
+
+        <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 9</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x ** 2)</kbd>
+<samp>81</samp>
+</pre>
+        </div>
+    </div>
+
     <div class='aux-section-group'>
         <div class='dropdown-section'>
             <h3 class='dropdown'>Examples</h3>
@@ -1034,6 +1050,58 @@ Line 2</samp>
 <samp>Enter a: </samp><kbd class='user-input'>14</kbd>
 <samp>Enter b: </samp><kbd class='user-input'>5</kbd>
 <samp>14 = 5 * 2 + 4</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Change Calculator</span>
+
+                    <p>
+                        A long time ago people would go to stores and use
+                        physical money to make purchases. The point-of-sale (POS)
+                        systems of this time would have to calculate change for
+                        customers who overpaid their bill, and then automatically
+                        dispense the change in physical money.
+                    </p>
+
+                    <p>
+                        Write a program that starts by reading two values from standard
+                        input. The first value represents the bill amount, and
+                        the second value represents the amount that the
+                        customer paid. Using this information, print the change,
+                        in US currency, that is to be dispensed to the customer.
+                    </p>
+
+                    <p>
+                        The denominations used will be one-hundred-dollar bills,
+                        fifty-dollar bills, twenty-dollar bills, ten-dollar bills,
+                        five-dollar bills, one-dollar bills, quarter, dimes,
+                        nickels, and pennies. The program should calculate the
+                        change such that the smallest possible amount of bills
+                        and coins are dispensed.
+                    </p>
+
+                    <p>
+                        Assume that the customer always pays at least the bill amount.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python3 change.py</kbd>
+<samp>Enter bill amount: $</samp><kbd class='user-input'>117.32</kbd>
+<samp>Enter paid amount: $</samp><kbd class='user-input'>200.00</kbd>
+<samp>Change:</samp>
+<samp>0 x $100</samp>
+<samp>1 x $50</samp>
+<samp>1 x $20</samp>
+<samp>1 x $10</samp>
+<samp>0 x $5</samp>
+<samp>2 x $1</samp>
+<samp>2 x $0.25</samp>
+<samp>1 x $0.10</samp>
+<samp>1 x $0.05</samp>
+<samp>3 x $0.01</samp>
 </pre>
                     </div>
                 </li>
