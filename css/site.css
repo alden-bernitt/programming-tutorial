@@ -12,12 +12,16 @@ html {
 }
 
 body {
+    background-color: #ccc;
     width: 800px;
-    margin: 8px 64px;
+    margin: 0;
     line-height: 1.5;
 }
 
 main {
+    background-color: white;
+    padding: 16px;
+    padding-top: 0;
     padding-bottom: 64px;
 }
 
@@ -89,6 +93,7 @@ table {
 
     th {
         border-block-end: solid black 1px;
+        padding: 8px;
     }
 
     tbody tr:nth-child(even) {
@@ -135,4 +140,37 @@ span.label {
 .list-title {
     font-weight: bold;
     font-size: 1.5em;
+}
+
+.bottom-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #ddd;
+    padding: 16px;
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border: solid #222 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+
+    a:nth-child(1) {
+        text-align: start;
+
+        &::before {
+            content: '< ';
+        }
+    }
+
+    a:nth-child(2) {
+        text-align: center;
+    }
+
+    a:nth-child(3) {
+        text-align: end;
+        
+        &::after {
+            content: ' >';
+        }
+    }
 }

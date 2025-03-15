@@ -21,14 +21,22 @@
             }
 
             thead th:nth-child(2) {
-                width: 50%;
+                width: 40%;
             }
 
-            tbody td:nth-child(1) {
+            thead th:nth-child(3) {
+                width: 10%;
+            }
+
+            thead th:nth-child(4) {
+                width: 40%;
+            }
+
+            tbody td:nth-child(1), tbody td:nth-child(3) {
                 text-align: center;
             }
 
-            tbody td:nth-child(2), tbody td:nth-child(3) {
+            tbody td:nth-child(2), tbody td:nth-child(4) {
                 padding-inline-start: 1em;
             }
         }
@@ -37,9 +45,9 @@
     <script src='scripts/dropdown.js' defer></script>
 </head>
 <body>
-<main>
-    <h1>Data and Variables</h1>
+<h1>Data and Variables</h1>
 
+<main>
     <h2>Background</h2>
     <p>
         While all programs can be viewed as a sequence of statements, there is
@@ -97,17 +105,6 @@
                         integers include addition <kbd>+</kbd>,
                         subtraction <kbd>-</kbd>, and multiplication
                         <kbd>*</kbd>
-                        <br/>
-                        Notably, integer values do <strong>not</strong>
-                        include values such as <kbd>0.5</kbd> and the
-                        square root of 2 (often denoted
-                        <kbd>sqrt(2)</kbd>). Operations that are
-                        <strong>not</strong> defined on integers include
-                        the usual version of division <kbd>&divide;</kbd>
-                        (this is because, for example, the result of
-                        dividing the integers <kbd>1</kbd> and
-                        <kbd>2</kbd>, that is <kbd>1 &divide; 2</kbd>,
-                        results in a value that is not an integer).
                     </p>
                 </li>
             </ul>
@@ -149,6 +146,7 @@
             <tr>
                 <th scope='col'>Op</th>
                 <th scope='col'>Description</th>
+                <th scope='col'>Result Type</th>
                 <th scope='col'>Example</th>
             </tr>
         </thead>
@@ -156,32 +154,56 @@
             <tr>
                 <td><kbd>+</kbd></td>
                 <td>Addition</td>
+                <td>int</td>
                 <td><samp>9 + 5 = 14</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Subtraction</td>
+                <td>int</td>
                 <td><samp>9 - 5 = 4</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Multiplication</td>
+                <td>int</td>
                 <td><samp>9 * 5 = 45</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>/</kbd></td>
+                <td>Division</td>
+                <td>float</td>
+                <td><samp>9 / 5 = 1.8
             </tr>
             <tr>
                 <td><kbd>//</kbd></td>
                 <td>Floor Division</td>
+                <td>int</td>
                 <td><samp>9 // 5 = 1</samp></td>
             </tr>
             <tr>
                 <td><kbd>**</kbd></td>
                 <td>Exponentiation</td>
+                <td>float</td>
                 <td><samp>9 ** 2 = 81</samp></td>
             </tr>
             <tr>
                 <td><kbd>%</kbd></td>
                 <td>Remainder</td>
+                <td>int</td>
                 <td><samp>9 % 5 = 4</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>+</kbd></td>
+                <td>Positive</td>
+                <td>int</td>
+                <td><samp>+(9 + 5) = 14</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>-</kbd></td>
+                <td>Negative</td>
+                <td>int</td>
+                <td><samp>-(9 + 5) = -14</samp></td>
             </tr>
         </tbody>
     </table>
@@ -202,6 +224,16 @@
             We recommend testing <kbd>//</kbd> and <kbd>%</kbd> using a
             positive and negative value, a negative and positive value, and
             two negative values. You may be surprised at the results.
+        </p>
+    </div>
+
+    <div class='frame'>
+        <p>
+            Notice that all operations on integer values result in a new
+            integer value. The one exception is <em>division</em>
+            (<kbd>/</kbd>). Dividing two integers in Python always results
+            in a data type known as a <i>float</i>. See the next section
+            to learn more about floats.
         </p>
     </div>
 
@@ -247,6 +279,7 @@
             <tr>
                 <th scope='col'>Op</th>
                 <th scope='col'>Description</th>
+                <th scope='col'>Result Type</th>
                 <th scope='col'>Example</th>
             </tr>
         </thead>
@@ -254,37 +287,56 @@
             <tr>
                 <td><kbd>+</kbd></td>
                 <td>Addition</td>
+                <td>float</td>
                 <td><samp>2.75 + 1.25 = 4.0</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Subtraction</td>
+                <td>float</td>
                 <td><samp>2.75 - 1.25 = 1.5</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Multiplication</td>
+                <td>float</td>
                 <td><samp>2.75 * 1.25 = 3.4375</samp></td>
             </tr>
             <tr>
                 <td><kbd>//</kbd></td>
                 <td>Floor Division</td>
+                <td>float</td>
                 <td><samp>2.75 // 1.25 = 2.0</samp></td>
             </tr>
             <tr>
                 <td><kbd>/</kbd></td>
                 <td>Division</td>
+                <td>float</td>
                 <td><samp>2.75 / 1.25 = 2.2</samp></td>
             </tr>
             <tr>
                 <td><kbd>**</kbd></td>
                 <td>Exponentiation</td>
+                <td>float</td>
                 <td><samp>2.75 ** 1.25 = 3.5413...</samp></td>
             </tr>
             <tr>
                 <td><kbd>%</kbd></td>
                 <td>Remainder</td>
+                <td>float</td>
                 <td><samp>2.75 % 1.25 = 0.25</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>+</kbd></td>
+                <td>Positive</td>
+                <td>float</td>
+                <td><samp>+(2.75 + 1.25) = 4.0</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>-</kbd></td>
+                <td>Negative</td>
+                <td>float</td>
+                <td><samp>-(2.75 + 1.25) = -4.0</samp></td>
             </tr>
         </tbody>
     </table>
@@ -319,6 +371,7 @@
             <tr>
                 <th scope='col'>Op</th>
                 <th scope='col'>Description</th>
+                <th scope='col'>Result Type</th>
                 <th scope='col'>Example</th>
             </tr>
         </thead>
@@ -326,11 +379,13 @@
             <tr>
                 <td><kbd>+</kbd></td>
                 <td>Concatenation</td>
+                <td>str</td>
                 <td><samp>'Py' + 'thon' = 'Python'</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Repetition</td>
+                <td>str</td>
                 <td><samp>'Py' * 3 = 'PyPyPy'</samp></td>
             </tr>
         </tbody>
@@ -472,8 +527,8 @@ Line 2</samp>
         label on it with your chosen name. In Python, this entire process is
         done using the <i>assignment</i> (<kbd>=</kbd>) operator.
         Once we have created a variable, we are able to assign any new value of
-        any data type to it, and we are able to use it as an operand as if it
-        were a regular value.
+        any data type to it, and we are able to use it as an operand in an
+        expression as if it were a regular value.
     </p>
 
     <div class='aux-section-group'>
@@ -507,11 +562,12 @@ Line 2</samp>
                 <li class='frame'>
                     <p>
                         We are allowed to assign new values to variables,
-                        even if the data types are different.
+                        even if the new value has a different data type than
+                        the original value.
                     </p>
                     <div class='terminal'>
 <pre>
-<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='str'>"John Doe"</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='str'>"Monty Python"</span></code>
 <span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='lit'>35</span></code>
 </pre>
                     </div>
@@ -686,6 +742,14 @@ Line 2</samp>
         </p>
     </div>
 
+    <div class='frame'>
+        <p>
+            Note that identifiers in Python are <i>case sensitive</i>, meaning
+            that identifiers such as <var>num</var>, <var>Num</var>, and
+            <var>NUM</var> are all different.
+        </p>
+    </div>
+
     <h2>Expressions</h2>
     
     <p>
@@ -724,6 +788,10 @@ Line 2</samp>
                 <td>Exponentiation</td>
             </tr>
             <tr>
+                <td><kbd>+x</kbd>, <kbd>-x</kbd></td>
+                <td>Positive, negative</td>
+            </tr>
+            <tr>
                 <td><kbd>*</kbd>, <kbd>/</kbd>, <kbd>//</kbd>, <kbd>%</kbd></td>
                 <td>Multiplication (repeat), division, floor division, remainder</td>
             </tr>
@@ -743,11 +811,13 @@ Line 2</samp>
     </div>
 
     <div class='frame'>
-        The bottom line is that all expressions evaluate down to a single value
-        of a single data type. This means that we can use expressions in place
-        of <em>any</em> value that has the same data type as the result of the
-        expression. For example, we can replace the value given to a
-        <code>print()</code> command with an expression.
+        <p>
+            The bottom line is that all expressions evaluate down to a single value
+            of a single data type. This means that we can use expressions in place
+            of <em>any</em> value that has the same data type as the result of the
+            expression. For example, we can replace the value given to a
+            <code>print()</code> command with an expression.
+        </p>
 
         <div class='terminal'>
 <pre>
@@ -756,6 +826,37 @@ Line 2</samp>
 <samp>81</samp>
 </pre>
         </div>
+    </div>
+
+    <div class='frame'>
+        <p>
+            Python offers a command named <code>type()</code> that we can use
+            to learn about the data type of a value. Since expressions always
+            evaluate down to a single value, we can also use
+            <code>type()</code> to learn about the data type of the result of
+            an expression.
+        </p>
+
+        <p>
+            Consider which data type the result of an arithmetic expression
+            containing both an <code>int</code> operand and
+            <code>float</code> operand may be. We can find out the type of
+            the result as follows.
+        </p>
+
+        <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>type(4 / 2.0)</kbd>
+<samp>&lt;class 'float'&gt;</samp>
+</pre>
+        </div>
+
+        <p>
+            Without worrying about the meaning of the "class" portion of the
+            output, we see that the result of this expression is a
+            <code>float</code>. We will learn more about what "class" means in
+            a future guide.
+        </p>
     </div>
 
     <div class='aux-section-group'>
@@ -931,8 +1032,8 @@ Line 2</samp>
             that we can provide multiple values to <code>print()</code> by
             separating them with commas. Each of these values will be written
             (i.e. printed) to standard output with a space inserted after each
-            value. For example, <code>print('One', 'Two', 'Three')</code> will
-            print <samp>One Two Three</samp>.
+            value. For example, <code>print(1, 'Two', 3.0)</code> will
+            print <samp>1 Two 3.0</samp>.
         </p>
     </div>
 
@@ -941,7 +1042,82 @@ Line 2</samp>
             <h3 class='dropdown'>Projects</h3>
             <ul class='dropdown-contents projects' hidden>
                 <li class='frame'>
-                    <span class='label'>Calculator 1</span>
+                    <span class='label'>Full Name</span>
+                    <p>
+                        Write a program the prompts the user to enter their
+                        first name, and again for their last name. The program
+                        will read these values from standard input and print
+                        out their full name on one line.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>fullname.py</kbd>
+<samp>Enter your first name: </samp><kbd class='user-input'>Monty</kbd>
+<samp>Enter your last name: </samp><kbd class='user-input'>Python</kbd>
+<samp>Monty Python</samp>
+</pre>
+                    </div>
+                </li>
+
+                 <li class='frame'>
+                    <span class='label'>Personal Record</span>
+                    
+                    <p>
+                        Many systems that keep a database of personal records
+                        offer a way to display one of the records.
+                    </p>
+
+                    <p>
+                        Write a program that simulates one of these systems by
+                        prompting the user to enter a first name, a last name,
+                        a gender, and an age. Read these values from standard
+                        input and print a neatly formatted line displaying those
+                        values.
+                    </p>
+                    
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>record.py</kbd>
+<samp>Enter a first name: </samp><kbd class='user-input'>Monty</kbd>
+<samp>Enter a last name: </samp><kbd class='user-input'>Python</kbd>
+<samp>Enter a gender: </samp><kbd class='user-input'>Male</kbd>
+<samp>Enter an age: </samp><kbd class='user-input'>35</kbd>
+<samp>Monty Python --Male-- (Age 35)
+</pre>
+                    </div>
+                </li>
+
+                 <li class='frame'>
+                    <span class='label'>Squared Number</span>
+                    <p>
+                        Recall from mathematics that the <i>square</i> of a
+                        number is the product of the number multiplied by
+                        itself.
+                    </p>
+
+                    <p>
+                        Write a program that reads a value from standard input
+                        and then prints the number, followed by a space,
+                        followed by the square of that number.
+                    </p>
+
+                    <p>
+                        Remember to convert the value to a float before
+                        attempting to perform any arithmetic operations on it.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>square.py</kbd>
+<samp>Enter a number: </samp><kbd class='user-input'>2.5</kbd>
+<samp>2.5 6.25</samp>
+</pre>
+                    </div>
+                </li>
+              
+                <li class='frame'>
+                    <span class='label'>Simple Calculator</span>
                     <p>
                         Write a program that prompts the user to enter two
                         integers and prints the sum, difference, and product
@@ -950,7 +1126,7 @@ Line 2</samp>
 
                     <div class='terminal'>
 <pre>
-<span class='prompt'>$</span><kbd>python calc1.py</kbd>
+<span class='prompt'>$</span><kbd>python calc.py</kbd>
 <samp>Enter the first number: </samp><kbd class='user-input'>3</kbd>
 <samp>Enter the second number: </samp><kbd class='user-input'>6</kbd>
 <samp>3 + 6 = 9</samp>
@@ -958,53 +1134,6 @@ Line 2</samp>
 <samp>3 * 6 = 18</samp>
 </pre>
                     </div>
-                </li>
-                <li class='frame'>
-                    <span class='label'>Distances</span>
-                    <p>
-                        Imagine you are developing a 2D game where two characters
-                        must be within a certain distance in order to interact
-                        with each other. Say we care about two characters, A and B.
-                        Your goal is to read in four values from standard input,
-                        representing the X coordinate of A, the Y coordinate of A,
-                        the X coordinate of B, and the Y coordinate of B
-                        respectively. Once this is done, calculate the distance
-                        between A and B, and write it to standard output. If
-                        you'd like, give names to your characters. Refer to
-                        the sample below.
-                    </p>
-                    
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>$</span><kbd>python distance.py</kbd>
-<samp>Enter Tom's X coordinate: </samp><kbd class='user-input'>1.98</kbd>
-<samp>Enter Tom's Y coordinate: </samp><kbd class='user-input'>-1.72</kbd>
-<samp>Enter Jerry's X coordinate: </samp><kbd class='user-input'>3.11</kbd>
-<samp>Enter Jerry's Y coordinate: </samp><kbd class='user-input'>7.49</kbd>
-<samp>The distance between Tom and Jerry is 9.279062452640353</samp>
-</pre>
-                    </div>
-
-                    <p>
-                        To perform this calculation, you'll need to find the
-                        square root of a number. Luckily, Python provides a
-                        function for that. To access the square root function,
-                        type <code>import math</code> into the very first line
-                        of your program. Once that's done, you can write
-                        statements such as <code>x = math.sqrt(4)</code> to
-                        use the square root function. Don't worry if you don't
-                        understand the details of all of this right now, just
-                        use the square root function as demonstrated for the
-                        time being.
-                    </p>
-
-                    <p>
-                        Recall that the formula for calculating the distance
-                        between two 2D points <var>(x1, y1)</var> and
-                        <var>(x2, y2)</var> is
-
-                        <span class='display'>sqrt((x2 - x1)**2 + (y2 - y1)**2)</span>
-                    </p>
                 </li>
 
                 <li class='frame'>
@@ -1052,6 +1181,54 @@ Line 2</samp>
 <samp>14 = 5 * 2 + 4</samp>
 </pre>
                     </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Distances</span>
+                    <p>
+                        Imagine you are developing a 2D game where two characters
+                        must be within a certain distance in order to interact
+                        with each other. Say we care about two characters, A and B.
+                        Your goal is to read in four values from standard input,
+                        representing the X coordinate of A, the Y coordinate of A,
+                        the X coordinate of B, and the Y coordinate of B
+                        respectively. Once this is done, calculate the distance
+                        between A and B, and write it to standard output. If
+                        you'd like, give names to your characters. Refer to
+                        the sample below.
+                    </p>
+                    
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python distance.py</kbd>
+<samp>Enter Tom's X coordinate: </samp><kbd class='user-input'>1.98</kbd>
+<samp>Enter Tom's Y coordinate: </samp><kbd class='user-input'>-1.72</kbd>
+<samp>Enter Jerry's X coordinate: </samp><kbd class='user-input'>3.11</kbd>
+<samp>Enter Jerry's Y coordinate: </samp><kbd class='user-input'>7.49</kbd>
+<samp>The distance between Tom and Jerry is 9.279062452640353</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        To perform this calculation, you'll need to find the
+                        square root of a number. Luckily, Python provides a
+                        function for that. To access the square root function,
+                        type <code>import math</code> into the very first line
+                        of your program. Once that's done, you can write
+                        statements such as <code>x = math.sqrt(4)</code> to
+                        use the square root function. Don't worry if you don't
+                        understand the details of all of this right now, just
+                        use the square root function as demonstrated for the
+                        time being.
+                    </p>
+
+                    <p>
+                        Recall that the formula for calculating the distance
+                        between two 2D points <var>(x1, y1)</var> and
+                        <var>(x2, y2)</var> is
+
+                        <span class='display'>sqrt((x2 - x1)**2 + (y2 - y1)**2)</span>
+                    </p>
                 </li>
 
                 <li class='frame'>
@@ -1154,6 +1331,12 @@ Line 2</samp>
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class='bottom-nav'>
+        <a href='basics.html'>Programming Basics</a>
+        <a href='index.html'>Home</a>
+        <a href='branching.html'>Flow Control: Branching</a>
     </div>
 </main>
 </body>
