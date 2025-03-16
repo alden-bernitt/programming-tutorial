@@ -1,0 +1,6 @@
+print(" __  __")
+print("/  \/  \\")
+print("\      /")
+print(" \    /")
+print("  \  /")
+print("   \/")

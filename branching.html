@@ -2,17 +2,61 @@
 
 <html lang='en-us'>
 <head>
-    <title>Python | Data and Variables</title>
+    <title>Python | Flow Control: Branching</title>
 
     <meta name='author' content='Alden Bernitt'/>
     <meta
         name='description'
-        content='An introduction on variables and how to use them in Python.'
+        content='An introduction to branching in Python.'
     />
 
     <link rel='stylesheet' href='css/site.css'/>
     <link rel='stylesheet' href='css/code.css'/>
     <link rel='stylesheet' href='css/interactive.css'/>
+
+    <style>
+        table.boolean-table {
+            width: 30%;
+            text-align: center;
+            
+            th {
+                background-color: #333;
+            }
+
+            td {
+                background-color: #555;
+                border: 1px solid black;
+            }
+
+            td.boolean-true {
+                background-color: #050;
+            }
+
+            td.boolean-false {
+                background-color: #500;
+            }
+
+            thead tr th:nth-child(1) {
+                background-color: #111
+            }
+        }
+
+        table.not-table {
+            th {
+                background-color: #111;
+            }
+
+            tr td:nth-child(1) {
+                background-color: #333;
+            }
+        }
+
+        .boolean-table-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
 
     <script src='scripts/dropdown.js' defer></script>
 </head>
@@ -25,16 +69,9 @@
     <p>
         Just like how we make decisions to do one thing over others everyday,
         nearly every useful program must eventually choose to do different
-        things depending on various factors.
-    </p>
-
-    <p>
-        Up to this point, every program we have written executes the same
-        exact sequence of statements from beginning to end every time it is
-        run. In this guide, we introduce a way to tell a program to change the
-        statements it executes based on a set of conditions. Choosing to
-        execute a set of statements based on a set of conditions is
-        known as <i>branching</i>.
+        things depending on various factors. In this guide, we will discuss
+        some of the various ways in which we can write a program to make
+        decisions.
     </p>
 
     <div class='aux-section-group'>
@@ -43,7 +80,7 @@
             <ul class ='dropdown-contents examples' hidden>
                 <li class='frame'>
                     A navigation app might choose to give the user different
-                    routes depending on factors such a traffic congestion.
+                    routes depending on factors such as traffic congestion.
                 </li>
 
                 <li class='frame'>
@@ -62,15 +99,13 @@
 
     <h2>Comments</h2>
     <p>
-        As you develop as a programmer, the programs you write are going to
-        continually increase in complexity. To help humans, such as yourself
-        or someone you are working with, understand these programs, just about
-        every programming language provides a mechanism for writing
-        <i>comments</i>. <dfn>Comments</dfn> are messages that are included
-        inside of the program but are not executed by the computer. Comments are
-        intended to convey information between the humans reading the program
-        in order to aid in understanding how the program works and what the
-        program is doing.
+        As you develop as a programmer, the programs you write will
+        continually increase in complexity. To help programmers convey information
+        to other programmers (or their future selves), almost every programming language
+        provides a mechanism for writing <i>comments</i>. <dfn>Comments</dfn>
+        are messages that are included inside of the program but are not executed
+        by the computer. Comments are intended to assist human readers of the program
+        in understanding what the program is doing and how the program works.
     </p>
 
     <p>
@@ -82,10 +117,1633 @@
 
     <div class='aux-section-group'>
         <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>) <span class='comment'># This text is ignored</span></code>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
             <h3 class='dropdown'>Advice</h3>
             <ul class ='dropdown-contents advice' hidden>
                 <li class='frame'>
                     <p>
+                        Comments should be used to clarify what your
+                        intentions are with the section of the program
+                        that you are commenting on. Consider the following
+                        example.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code class='comment'># Print a table of the first three numbers and their squares.</code>
+<span class='lnum'>2</span><code>print(<span class='lit'>1</span>, <span class='lit'>1</span> <span class='op'>**</span> <span class='lit'>2</span>)</code>
+<span class='lnum'>3</span><code>print(<span class='lit'>2</span>, <span class='lit'>2</span> <span class='op'>**</span> <span class='lit'>2</span>)</code>
+<span class='lnum'>4</span><code>print(<span class='lit'>3</span>, <span class='lit'>3</span> <span class='op'>**</span> <span class='lit'>2</span>)</code>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Comments should not simply repeat what the code
+                        is doing. The code itself is sufficient to convey
+                        that information, and at that point the comment does
+                        nothing but clutter your code.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code class='comment'># Assign 1 to x</code>
+<span class='lnum'>2</span><code>x <span class='op'>=</span> <span class='lit'>1</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        That is, comments should convey what your code is
+                        <em>intended</em> to do, not what it <em>does</em>.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        The bottom line is that any comment that aids in
+                        understanding a program is a <em>good</em> comment.
+                        Any comment that detracts from the understanding of
+                        the program is a <em>bad</em> comment.
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Comments can be used while your developing your
+                        program to temporarily ignore or replace sections
+                        of code. Consider the following example.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>a <span class='op'>=</span> <span class='lit'>4</span> <span class='comment'>#input('Enter the first number: ')</span></code>
+<span class='lnum'>2</span><code>b <span class='op'>=</span> <span class='lit'>8</span> <span class='comment'>#input('Enter the second number: ')</span></code>
+<span class='lnum'>3</span><code>print(<span class='str'>'a + b ='</span>, a <span class='op'>+</span> b)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        By commenting out the <code>input()</code>
+                        statements and replacing them with literals, you can
+                        continually run the program to test different formats
+                        for the <code>print()</code> statement until you find
+                        one that you like, without bothering with re-entering
+                        values every time you run the program...just don't
+                        forget to uncomment the code once you're finished
+                        testing.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Boolean</h2>
+    <p>
+        In addition to the data types mentioned in the
+        <a href='variables.html'>Data and Variables</a> guide, Python
+        provides the <i>bool</i> data type (short for <i>boolean</i>).
+        This data type consists
+        of only two values: <code>True</code>, and <code>False</code>.
+        Boolean values are operated on using <i>logical operators</i>.
+        Python's logical operators are listed in the following table.
+    </p>
+
+    <table class='operations-table'>
+        <caption>Boolean Operators in Python</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Op</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Result Type</th>
+                <th scope='col'>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>not</kbd></td>
+                <td>Boolean NOT</td>
+                <td>bool</td>
+                <td><kbd>not True</kbd> = <samp>False</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>and</kbd></td>
+                <td>Boolean AND</td>
+                <td>bool</td>
+                <td><kbd>True and False</kbd> = <samp>False</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>or</kbd></td>
+                <td>Boolean OR</td>
+                <td>bool</td>
+                <td><kbd>True or False</kbd> = <samp>True</samp></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Boolean Calculations</h3>
+    <p>
+        The results of boolean operators are summarized in the following tables.
+    </p>
+
+    <div class='boolean-table-section'>
+        <table class='boolean-table not-table'>
+            <thead>
+                <tr>
+                    <th scope='col'>not</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>True</td>
+                    <td class='boolean-false'>False</td>
+                </tr>
+                <tr>
+                    <td>False</td>
+                    <td class='boolean-true'>True</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class='boolean-table'>
+            <thead>
+                <tr>
+                    <th>and</th>
+                    <th scope='col'>True</th>
+                    <th scope='col'>False</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope='row'>True</th>
+                    <td class='boolean-true'>True</td>
+                    <td class='boolean-false'>False</td>
+                </tr>
+                <tr>
+                    <th scope='row'>False</th>
+                    <td class='boolean-false'>False</td>
+                    <td class='boolean-false'>False</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class='boolean-table'>
+            <thead>
+                <tr>
+                    <th>or</th>
+                    <th scope='col'>True</th>
+                    <th scope='col'>False</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope='row'>True</th>
+                    <td class='boolean-true'>True</td>
+                    <td class='boolean-true'>True</td>
+                </tr>
+                <tr>
+                    <th scope='row'>False</th>
+                    <td class='boolean-true'>True</td>
+                    <td class='boolean-false'>False</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class='frame'>
+        <p>
+            The result of <code>not</code> is the <em>opposite</em>
+            of the original value.
+        </p>
+        
+        <p>
+            The <code>and</code> operator only results in <code>True</code>
+            when <em>all</em> of the operands are <code>True</code>. Otherwise
+            the result is <code>False</code>.
+        </p>
+
+        <p>
+            The <code>or</code> operator results in <code>True</code>
+            when <em>any</em> of the operands are <code>True</code>.
+            Otherwise, the result is <code>False</code>.
+        </p>
+    </div>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Advice</h3>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        If you are ever having trouble determining the result of
+                        an <code>and</code> or <code>or</code> expression,
+                        consider the following statement.
+                    </p>
+
+                    <blockquote>
+                        "I will give you a passing grade if you
+                        write this paper <em>or</em> pass the final exam."
+                    </blockquote>
+
+                    <p>
+                        There are two conditions, which we can represent using
+                        boolean values.
+
+                        <ul style='list-style-type: decimal;'>
+                            <li>You wrote the paper</li>
+                            <li>You passed the final exam</li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        Which conditions have to be true in order to get
+                        a passing grade? In this case, fulfulling either of the
+                        conditions (or both) is required. That is, the
+                        statement "I received a passing grade" will be true
+                        in the case that you wrote the paper (i.e. condition 1
+                        is true), you passed the exam (i.e. condition 2 is
+                        true), or both. This is the meaning of boolean
+                        <em>or</em>.
+                    </p>
+
+                    <p>Now consider this statement.</p>
+
+                    <blockquote>
+                        "I will give you a passing grade if you
+                        write this paper <em>and</em> pass the final exam."
+                    </blockquote>
+
+                    <p>
+                        Which conditions have to be true in order to get a
+                        passing grade in this case? You must fulfill
+                        <em>both</em> conditions. That is, the statement
+                        "I received a passing grade" will only be true in
+                        the case that both condition 1 and condition 2 are
+                        true. In any other case, that statement is false. This
+                        is the meaning of boolean <em>and</em>.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Boolean Operator Precedence</h3>
+
+    <p>
+        The precedence of Boolean operators are listed in the following table.
+    </p>
+
+    <table class='oporder-table'>
+        <caption>Operator Precedence (Highest to Lowest)</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Operator</th>
+                <th scope='col'>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>not</kbd></td>
+                <td>Boolean NOT</td>
+            </tr>
+            <tr>
+                <td><kbd>and</kbd></td>
+                <td>Boolean AND</td>
+            </tr>
+            <tr>
+                <td><kbd>or</kbd>
+                <td>Boolean OR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Comparison Operators</h3>
+
+    <p>
+        <i>Comparison operators</i> are operators that compare two values and
+        produce a boolean result. A table of comparison operators is shown
+        below.
+    </p>
+
+    <table class='operations-table'>
+        <caption>Comparison Operators in Python</caption>
+        <thead>
+            <tr>
+                <th scope='col'>Op</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Result Type</th>
+                <th scope='col'>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><kbd>==</kbd></td>
+                <td>Equal</td>
+                <td>bool</td>
+                <td><kbd>(1 == 2)</kbd> = <samp>False</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>!=</kbd></td>
+                <td>Not equal</td>
+                <td>bool</td>
+                <td><kbd>(1 != 2)</kbd> = <samp>True</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>&lt;</kbd></td>
+                <td>Less than</td>
+                <td>bool</td>
+                <td><kbd>(1 &lt; 2)</kbd> = <samp>True</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>&lt;=</kbd></td>
+                <td>Less than or equal</td>
+                <td>bool</td>
+                <td><kbd>(1 &lt;= 2)</kbd> = <samp>True</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>&gt;</kbd></td>
+                <td>Greater than</td>
+                <td>bool</td>
+                <td><kbd>(1 &gt; 2)</kbd> = <samp>False</samp></td>
+            </tr>
+            <tr>
+                <td><kbd>&gt;=</kbd></td>
+                <td>Greater than or equal</td>
+                <td>bool</td>
+                <td><kbd>(1 &gt;= 2)</kbd> = <samp>False</samp></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class='frame'>
+        <p>
+            All comparison operators have the same precedence.
+        </p>
+    </div>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    Below we offer some examples of comparison expressions and
+                    their results using a Python interpreter.
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>5 == -5</kbd>
+<samp>False</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>9.0 &lt;= 9.0</kbd>
+<samp>True</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>"apple" &lt; "bear"</kbd>
+<samp>True</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>"Python" == "python"</kbd>
+<samp>False</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>False == False</kbd>
+<samp>True</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>True != True</kbd>
+<samp>False</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that we can compare strings using comparison
+                        operators such as <code>&lt;</code> and
+                        <code>&gt;</code>. These operators compare strings
+                        using <i>lexicographical ordering</i>, which is the
+                        technical way of saying that they are compared using
+                        alphabetical order. Since "apple" comes before "bear"
+                        in the dictionary, the expression
+                        <kbd>"apple" &lt; "bear"</kbd> evaluates to
+                        <samp>True</samp>.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Advice</h3>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        As a general rule, only compare values of the same data
+                        type. Failing to follow this rule runs the risk of
+                        producing obscure bugs and unexpected results.
+                        In particular, note the result of the following
+                        expression.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>"1" == 1</kbd>
+<samp>False</samp>
+</pre>
+                    </div>
+                    
+                    <p>
+                        You may have assumed that the expression
+                        <code>"1" == 1</code> would evaluate to
+                        <samp>True</samp>. However, in Python and many other
+                        programming languages, this is not the case. This is
+                        because the value <code>"1"</code> is a <i>string</i> and
+                        the value <code>1</code> is an <i>int</i>. You may
+                        wish that the computer would just understand what you
+                        mean in this case, but consider if we had tried to
+                        compare the string <code>"a"</code> instead of
+                        <code>"1"</code>. Should the expression
+                        <code>"a" == 1</code> evaluate to <samp>True</samp> or
+                        <samp>False</samp>? The simple
+                        fix is to avoid comparing values of different
+                        data types in the first place.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Suppose you have a variable named <var>num</var> that
+                        is storing an integer value. Suppose that you want to
+                        write an expression that will test whether
+                        <var>num</var> is storing either of the values -1 or 1.
+                        A common mistake is to write the expression as follows.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>num == -1 or 1</kbd>
+</pre>
+                    </div>
+
+                    <p>
+                        Reading this statement aloud may sound correct:
+                        "num is equal to -1 or 1".
+                    </p>
+
+                    <p>
+                        Remember, however, that logical operators such as
+                        <code>or</code> must only have boolean operands.
+                        The left operand of the <code>or</code> operator
+                        is the result of the expression <code>num == -1</code>,
+                        which is, indeed, a boolean. However, the right operand
+                        is the value <code>1</code>, which is an integer. The
+                        result of this expression is probably not what you
+                        intended, and is therefore a bug.
+                    </p>
+
+                    <p>
+                        The correct way to write this expression is as follows.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>num == -1 or num == 1</kbd>
+</pre>
+                    </div>
+
+                    <p>
+                        Try running both of these examples in the interpreter
+                        to see what results you get back. Try various values
+                        for <var>num</var>. The assignment <code>num = 0</code> is
+                        a good starting point.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Branching</h2>
+
+    <p>
+        Up to this point, every program we have written executes the same
+        exact sequence of statements from beginning to end every time it is
+        run. In this section, we will introduce some ways to tell a program to
+        change the statements it executes based on a set of conditions.
+        Choosing to
+        execute a set of statements based on a set of conditions is
+        known as <i>branching</i>.
+    </p>
+
+    <h3>If</h3>
+
+    <p>
+        The most fundamental branching statement is the <i>if-statement</i>.
+        An if-statement is composed of a boolean value and a sequence of statements.
+        The boolean value is called the <dfn>condition</dfn> of the if-statement,
+        and the sequence of statements is called the <dfn>body</dfn>.
+        If the condition of an if-statement evaluates to <code>True</code>,
+        then the body
+        executes. Otherwise, the body is ignored and the program
+        begins executing directly after the last statement in the body.
+    </p>
+
+    <p>
+        In Python, we indicate the statements that belong to the body of an
+        if-statement by indenting those statements with whitespace -- usually
+        a single <i>tab</i> character. The
+        first un-indented statement following an if-statement marks the end
+        of the body.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        Consider the following program portion. Assume that the
+                        variable <var>num</var> has been assigned an
+                        integer value.
+                    </p>
+
+                    <div class='snippet'>                      
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>7</span>:</code>
+<code>   print(<span class='str'>"Your number is 7."</span>)</code>
+<code>   print(<span class='str'>"That's a lucky number!"</span>)</code>
+<code>print(<span class='str'>"See you next time!"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        When the program reaches the if-statement, the value
+                        of <var>num</var> will be compared to 7. If they are
+                        equal, then the program prints the following output.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Your number is 7.</samp>
+<samp>That's a lucky number!</samp>
+<samp>See you next time!</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        If <var>num</var> has any value other than 7, only the
+                        last line will be printed.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Advice</h3>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Don't forget to include a <code>:</code>
+                        character after the condition of an if-statement.
+                    </p>
+                </li>
+                
+                <li class='frame'>
+                    Both tabs and spaces can be used to indent the statements
+                    within an if-statement.
+                    Although you have the freedom to use whichever characters you
+                    choose, we recommend against mixing
+                    tabs and spaces for your indentations. Our recommendation
+                    is to use a single tab character per level of indentation.
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Once an indentation has been found, Python expects all
+                        following indentations to use the same spacing as the
+                        original indentation. Failing to do so results in an error.
+                    </p>
+
+                    <p>
+                        The following program erroneously uses two spaces to
+                        indent the first statement within an if-statement and
+                        a single space to indent the second.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>bad_indent.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>if</span> <span class='lit'>True</span>:</code>
+<span class='lnum'>2</span><code>  print(<span class='str'>"Line 1"</span>) <span class='comment'># Two-space indent</span></code>
+<span class='lnum'>3</span><code> print(<span class='str'>"Line 2"</span>) <span class='comment'># One-space indent</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        Attempting to run this program will result in the
+                        following error.
+                    </p>
+                    
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>$</span><kbd>python3 bad_indent.py</kbd>
+<samp>  File "/home/alden/test.py", line 3</samp>
+<samp>    print("Line 2") # One-space indent</samp>
+<samp>                                      ^</samp>
+<samp>IndentationError: unindent does not match any outer indentation level</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 3.1</span>
+                        <p>
+                            Write a program that prompts the user to enter
+                            their favorite fruit. Read in the user's response
+                            from input and then print out your favorite fruit. If
+                            you and the user have the same favorite fruit,
+                            print out a special message. Lastly, write a
+                            farewell message to the user before exiting the
+                            program.
+                        </p>
+
+                        <p>
+                            The following samples use <code>"strawberries"</code>
+                            as the favorite fruit.
+                        </p>
+
+                        <p>
+                            If the user enters anything other than
+                            <kbd>"strawberries"</kbd>,
+                            your program should produce the following output.
+                        </p>
+
+                        <div class='terminal'>
+<pre>
+<samp>What is your favorite fruit?</samp>
+<samp>&gt; </samp><kbd class='user-input'>bananas</kbd>
+<samp>My favorite fruit is strawberries.</samp>
+<samp>Okay, bye!</samp>
+</pre>
+                        </div>
+
+                        <p>
+                            If the user enters "strawberries", your program
+                            should produce the following output.
+                        </p>
+
+                        <div class='terminal'>
+<pre>
+<samp>What is your favorite fruit?</samp>
+<samp>&gt; </samp><kbd class='user-input'>strawberries</kbd>
+<samp>My favorite fruit is strawberries.</samp>
+<samp>We have the same favorite fruit!</samp>
+<samp>We should be friends.</samp>
+<samp>Okay, bye!</samp>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>fruit.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code class='comment'># Query the user for their favorite fruit.</code>
+<span class='lnum'>2</span><code class='comment'># Print a special message if the user has the same favorite</code>
+<span class='lnum'>3</span><code class='comment'># fruit as you.</code>
+<span class='lnum'>4</span>
+<span class='lnum'>5</span><code>my_fruit <span class='op'>=</span> <span class='str'>"strawberries"</span></code>
+<span class='lnum'>6</span><code>user_fruit <span class='op'>=</span> input(<span class='str'>"What is your favorite fruit?\n&gt; "</span>)</code>
+<span class='lnum'>7</span>
+<span class='lnum'>8</span><code>print(<span class='str'>"My favorite fruit is"</span>, my_fruit <span class='op'>+</span> <span class='str'>"."</span>)</code>
+<span class='lnum'>9</span>
+<span class='lnum'>10</span><code><span class='kw'>if</span> my_fruit <span class='op'>==</span> user_fruit:</code>
+<span class='lnum'>11</span><code>  print(<span class='str'>"We have the same favorite fruit!"</span>)</code>
+<span class='lnum'>12</span><code>  print(<span class='str'>"We should be friends."</span>)</code>
+<span class='lnum'>13</span>
+<span class='lnum'>14</span><code>print(<span class='str'>"Okay, bye!"</span>)</code>
+</pre>
+                            </div>
+
+                            <p>
+                                Note that the blank lines are added to improve readability
+                                and may be removed without affecting the results of the program.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Else</h3>
+
+    <p>
+        Sometimes, instead of choosing whether or not to execute a set of
+        statements based on a condition, we might want to choose to execute
+        one set of statements if the condition is <code>True</code>, and a
+        different set of statements if the condition is <code>False</code>.
+    </p>
+
+    <p>
+        To provide this functionality, Python offers the <i>else-statement</i>.
+        An else-statement must be preceded by an if-statement. Else-statements
+        are written exactly like if-statements, except that a condition is not
+        included. The body of an else-statement only executes
+        if the condition of the corresponding if-statement is <code>False</code>.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        Consider the following program segment. Assume that the
+                        variable <var>num</var> has been assigned an
+                        integer value.
+                    </p>
+
+                    <div class='snippet'>                      
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>7</span>:</code>
+<code>   print(<span class='str'>"Your number is 7! You win!"</span>)</code>
+<code><span class='kw'>else</span>:</code>
+<code>   print(<span class='str'>"Sorry, you didn't win."</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        When the if-statement is encountered, the value in
+                        <var>num</var> is compared to 7. If they are equal,
+                        then the program prints
+                        <samp>Your number is 7! You win!</samp>. If they are
+                        not equal (i.e. the condition of the if-statement is
+                        <code>False</code>), then the program prints
+                        <samp>Sorry, you didn't win.</samp>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 3.2</span>
+                    <div>
+
+                    <p>
+                        Write a program that asks the user to enter a
+                        password. If the password is correct, the program
+                        prints <samp>Correct! Logging in.</samp>. Otherwise,
+                        print <samp>The password you entered was incorrect.</samp>.
+                        Refer to the sample runs below.
+                    </p>
+
+                    <p>
+                        The following samples use <code>"password123"</code>
+                        (an incredibly weak password) as the correct password.
+                    </p>
+
+                    <p>
+                        This sample shows the output when an incorrect
+                        password is entered.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter your password: </samp><kbd class='user-input'>shrubbery</kbd>
+<samp>The password you entered was incorrect.</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        This sample shows the output when a correct password
+                        in entered.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter your password: </samp><kbd class='user-input'>password123</kbd>
+<samp>Correct! Logging in.</samp>
+</pre>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+                                <div class='filename'>authenticate.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code class='comment'># Verify a user-supplied password and</code>
+<span class='lnum'>2</span><code class='comment'># print an accompanying message.</code>
+<span class='lnum'>3</span>
+<span class='lnum'>4</span><code>passwd <span class='op'>=</span> <span class='str'>"password123"</span></code>
+<span class='lnum'>5</span><code>usr_passwd <span class='op'>=</span> input(<span class='str'>"Enter your password: "</span>)</code>
+<span class='lnum'>6</span>
+<span class='lnum'>7</span><code><span class='kw'>if</span> usr_passwd <span class='op'>==</span> passwd:</code>
+<span class='lnum'>8</span><code>   print(<span class='str'>"Correct! Logging in."</span>)</code>
+<span class='lnum'>9</span><code><span class='kw'>else</span>:</code>
+<span class='lnum'>10</span><code>   print(<span class='str'>"The password you entered was incorrect."</span>)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Elif</h3>
+
+    <p>
+        Many decisions involve choosing one alternative over several others.
+        Python offers an <i>elif-statement</i> that can be used in conjunction
+        with an if-statement to represent these alternatives within your
+        programs.
+    </p>
+
+    <p>
+        An elif-statement is written in exactly the same fashion as an if-statement;
+        it includes a condition and a body. Like an else-statement, an
+        elif-statement must be preceded with an if-statement. The condition of an
+        elif-statement represents one of the alternatives that you are interested
+        in testing for.
+    </p>
+
+    <p class='frame'>
+        We can place as many elif-statements as we like after an if-statement.
+        We can also include an else-statement at the end of the list of
+        elif-statements. This else-statement would be executed in the scenario
+        that the conditions of every associated <code>if</code> and
+        <code>elif</code> evaluated to false.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        This program features an <code>if</code> statement, followed by
+                        two <code>elif</code> statements, followed by an
+                        <code>else</code> statement. It reads a value
+                        (representing a color) from standard input, and prints
+                        differing
+                        messages depending on the color entered.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>color <span class='op'>=</span> input(<span class='str'>"Enter a color: "</span>)</code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code><span class='kw'>if</span> color <span class='op'>==</span> <span class='str'>"red"</span>:</code>
+<span class='lnum'>4</span><code>   print(<span class='str'>"Red is the color of passion."</span>)</code>
+<span class='lnum'>5</span><code><span class='kw'>elif</span> color <span class='op'>==</span> <span class='str'>"blue"</span>:</code>
+<span class='lnum'>6</span><code>   print(<span class='str'>"Blue is the color of trust."</span>)</code>
+<span class='lnum'>7</span><code><span class='kw'>elif</span> color <span class='op'>==</span> <span class='str'>"yellow"</span>:</code>
+<span class='lnum'>8</span><code>   print(<span class='str'>"Yellow is the color of happiness."</span>)</code>
+<span class='lnum'>9</span><code><span class='kw'>else</span>:</code>
+<span class='lnum'>10</span><code>   print(<span class='str'>"I don't know the meaning of that color."</span>)</code>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Tasks</h3>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 3.3</span>
+                        <p>
+                            Write a program that reads a number from
+                            standard input and prints whether the number
+                            is positive, negative, or zero. Refer to the
+                            samples below.
+                        </p>
+
+                        <div class='terminal'>
+<pre>
+<samp>Enter a number: </samp><kbd class='user-input'>3.14</kbd>
+<samp>Your number is positive.</samp>
+</pre>
+                        </div>
+                        <div class='terminal'>
+<pre>
+<samp>Enter a number: </samp><kbd class='user-input'>-0.01</kbd>
+<samp>Your number is negative.</samp>
+</pre>
+                        </div>
+                        <div class='terminal'>
+<pre>
+<samp>Enter a number: </samp><kbd class='user-input'>0</kbd>
+<samp>Your number is zero.</samp>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                        </div>
+                        <div class='dropdown-contents snippet' hidden>
+                            <div class='filename'>sign.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code class='comment'># Print out whether a user-supplied number is positive,</code>
+<span class='lnum'>2</span><code class='comment'># negative, or zero.</code>
+<span class='lnum'>3</span>
+<span class='lnum'>4</span><code>num <span class='op'>=</span> input(<span class='str'>"Enter a number: "</span>)</code>
+<span class='lnum'>5</span><code>num <span class='op'>=</span> float(num)</code>
+<span class='lnum'>6</span>
+<span class='lnum'>7</span><code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>0.0</span>:</code>
+<span class='lnum'>8</span><code>   print(<span class='str'>"Your number is zero."</span>)</code>
+<span class='lnum'>9</span><code><span class='kw'>elif</span> num <span class='op'>&lt;</span> <span class='lit'>0.0</span>:</code>
+<span class='lnum'>10</span><code>   print(<span class='str'>"Your number is negative."</span>)</code>
+<span class='lnum'>11</span><code><span class='kw'>else</span>:</code>
+<span class='lnum'>12</span><code>   print(<span class='str'>"Your number is positive."</span>)</code>
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Nested If</h3>
+
+    <p>
+        There are some situations where we are interested in making a
+        sub-decision following a decision. Recall that the body of an
+        if-statement is composed of a sequence of statements.
+        Since the if-statement is itself a statement, we can place an
+        if-statement <em>within</em> the body of another if-statement.
+        We call such a statement a <i>nested if-statement</i>, or simply
+        a <i>nested if</i>.
+    </p>
+
+    <p class='frame'>
+        In programmer parlance, an if-statement that is part of the body of
+        another if-statement is called an <i>inner-if</i>. The containing
+        if-statement is referred to as the <i>outer-if</i>. An if-statement
+        that is not part of the body of another if-statement is called a
+        <i>top-level if</i>.
+    </p>
+
+    <p class='frame'>
+        Although excessive nesting should be avoided for readability purposes,
+        there is no limit to the number of times an if-statement can be nested.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        See if you can figure out what the following program
+                        does. Copy it into a script and run it to see if you
+                        were correct. Try running it several times with
+                        different combinations of inputs.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>animal <span class='op'>=</span> input(<span class='str'>"Do you want to meet my cats or dogs?\n&gt; "</span>)</code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code><span class='kw'>if</span> animal <span class='op'>==</span> <span class='str'>"cats"</span>: <span class='comment'># Introduce a cat</span></code>
+<span class='lnum'>4</span><code>   type <span class='op'>=</span> input(<span class='str'>"Black or calico?\n&gt; "</span>)</code>
+<span class='lnum'>5</span>
+<span class='lnum'>6</span><code>   <span class='kw'>if</span> type <span class='op'>==</span> <span class='str'>"black"</span>:</code>
+<span class='lnum'>7</span><code>      print(<span class='str'>"This is my cat Trippy!"</span>)</code>
+<span class='lnum'>8</span><code>   <span class='kw'>elif</span> type <span class='op'>==</span> <span class='str'>"calico"</span>:</code>
+<span class='lnum'>9</span><code>      print(<span class='str'>"This is my cat Cannoli!"</span>)</code>
+<span class='lnum'>10</span>
+<span class='lnum'>11</span><code><span class='kw'>elif</span> animal <span class='op'>==</span> <span class='str'>"dogs"</span>: <span class='comment'># Introduce a dog</span></code>
+<span class='lnum'>12</span><code>   type <span class='op'>=</span> input(<span class='str'>"Skinny or fluffy?\n&gt; "</span>)</code>
+<span class='lnum'>13</span>
+<span class='lnum'>14</span><code>   <span class='kw'>if</span> type <span class='op'>==</span> <span class='str'>"skinny"</span>:</code>
+<span class='lnum'>15</span><code>      print(<span class='str'>"This is my dog Sky!"</span>)</code>
+<span class='lnum'>16</span><code>   <span class='kw'>elif</span> type <span class='op'>==</span> <span class='str'>"fluffy"</span>:</code>
+<span class='lnum'>17</span><code>      print(<span class='str'>"This is my dog Mishka!"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        This program first makes a decision depending on whether the user
+                        enters <kbd>cats</kbd> or <kbd>dogs</kbd> in response to
+                        the prompt <samp>Do you want meet my cats or dogs?</samp>.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <p>
+                                If the user responds with the input <kbd>cats</kbd>,
+                                then the user receives another prompt,
+                                <samp>Black or calico?</samp>. The program
+                                introduces the user to one of the cats, depending
+                                on their response to this second prompt.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                If the user responds with the input <kbd>dogs</kbd>,
+                                then the user receives another prompt,
+                                <samp>Skinny or fluffy?</samp>. The program
+                                introduces the user to one of the dogs, depending
+                                on their response to this second prompt.
+                            </p>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Note that when the user responds with <kbd>cats</kbd> to
+                        the first prompt, the body of the elif-statement with the
+                        comment
+                        <code># Introduce a dog</code> is ignored entirely.
+                        Similarly, if the user responds with <kbd>dogs</kbd> to
+                        the first prompt, the body of the if-statement with the
+                        comment <code># Introduce a cat</code> is ignored
+                        entirely.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Advice</h3>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        The body of a nested if-statement must be indented in
+                        a fashion similar to top-level if-statements. For
+                        example, failing to maintain consistency of spaces
+                        and tabs across an indentation level will result in
+                        an error. As before, we recommend that you use a
+                        single tab per indentation level.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Avoid if-statements whose bodies only contain
+                        a single other if-statement. These nested ifs can be
+                        simplified into a single if-statement by combining
+                        the conditions of the two if-statements with an
+                        <code>and</code> operator.
+                    </p>
+
+                    <p>
+                        Consider the following example.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>&gt;</span> <span class='lit'>0</span>:</code>
+<code>   <span class='kw'>if</span> num <span class='op'>&lt;=</span> <span class='lit'>10</span>:</code>
+<code>      print(<span class='str'>"Your number is between 1 and 10"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        This code can be simplified into the following much
+                        more preferable option.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>&gt;</span> <span class='lit'>0</span> <span class='op'>and</span> num <span class='op'>&lt;=</span> <span class='lit'>10</span>:</code>
+<code>   print(<span class='str'>"Your number is between 1 and 10"</span>)</code>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Projects</h3>
+            <ul class='dropdown-contents projects' hidden>
+                <li class='frame'>
+                    <span class='label'>Rated R</span>
+                    <p>
+                        In the USA, there is an association called the MPA
+                        which is responsible for assigning "maturity" ratings
+                        to films. The purpose of these ratings is to inform
+                        parents about the content of movies so that they can
+                        make better decisions about what to show their children.
+                        Movies that are rated "R" are intended for viewers that
+                        are ages 17 and over.
+                    </p>
+
+                    <p>
+                        Suppose we are writing a program that allows users to
+                        view movies on-demand. Write the portion of the program
+                        that asks the user for their age. If they are 17 or older,
+                        allow them access to the movie by printing the message
+                        <samp>Access granted.</samp>. Otherwise, deny them
+                        access by printing the message
+                        <samp>Sorry, you are not allowed to view this movie.</samp>.
+                        Use the sample output below as reference.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>You are trying to access a rated R movie.</samp>
+<samp>Please enter your age: </samp><kbd class='user-input'>16</kbd>
+<samp>Sorry, you are not allowed to view this movie.</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Drinking Age</span>
+                    <p>
+                        The legal drinking age is dependent upon the country
+                        that you are in. For example, the legal drinking
+                        age in the USA is 21, but in Japan it's 20.
+                    </p>
+
+                    <p>
+                        Write a program that asks the user whether they are in
+                        the USA or Japan (assume these are the only two choices).
+                        Then, ask the user for their age. Taking both the user's
+                        country and age into account, print a message stating
+                        whether the user is allowed to drink. If the user is
+                        allowed to drink, print the message <samp>You are allowed
+                        to drink</samp>. If the user is not allowed to drink,
+                        print the message <samp>You are not allowed to drink</samp>.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>What country are you in (USA or JP)?</samp>
+<samp>&gt; </samp><kbd class='user-input'>JP</kbd>
+<samp>How old are you?</samp>
+<samp>&gt; </samp><kbd class='user-input'>20</kbd>
+<samp>You are allowed to drink.</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Digits to Words</span>
+                    <p>
+                        Write a program that prompts the user to enter a digit
+                        and then converts that digit into word form.
+                    </p>
+
+                    <p>
+                        For example, if the user enters <kbd>7</kbd>, then the
+                        program should print <samp>Seven</samp>. If the input
+                        is not a digit, print <samp>Unknown</samp>. Refer to the
+                        sample below.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter a digit (0 through 9): </samp><kbd class='user-input'>7</kbd>
+<samp>Seven</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Make sure to test your program with invalid values
+                        such as <kbd>ni!</kbd> or <kbd>124</kbd>
+                    </p>
+                </li>
+                
+                <li class='frame'>
+                    <span class='label'>Even or Odd</span>
+                    <p>
+                        Recall that a characteristic of even integers is that
+                        they can be divided by 2 without any remainder. Integers
+                        that are not even are odd.
+                    </p>
+                    <p>
+                        Write a program that reads a value from standard input.
+                        Convert this value to an integer, and then print
+                        whether it is even or odd.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter an integer: </samp><kbd class='user-input'>2</kbd>
+<samp>2 is even</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Test your program using multiple values, such as
+                        <kbd>108</kbd>, <kbd>-56</kbd>, <kbd>-9</kbd>,
+                        <kbd>1</kbd>, and <kbd>0</kbd>.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Date Converter</span>
+                    <p>
+                        Dates may be written in numeric form or word form.
+                        For example, someone who is native to the USA may
+                        write the date "November 3, 1971" as "11/03/1971".
+                    </p>
+
+                    <p>
+                        Write a program that converts 
+                        a date written in numeric form into word form.
+                        The  program will read in three values from
+                        standard input, representing the month, day, and
+                        year, respectively, as numbers.
+                    </p>
+
+                    <p>
+                        Make sure your program can handle days and months
+                        with or without a preceding 0, as in <kbd>3</kbd>
+                        or <kbd>03</kbd>.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Please only enter numeric values.</samp>
+<samp>Enter the month: </samp><kbd class='user-input'>11</kbd>
+<samp>Enter the day: </samp><kbd class='user-input'>03</kbd>
+<samp>Enter the year: </samp><kbd class='user-input'>1971</kbd>
+<samp>November 3 1971</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Guessing Game</span>
+
+                    <p>
+                        Write a program to play a guessing game with the user.
+                        The program will select a random number between 1 and
+                        20 (inclusive). The program will give the user up to
+                        two chances to guess the selected number. If the user
+                        incorrectly guesses the number on the first chance,
+                        the program will tell the user that the number is
+                        either higher or lower than their guess. If the player
+                        incorrectly guesses the number on the second chance,
+                        the program prints
+                        <samp>Incorrect! You lose! The number was &lt;num&gt;</samp>,
+                        where <var>num</var> is number that was selected by the program.
+                        After printing this message, the program terminates.
+                        If at any point the player correctly guesses the number,
+                        the program prints <samp>Correct! You win!</samp> and
+                        terminates. Use the sample below as a reference.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>I've selected a number between 1 and 20</samp>
+<samp>Guess the number: </samp><kbd class='user-input'>10</kbd>
+<samp>Incorrect! The number is less than 10
+<samp>Guess the number: </samp><kbd class='user-input'>5</kbd>
+<samp>Incorrect! You lose! The number was 2</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Python offers a command for generating random integers.
+                        To use this command, insert <code>import random</code>
+                        into the first line of your program. Once that is done
+                        you can use the command <code>random.randint(x, y)</code>,
+                        which will produce a random integer between <var>x</var>
+                        and <var>y</var>, including <var>x</var> and <var>y</var>.
+                        For example, the command <code>random.randint(1, 3)</code>
+                        will produce one of the values 1, 2, or 3 at random.
+                        Don't worry if you don't entirely understand the meaning
+                        of all of this; just use the <code>random.randint()</code>
+                        command for now.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>RPG Dialogue</span>
+                    <p>
+                        Some of the eariest versions of video games were called
+                        "text-based adventure games", where the player would
+                        control a character by entering text commands using
+                        a keyboard (see <a href='https://en.wikipedia.org/wiki/Zork'>Zork
+                        </a> for one popular game in this genre).
+                    </p>
+
+                    <p>
+                        Write a program which simulates a dialogue between a
+                        player and a character that might
+                        take place in one of these text-based games. Start the
+                        program by printing a line of dialogue from the character.
+                        Then, provide the player with a list of
+                        dialogue options to choose from in response to the
+                        character. Read the player's response from standard input
+                        and print one more line from the character. Implement the
+                        program such that the
+                        character gives a unique response according to the
+                        dialogue option chosen by the player.
+                    </p>
+
+                    <p>
+                        If you'd like, you can use the following example as
+                        a template.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Shop Keeper: Welcome traveler! What brings you to our village?</samp>
+
+<samp>1. I'm looking for a warm meal.</samp>
+<samp>2. I'm trying to find a place to rest.</samp>
+<samp>3. I was chased here by a gang of bandits!</samp>
+<samp>4. Oh you know...just hanging around.</samp>
+
+<samp>&gt; </samp><kbd class='user-input'>1</kbd>
+<samp>Player: I'm looking for a warm meal.</samp>
+<samp>Shop Keeper: The pub here offers great meals and better company!</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that a <code>print()</code> command with no values
+                        will simply print a blank line.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Name Banner</span>
+                    <p>
+                        We can use text to create a banner that
+                        could be used to decorate other nearby text. For
+                        example, by repeating the string <code>"*~.~*"</code>,
+                        we can create a nice banner to underline some text,
+                        as is done in the following example.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>    Sir Lancelot
+<samp>*~.~**~.~**~.~**~.~*
+</pre>
+                    </div>
+
+                    <p>
+                        Write a program that reads a string to use as the base
+                        of a banner, an integer representing the number of times
+                        to repeat the banner base, and a string representing the
+                        text to be underlined. Create a banner by repeating the
+                        banner base the specified number of times, then print
+                        the banner with the text centered above it. If the
+                        length of the banner is shorter than the length of the
+                        text, center the banner beneath the text instead.
+                        If the text or banner cannot be perfectly centered,
+                        make sure that the offset is towards the left side.
+                        See the sample below for an example of this
+                        behavior
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter the banner base: </samp><kbd class='user-input'>*</kbd>
+<samp>Enter the number of repeats: </samp><kbd class='user-input'>5</kbd>
+<samp>Enter the text: </samp><kbd class='user-input'>12345678</kbd>
+<samp>12345678
+<samp> *****
+</pre>
+                    </div>
+
+                    <p>
+                        Notice in the sample how the banner cannot be
+                        perfectly centered beneath the text. In this case,
+                        the banner is offset by one character towards the
+                        left, causing one character to remain on the left of
+                        the banner and two on the right.
+                    </p>
+
+                    <p>
+                        To solve this problem, you will need to use the
+                        <code>len()</code> command, which can be given a
+                        string and produces the length of that string as an
+                        integer. Refer to the following examples.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len("Python")</kbd>
+<samp>6</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len(" ")</kbd>
+<samp>1</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len("")</kbd>
+<samp>0</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Sort Integers</span>
+                    <p>
+                        Perhaps one of the most common operations in all of
+                        computing is sorting. Programs are often required
+                        to sort by criteria such as name, age, price, and
+                        more.
+                    </p>
+
+                    <p>
+                        Write a program that reads three values from
+                        standard input. Convert these values to integers,
+                        and then print them in order from least to greatest.
+                        Refer to the sample below.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter the first integer: </samp><kbd class='user-input'>7</kbd>
+<samp>Enter the second integer: </samp><kbd class='user-input'>-1</kbd>
+<samp>Enter the third integer: </samp><kbd class='user-input'>11</kbd>
+<samp>-1 7 11</samp>
+</pre>
+                    </div>
+                    
+                    <p>
+                        Test this program with multiple different combinations
+                        of values to ensure that it works correctly.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Shell Game</span>
+
+                    <p>
+                        Their is an ancient gambling game called the
+                        <a href='https://en.wikipedia.org/wiki/Shell_game'>Shell Game</a>
+                        where one of three walnut shells are used to cover a
+                        pea. The operator will then shuffle the walnut shells to
+                        obfuscate the location of the pea. Once the shells are
+                        shuffled, the player must guess which shell is hiding
+                        the pea. If the player can guess the shell correctly,
+                        they win. Otherwise, they lose.
+                    </p>
+
+                    <p>
+                        Write a program that simulates a simplified version of
+                        the shell game. The program will generate a random
+                        number between 1 and 3 representing the shell that is
+                        covering the pea. The program will then ask the user
+                        to guess a shell. If the player
+                        guesses correctly, print <samp>You win!</samp>. Otherwise,
+                        print <samp>You lose! The pea was under shell
+                        &lt;num&gt;</samp>, where <var>num</var> is the number of
+                        the shell that the pea was beneath.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Which shell is hiding the pea? (Enter 1, 2, or 3): </samp><kbd class='user-input'>2</kbd>
+<samp>You lose! The pea was under shell 1
+</pre>
+                    </div>
+
+                    <p>
+                        Python offers a command for generating random integers.
+                        To use this command, insert <code>import random</code>
+                        into the first line of your program. Once that is done
+                        you can use the command <code>random.randint(x, y)</code>,
+                        which will produce a random integer between <var>x</var>
+                        and <var>y</var>, including <var>x</var> and <var>y</var>.
+                        For example, the command <code>random.randint(1, 3)</code>
+                        will produce one of the values 1, 2, or 3 at random.
+                        Don't worry if you don't entirely understand the meaning
+                        of all of this; just use the <code>random.randint()</code>
+                        command for now.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Monty Hall Problem (Challenging)</span>
+
+                    <p>
+                        There is a famous brain teaser in mathematics known as
+                        the <a href='https://en.wikipedia.org/wiki/Monty_Hall_problem'>Monty Hall Problem</a>.
+                        The problem is named after the host of a TV game show in
+                        which the contender would be given three doors to
+                        choose from. Behind one of the doors was a car, and
+                        behind two of the doors was a goat. The contender's
+                        goal was to choose the door with the car behind it.
+                        However, after the contender chooses a door, the host
+                        reveals the contents of one of the doors (other than
+                        the chosen door) that contains a goat. The contender
+                        is then given a final choice of keeping the door they
+                        chose originally, or switching to the remaining
+                        unrevealed door.
+                    </p>
+
+                    <p>
+                        Your task is to write a program that plays this game
+                        with the player. The program, taking on the role of
+                        the host, randomly chooses a winning door (i.e. a
+                        door with a car behind it). After a door has been
+                        chosen, the user is asked to select a door. Once the
+                        user selects a door, the program reveals one of the
+                        doors (different from the door that the user selected).
+                        Once the door is revealed, the program asks the user
+                        if they would like to switch their door to the remaining
+                        unrevealed door. Once the user has made their choice,
+                        the program prints the results of the game.
+                    </p>
+
+                    <ol>
+                        <li>
+                            <p>
+                                Prompt the user with <samp>Choose a door (1, 2, or 3)</samp>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Reveal a door to the user that is different from the
+                                door they selected and does not have the prize.
+                                <samp>The prize is not behind door <i>i</i></samp>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Ask the user is they would like to switch their chosen
+                                door.
+                                <samp>Would you like to switch to door <i>j</i></samp>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Reveal the results of the game to the user.
+                                <samp>You have selected door <i>x</i></samp>;
+                                <samp>The prize was behind door <i>y</i></samp>.
+                            </p>
+
+                            <ul>
+                                <li>
+                                    <p>
+                                        Print <samp>You win!</samp> if the user's
+                                        chosen door matches the prize door.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Otherwise, print <samp>You lose!</samp>
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <p>
+                        Indent all output lines (i.e. non-prompt lines) with a
+                        single tab character (<code>\t</code>), and print a
+                        blank line before and after groups of output
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Choose a door (1, 2, or 3)</samp>
+<samp>&gt; </samp><kbd class='user-input'>1</kbd>
+
+<samp>   The prize is not behind door 3</samp>
+
+<samp>Would you like to switch to door 2 (yes or no)</samp>
+<samp>&gt; </samp><kbd class='user-input'>yes</kbd>
+
+<samp>   You have selected door 2</samp>
+<samp>   The prize was behind door 2</samp>
+<samp>   You win!</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Python offers a command for generating random integers.
+                        To use this command, insert <code>import random</code>
+                        into the first line of your program. Once that is done
+                        you can use the command <code>random.randint(x, y)</code>,
+                        which will produce a random integer between <var>x</var>
+                        and <var>y</var>, including <var>x</var> and <var>y</var>.
+                        For example, the command <code>random.randint(1, 3)</code>
+                        will produce one of the values 1, 2, or 3 at random.
+                        Don't worry if you don't entirely understand the meaning
+                        of all of this; just use the <code>random.randint()</code>
+                        command for now.
                     </p>
                 </li>
             </ul>

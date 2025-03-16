@@ -46,11 +46,19 @@ pre {
     }
 }
 
+.comment {
+    color: #29e000;
+}
+
+.kw {
+    color: #f0e;
+}
 
 .lnum {
+    display: inline-block;
     user-select: none;
     color: #999;
-    margin-right: 1em;
+    width: 2em;
 }
 
 .str {

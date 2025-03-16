@@ -81,7 +81,7 @@ table {
     }
     
     caption {
-        background-color: #111;
+        background-color: #444;
         border: solid black 1px;
         padding: 4px;
     }
@@ -92,6 +92,7 @@ table {
     }
 
     th {
+        background-color: #111;
         border-block-end: solid black 1px;
         padding: 8px;
     }
@@ -99,7 +100,35 @@ table {
     tbody tr:nth-child(even) {
         background-color: #333;
     }
+}
 
+table.operations-table {
+    thead th:nth-child(1) {
+        width: 10%;
+    }
+
+    thead th:nth-child(2) {
+        width: 40%;
+    }
+
+    thead th:nth-child(3) {
+        width: 10%;
+    }
+
+    thead th:nth-child(4) {
+        width: 40%;
+    }
+
+    tbody td:nth-child(1), tbody td:nth-child(3) {
+        text-align: center;
+    }
+
+    tbody td:nth-child(2), tbody td:nth-child(4) {
+        padding-inline-start: 1em;
+    }
+}
+
+table.oporder-table {
     thead th:nth-child(1) {
         width: 20%;
     }

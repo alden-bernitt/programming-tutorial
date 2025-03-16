@@ -15,28 +15,16 @@
     <link rel='stylesheet' href='css/interactive.css'/>
 
     <style>
-        table.operations-table {
+        .escapeseq-table {
             thead th:nth-child(1) {
                 width: 10%;
             }
 
-            thead th:nth-child(2) {
-                width: 40%;
-            }
-
-            thead th:nth-child(3) {
-                width: 10%;
-            }
-
-            thead th:nth-child(4) {
-                width: 40%;
-            }
-
-            tbody td:nth-child(1), tbody td:nth-child(3) {
+            tbody td:nth-child(1) {
                 text-align: center;
             }
 
-            tbody td:nth-child(2), tbody td:nth-child(4) {
+            tbody td:nth-child(2) {
                 padding-inline-start: 1em;
             }
         }
@@ -155,55 +143,55 @@
                 <td><kbd>+</kbd></td>
                 <td>Addition</td>
                 <td>int</td>
-                <td><samp>9 + 5 = 14</samp></td>
+                <td><kbd>9 + 5</kbd> = <samp>14</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Subtraction</td>
                 <td>int</td>
-                <td><samp>9 - 5 = 4</samp></td>
+                <td><kbd>9 - 5</kbd> = <samp>4</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Multiplication</td>
                 <td>int</td>
-                <td><samp>9 * 5 = 45</samp></td>
+                <td><kbd>9 * 5</kbd> = <samp>45</samp></td>
             </tr>
             <tr>
                 <td><kbd>/</kbd></td>
                 <td>Division</td>
                 <td>float</td>
-                <td><samp>9 / 5 = 1.8
+                <td><kbd>9 / 5</kbd> = <samp>1.8</samp></td>
             </tr>
             <tr>
                 <td><kbd>//</kbd></td>
                 <td>Floor Division</td>
                 <td>int</td>
-                <td><samp>9 // 5 = 1</samp></td>
+                <td><kbd>9 // 5</kbd> = <samp>1</samp></td>
             </tr>
             <tr>
                 <td><kbd>**</kbd></td>
                 <td>Exponentiation</td>
                 <td>float</td>
-                <td><samp>9 ** 2 = 81</samp></td>
+                <td><kbd>9 ** 2</kbd> = <samp>81</samp></td>
             </tr>
             <tr>
                 <td><kbd>%</kbd></td>
                 <td>Remainder</td>
                 <td>int</td>
-                <td><samp>9 % 5 = 4</samp></td>
+                <td><kbd>9 % 5</kbd> = <samp>4</samp></td>
             </tr>
             <tr>
                 <td><kbd>+</kbd></td>
                 <td>Positive</td>
                 <td>int</td>
-                <td><samp>+(9 + 5) = 14</samp></td>
+                <td><kbd>+(9 + 5)</kbd> = <samp>14</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Negative</td>
                 <td>int</td>
-                <td><samp>-(9 + 5) = -14</samp></td>
+                <td><kbd>-(9 + 5)</kbd> = <samp>-14</samp></td>
             </tr>
         </tbody>
     </table>
@@ -288,55 +276,55 @@
                 <td><kbd>+</kbd></td>
                 <td>Addition</td>
                 <td>float</td>
-                <td><samp>2.75 + 1.25 = 4.0</samp></td>
+                <td><kbd>2.75 + 1.25</kbd> = <samp>4.0</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Subtraction</td>
                 <td>float</td>
-                <td><samp>2.75 - 1.25 = 1.5</samp></td>
+                <td><kbd>2.75 - 1.25</kbd> = <samp>1.5</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Multiplication</td>
                 <td>float</td>
-                <td><samp>2.75 * 1.25 = 3.4375</samp></td>
+                <td><kbd>2.75 * 1.25</kbd> = <samp>3.4375</samp></td>
             </tr>
             <tr>
                 <td><kbd>//</kbd></td>
                 <td>Floor Division</td>
                 <td>float</td>
-                <td><samp>2.75 // 1.25 = 2.0</samp></td>
+                <td><kbd>2.75 // 1.25</kbd> = <samp>2.0</samp></td>
             </tr>
             <tr>
                 <td><kbd>/</kbd></td>
                 <td>Division</td>
                 <td>float</td>
-                <td><samp>2.75 / 1.25 = 2.2</samp></td>
+                <td><kbd>2.75 / 1.25</kbd> = <samp>2.2</samp></td>
             </tr>
             <tr>
                 <td><kbd>**</kbd></td>
                 <td>Exponentiation</td>
                 <td>float</td>
-                <td><samp>2.75 ** 1.25 = 3.5413...</samp></td>
+                <td><kbd>2.75 ** 1.25</kbd> = <samp>3.5413...</samp></td>
             </tr>
             <tr>
                 <td><kbd>%</kbd></td>
                 <td>Remainder</td>
                 <td>float</td>
-                <td><samp>2.75 % 1.25 = 0.25</samp></td>
+                <td><kbd>2.75 % 1.25</kbd> = <samp>0.25</samp></td>
             </tr>
             <tr>
                 <td><kbd>+</kbd></td>
                 <td>Positive</td>
                 <td>float</td>
-                <td><samp>+(2.75 + 1.25) = 4.0</samp></td>
+                <td><kbd>+(2.75 + 1.25)</kbd> = <samp>4.0</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Negative</td>
                 <td>float</td>
-                <td><samp>-(2.75 + 1.25) = -4.0</samp></td>
+                <td><kbd>-(2.75 + 1.25)</kbd> = <samp>-4.0</samp></td>
             </tr>
         </tbody>
     </table>
@@ -380,13 +368,13 @@
                 <td><kbd>+</kbd></td>
                 <td>Concatenation</td>
                 <td>str</td>
-                <td><samp>'Py' + 'thon' = 'Python'</samp></td>
+                <td><kbd>'Py' + 'thon'</kbd> = <samp>'Python'</samp></td>
             </tr>
             <tr>
                 <td><kbd>*</kbd></td>
                 <td>Repetition</td>
                 <td>str</td>
-                <td><samp>'Py' * 3 = 'PyPyPy'</samp></td>
+                <td><kbd>'Py' * 3</kbd> = <samp>'PyPyPy'</samp></td>
             </tr>
         </tbody>
     </table>
@@ -501,13 +489,11 @@ Line 2</samp>
                         <div class='dropdown'>
                             <span class='label'>Solution</span>
                         </div>
-                        <div class='dropdown-contents' hidden>
-                            <div class='snippet'>
-                                <div class='filename'>two_lines.py</div>
+                        <div class='dropdown-contents snippet' hidden>
+                            <div class='filename'>two_lines.py</div>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>print(<span class='str'>"Line 1\nLine 2"</span>)</code>
 </pre>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -988,15 +974,13 @@ Line 2</samp>
                         <div class='dropdown'>
                             <span class='label'>Solution</span>
                         </div>
-                        <div class='dropdown-contents' hidden>
-                            <div class='snippet'>
-                                <div class='filename'>greet.py</div>
+                        <div class='dropdown-contents snippet' hidden>
+                            <div class='filename'>greet.py</div>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>name <span class='op'>=</span> input(<span class='str'>"Enter your name: "</span>)</code></code>
 <span class='lnum'>3</span><code>print(<span class='str'>"Hello, "</span> <span class='op'>+</span> name)</code>
 </pre>
 
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -1279,6 +1263,80 @@ Line 2</samp>
 <samp>1 x $0.10</samp>
 <samp>1 x $0.05</samp>
 <samp>3 x $0.01</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Name Banner</span>
+                    <p>
+                        We can use text to create to create a banner that
+                        could be used to decorate other nearby text. For
+                        example, by repeating the string <code>"*~.~*"</code>,
+                        we can create a nice banner to underline some text, as is
+                        done in the following example.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>    Sir Lancelot
+<samp>*~.~**~.~**~.~**~.~*
+</pre>
+                    </div>
+
+                    <p>
+                        Write a program that reads a string representing the
+                        text to be underlined, and print the text centered
+                        above a banner.
+                    </p>
+
+                    <p> Use the banner</p>
+
+                    <div class='display'>*~.~**~.~**~.~**~.~*</div>
+
+                    <p>
+                        If the text or banner cannot be perfectly centered,
+                        make sure that the offset is towards the left side.
+                        See the sample below for an example of this
+                        behavior
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<samp>Enter the text: </samp><kbd class='user-input'>123456789</kbd>
+<samp>     123456789
+<samp>*~.~**~.~**~.~**~.~*
+</pre>
+                    </div>
+
+                    <p>
+                        Notice in the sample how the banner cannot be
+                        perfectly centered beneath the text. In this case,
+                        the banner is offset by one character towards the
+                        left, causing five characters to remain on the left of
+                        the banner and six on the right.
+                    </p>
+
+                    <p>
+                        Assume that the user will not enter text that is
+                        longer than the banner.
+                    </p>
+
+                    <p>
+                        To solve this problem, you will need to use the
+                        <code>len()</code> command, which can be given a
+                        string and produces the length of that string as an
+                        integer. Refer to the following examples.
+                    </p>
+
+                    <div class='terminal'>
+<pre>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len("Python")</kbd>
+<samp>6</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len(" ")</kbd>
+<samp>1</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>len("")</kbd>
+<samp>0</samp>
 </pre>
                     </div>
                 </li>
