@@ -4,7 +4,7 @@
 # Step 3) Tell the player which door the prize is NOT behind
 #   (Do not divulge any information about the user's door)
 # Step 4) Ask the user if they would like to switch doors.
-#   (The the user's door to the other door if they choose to)
+#   (Then switch the user's door to the other door if they choose to)
 # Step 5) Reveal the results to the user.
 # NO DATA STRUCTURES ALLOWED.
 

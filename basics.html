@@ -67,7 +67,7 @@
     <p>
         Although the "Hello, world!" program consists of a single statement,
         our programs usually consist of many, many statements.
-        In the most basic setting, a program executes one statement at a time
+        In the most basic scenario, a program executes one statement at a time
         in the order that the statements are written. Once the last statement
         has been executed, the program <i>terminates</i> (completes). In
         Python, we place each statement on its own line.
@@ -155,11 +155,6 @@
     </div>
 
     <h2>Python Specifics</h2>
-    <p>
-        In this section, we discuss some details that are specific to
-        programming in Python, along with some issues that you may across when
-        running Python programs.
-    </p>
 
     <h3>Statements</h3>
     <p>
@@ -167,41 +162,67 @@
         without any preceding <i>whitespace</i> characters. The term
         "whitespace" refers to characters such as spaces and tabs. Trying to
         run a program that violates this rule will result in an error message
-        being displayed on the terminal. The following example shows a
-        program violating this rule and the resulting terminal output. Note
-        that the second statement in the program is preceded by a single space
-        character.
+        being displayed on the terminal.
     </p>
 
-    <div class='snippet'>
-        <div class='filename'>line_error.py</div>
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Examples</h3>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        The following example shows a program violating the
+                        whitespace rule and the resulting terminal output.
+                        Note that the second statement in the program is
+                        preceded by a single space character.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>line_error.py</div>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>print(<span class='str'>"Line 1"</span>)</code>
 <span class='lnum'>2</span><code> print(<span class='str'>"Line 2"</span>)</code>
 </pre>
-    </div>
+                    </div>
 
-    <div class='terminal'>
+                    <div class='terminal'>
 <pre>
 <span class='prompt'>$</span><kbd>python3 line_error.py</kbd>
 <samp> File "/home/alden/test/test.py", line 2
     print("Line 2")
 IndentationError: unexpected indent</samp>
 </pre>
-    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-    <p>
-        However, there is no issue with placing multiple empty lines between
-        statements, as shown in the following example.
-    </p>
+        <div class='dropdown-section'>
+            <h3 class='dropdown'>Advice</h3>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        There is no issue with placing multiple
+                        empty lines between statements, as shown in the
+                        following example.
+                    </p>
 
-    <div class='snippet'>
-        <div class='filename'>blank_lines.py</div>
+                    <div class='snippet'>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>print(<span class='str'>"Line 1"</span>)</code>
 <span class='lnum'>2</span>
 <span class='lnum'>3</span><code>print(<span class='str'>"Line 3"</span>)</code>
 </pre>
+                    </div>
+
+                    <p>
+                        In fact, it is preferable to use empty lines in
+                        programs with many statements as a way to organize
+                        those statements into groups.
+                    </p>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <h3>Errors</h3>
