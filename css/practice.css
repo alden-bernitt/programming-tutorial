@@ -16,8 +16,9 @@
         margin: 16px;
     }
 
-    .terminal {
+    .terminal, .snippet {
         margin: 0 8px;
+        margin-bottom: 24px;
 
         input[type='text'] {
             font-family: monospace;
@@ -29,6 +30,37 @@
             border-width: 0;
             outline: none;
             font-size: inherit;
+        }
+
+        input[type='text'] {
+            &.inline {
+                display: inline;
+                max-width: 5em;
+            }
+
+            &.operand {
+                display: inline;
+
+                &.number {
+                    max-width: 2em;
+                }
+
+                &.character {
+                    max-width: 1em;
+                }
+
+                &.string {
+                    max-width: 10em;
+
+                    &.short {
+                        max-width: 4em;
+                    }
+
+                    &.long {
+                        max-width: 20em;
+                    }
+                }
+            }
         }
     }
 }

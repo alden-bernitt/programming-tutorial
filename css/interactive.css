@@ -41,6 +41,12 @@
     }
 }
 
+.dropdown-section {
+    p {
+        margin: 16px 8px;
+    }
+}
+
 .aux-section-group {
     list-style: none;
     padding: 0;

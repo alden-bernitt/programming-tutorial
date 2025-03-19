@@ -9,7 +9,7 @@
         name='description'
         content='An introduction on the basics of programming using Python.'
     />
-
+    
     <link rel='stylesheet' href='css/site.css'/>
     <link rel='stylesheet' href='css/code.css'/>
     <link rel='stylesheet' href='css/interactive.css'/>
@@ -100,7 +100,12 @@
                 <h3>Practice</h3>
                 <span class='arrow-icon'></span>
             </div>
-            <ul class='dropdown-contents practice answered correct'>
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter.
+                </p>
+
                 <p class='problem-prompt'></p>
 
                 <div class='problem-top-bar'>
@@ -134,9 +139,9 @@
                         disabled hidden/>
 
                     <div class='terminal'>
-<pre>
-<samp class='prompt'>&gt;&gt;&gt; </samp><kbd>print("Python")</kbd>
-<input class='problem-answer' type='text'/>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("Python")</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
 </pre>
                     </div>
                 </li>
@@ -153,9 +158,9 @@
                         disabled hidden/>
 
                     <div class='terminal'>
-<pre>
-<samp class='prompt'>&gt;&gt;&gt; </samp><kbd>print("(/^.^)/")</kbd>
-<input class='problem-answer' type='text'/>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("(/^.^)/")</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
 </pre>
                     </div>
                 </li>
@@ -172,9 +177,9 @@
                         disabled hidden/>
 
                     <div class='terminal'>
-<pre>
-<samp class='prompt'>&gt;&gt;&gt; </samp><kbd>print(" A witch!")</kbd>
-<input class='problem-answer' type='text'/>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print(" A witch!")</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
 </pre>
                     </div>
                 </li>
@@ -205,7 +210,7 @@
                         </div>
                         <div class='dropdown-contents' hidden>
                             <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python3 hello.py</kbd>
 <samp>Hello, world!</samp>
 </pre>
@@ -256,11 +261,11 @@
                         <div class='dropdown-contents' hidden>
                             <div class='snippet'>
                                 <div class='filename'>hello3.py</div>
-<pre class='program-text'>
-<span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
-<span class='lnum'>2</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
-<span class='lnum'>3</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
-</pre>
+    <pre class='program-text'>
+    <span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+    <span class='lnum'>2</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+    <span class='lnum'>3</span><code>print(<span class='str'>"Hello, world!"</span>)</code>
+    </pre>
                             </div>
                         </div>
                     </div>
@@ -304,7 +309,7 @@
                     </div>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python3 line_error.py</kbd>
 <samp> File "/home/alden/test/test.py", line 2
     print("Line 2")
@@ -379,37 +384,37 @@ IndentationError: unexpected indent</samp>
                 </p>
                 <ul class='examples'>
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>"Hello, world!)</span></code>
 </pre>
                     </li>
         
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print(Hello, world!)</code>
 </pre>
                     </li>
         
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print <span class='str'>"Hello, world!"</span></code>
 </pre>
                     </li>
         
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>prit(<span class='str'>"Hello, world!"</span>)</code>
 </pre>
                     </li>
         
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print <span class='str'>"Hello, world!"</span>)</code>
 </pre>
                     </li>
 
                     <li class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>Print(<span class='str'>"Hello, world!"</span>)</code>
 </pre>
                     </li>
@@ -434,7 +439,7 @@ IndentationError: unexpected indent</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>name.py</kbd>
 <samp>Monty Python</samp>
 </pre>
@@ -456,7 +461,7 @@ IndentationError: unexpected indent</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>limerick.py</kbd>
 <samp>A very intelligent turtle</samp>
 <samp>Found programming Python a hurdle</samp>
@@ -478,7 +483,7 @@ IndentationError: unexpected indent</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>banner.py</kbd>
 <samp>*-..-**-..-**-..-*</samp>
 <samp>   Monty Python</samp>
@@ -499,7 +504,7 @@ IndentationError: unexpected indent</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>ascii.py</kbd>
 <samp> __  __</samp>
 <samp>/  \/  \</samp>
@@ -528,7 +533,7 @@ IndentationError: unexpected indent</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>blocktxt.py</kbd>
 <samp> _____            _</samp>
 <samp>|  _  |      _   | |</samp>

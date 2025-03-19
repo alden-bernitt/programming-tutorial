@@ -17,7 +17,13 @@ function setProblemPrompt(problemArgs)
 function answerIsCorrect(problemArgs)
 {
     const data = problemArgs.problemData[problemArgs.currProblem];
-    return data.answerInput.value == data.solutionText;
+
+    if (data.answerInput.value === "")
+        data.checkedCorrect = false;
+    else
+        data.checkedCorrect = data.answerInput.value === data.solutionText;
+
+    return data.checkedCorrect;
 }
 
 function updateResultUi(problemArgs)
@@ -77,17 +83,25 @@ function navigateProblem(problemArgs, offset)
 
     updateProblemUi(problemArgs);
 
-    return curr;
+    return next;
 }
 
 function submitAnswer(problemArgs)
 {
-    updateProblemUi(problemArgs);
+    let curr = problemArgs.currProblem;
+    const problem = problemArgs.problemData[curr];
 
-    if (answerIsCorrect(problemArgs))
-        navigateProblem(problemArgs, 1);
+    // If the answer was already checked and was correct, move to the
+    // next problem instead.
+    if (problem.checkedCorrect) {
+        curr = navigateProblem(problemArgs, 1);
+    }
+    // Check the answer and update the ui accordingly.
+    else {
+        problem.checkedCorrect = answerIsCorrect(problemArgs);
+        updateProblemUi(problemArgs);
+    }
 
-    const curr = problemArgs.currProblem;
     problemArgs.problemData[curr].answerInput.focus();
 }
 
@@ -109,7 +123,12 @@ for (const sect of psections) {
         problemData.push({
             promptText: prob.querySelector('.problem-prompt-text').value,
             solutionText: prob.querySelector('.problem-solution').value,
-            answerInput: prob.querySelector('.problem-answer')
+            answerInput: prob.querySelector('.problem-answer'),
+
+            // Set when the problem has both been checked and was correct.
+            // Used for a keyboard shortcut to determine whether to check
+            // the answer or move to the next question.
+            checkedCorrect: false
         });
     }
 

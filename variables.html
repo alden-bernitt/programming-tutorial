@@ -13,6 +13,7 @@
     <link rel='stylesheet' href='css/site.css'/>
     <link rel='stylesheet' href='css/code.css'/>
     <link rel='stylesheet' href='css/interactive.css'/>
+    <link rel='stylesheet' href='css/practice.css'/>
 
     <style>
         .escapeseq-table {
@@ -31,6 +32,7 @@
     </style>
 
     <script src='scripts/dropdown.js' defer></script>
+    <script src='scripts/practice.js' defer></script>
 </head>
 <body>
 <h1>Data and Variables</h1>
@@ -82,46 +84,39 @@
         values.
     </p>
 
-     <div class='aux-section-group'>
-        <div class='dropdown-section'>
-            <div class='dropdown'>
-                <h3>Examples</h3>
-                <span class='arrow-icon'></span>
-            </div>
-            <ul class='dropdown-contents examples' hidden>
-                <li class='frame'>
-                    <p>
-                        When we count objects, we do so
-                        using a set of numbers known as
-                        <i>integers</i>. Integers include values
-                        such as <kbd>1</kbd>, <kbd>9001</kbd>,
-                        <kbd>0</kbd>, and <kbd>-69</kbd>. Operations on
-                        integers include addition <kbd>+</kbd>,
-                        subtraction <kbd>-</kbd>, and multiplication
-                        <kbd>*</kbd>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <p>
-        Python provides a rich set of data types to make the job of the
-        programmer easier. As we introduce the following data types, note that
-        we do not describe all of the data types provided by Python, nor do we
-        describe all operations included with each data type. However, take
-        heart in that many of these data types and opertions will be introduced
-        in later guides, and we will give you the tools necessary to perform
-        your own research once you've gained a little bit more experience.
+    <p class='frame'>
+        As an example, when we count objects, we do so
+        using a set of numbers known as
+        <i>integers</i>. Integers include values
+        such as <kbd>1</kbd>, <kbd>9001</kbd>,
+        <kbd>0</kbd>, and <kbd>-69</kbd>. Operations on
+        integers include addition <kbd>+</kbd>,
+        subtraction <kbd>-</kbd>, and multiplication
+        <kbd>*</kbd>
     </p>
 
-    <div class='frame'>
-        <p>
-            As you read the following sections, it may be helpful to try your
-            own examples using a
-            <a href='interpreter.html'>Python interpreter</a>.
-        </p>
-    </div>
+    <p>
+        Python provides a rich set of data types for representing many
+        different types of values. As we introduce the following data types,
+        note that
+        we do not describe all of the data types provided by Python, nor do we
+        describe all operations included with each data type. However, take
+        heart in that many of these data types and operations will be introduced
+        in later guides, and we will give you the tools necessary to perform
+        further research once you've gained a little bit more experience.
+    </p>
+
+    <p class='frame'>
+        The values that are used in an operation are called the <i>operands</i>
+        of that operation. For example, the operation 2 + 3 has two operands:
+        the values 2 and 3.
+    </p>
+
+    <p class='frame'>
+        As you read the following sections, it may be helpful to
+        experiment with your own values and operations using a
+        <a href='interpreter.html'>Python interpreter</a>.
+    </p>
 
     <h3>Integer</h3>
 
@@ -129,7 +124,7 @@
         The integer, or <i>int</i>, data type represents the set of
         integers, and includes values such as <kbd>1</kbd>,
         <kbd>9001</kbd>, <kbd>0</kbd>, and <kbd>-69</kbd>. In mathematics,
-        this set might be denoted <kbd>{..., -1, 0, 1, ...}</kbd>.
+        this set could be denoted <kbd>{..., -1, 0, 1, ...}</kbd>.
         Python provides the expected operations on integers, along with a few
         obscure ones.
     </p>
@@ -191,13 +186,13 @@
                 <td><kbd>+</kbd></td>
                 <td>Positive</td>
                 <td>int</td>
-                <td><kbd>+(9 + 5)</kbd> = <samp>14</samp></td>
+                <td><kbd>+9</kbd> = <samp>9</samp></td>
             </tr>
             <tr>
                 <td><kbd>-</kbd></td>
                 <td>Negative</td>
                 <td>int</td>
-                <td><kbd>-(9 + 5)</kbd> = <samp>-14</samp></td>
+                <td><kbd>-9</kbd> = <samp>-9</samp></td>
             </tr>
         </tbody>
     </table>
@@ -208,18 +203,12 @@
         <i>floor division</i>. The result of this operation
         is equal to the division of the first operand by the second
         <em>rounded down</em> (i.e. towards negative infinity) to the nearest
-        integer. The <kbd>%</kbd> operator, called the <i>modulo</i>
+        integer. For positive operands, this is the same as calculating the
+        quotient and throwing away the remainder. The <kbd>%</kbd> operator,
+        called the <i>modulo</i>
         operator, essentially produces the <em>remainder</em> of the first
         operand divided by the second operand.
     </p>
-
-    <div class='frame'>
-        <p>
-            We recommend testing <kbd>//</kbd> and <kbd>%</kbd> using a
-            positive and negative value, a negative and positive value, and
-            two negative values. You may be surprised at the results.
-        </p>
-    </div>
 
     <div class='frame'>
         <p>
@@ -231,38 +220,515 @@
         </p>
     </div>
 
-    <div class='frame'>
-        <p>
-            You might find that the <kbd>%</kbd> operator produces strange
-            results when one or both of the operands are negative. This is
-            because the operation <kbd>a % b</kbd> actually performs the
-            calculation
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            
+            <ul class='dropdown-contents examples' hidden>
+                <p>
+                    We used a
+                    <a href='interpreter.html'>Python interpreter</a> to test out
+                    the results of the following operations.
+                </p>
 
-            <span class='display'><kbd>a - b * floor(a / b)</kbd></span>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>1 + -1</kbd>
+</samp>0</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-1 - 1</kbd>
+</samp>-2</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-8 * -2</kbd>
+</samp>16</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4 ** 2</kbd>
+</samp>16</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>5 / 2</kbd>
+</samp>2.5</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>5 // 2</kbd>
+</samp>2</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % 5</kbd>
+</samp>4</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % 10</kbd>
+</samp>4</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>--1</kbd>
+</samp>1</samp>
+</pre>
+                </li>
+            </ul>
+        </div>
 
-            When <kbd>a</kbd> and <kbd>b</kbd> are both positive, this is
-            identical to calculating the remainder of a &divide; b.
-        </p>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
 
-        <p>
-            You do not need to memorize this. Just understand that you may not
-            get the result you expect when using <kbd>%</kbd> with negative
-            operands.
-        </p>
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter. You may use a calculator if necessary.
+                </p>
 
-        <p>
-            Note that the <code>floor()</code> function produces the value
-            of <code>a / b</code> rounded down (i.e. towards negative infinity).
-        </p>
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='8'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>2 ** 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                 <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='9'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>3 ** 2</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='3.5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 / 4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='3'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 // 4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='-4'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-14 // 4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='3'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-14 // -4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='2'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % 4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='2'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>10 % 4</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 // 16</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='14'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % 16</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>15 % 5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>15 % 15</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the smallest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % </kbd><input class='problem-answer operand' type='text'/>
+<samp>4</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the largest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='10'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 % </kbd><input class='problem-answer operand' type='text'/>
+<samp>4</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the smallest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>14 // </kbd><input class='problem-answer operand' type='text'/>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the smallest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='2'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><input class='problem-answer operand' type='text'/><kbd> % 5</kbd>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the smallest possible integer greater than 5 required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='7'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><input class='problem-answer operand' type='text'/><kbd> % 5</kbd>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the smallest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='10'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><input class='problem-answer operand' type='text'/><kbd> // 5</kbd>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the largest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='14'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd><input class='problem-answer operand' type='text'/><kbd> // 5</kbd>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        You might find that the <kbd>%</kbd> operator produces strange
+                        results when one or both of the operands are negative. This is
+                        because the operation <kbd>a % b</kbd> actually performs the
+                        calculation
+
+                        <span class='display'><kbd>a - b * floor(a / b)</kbd></span>
+
+                        When <kbd>a</kbd> and <kbd>b</kbd> are both positive, this is
+                        identical to calculating the remainder of a &divide; b.
+                    </p>
+
+                    <p>
+                        Note that the <code>floor()</code> function produces the value
+                        of <code>a / b</code> rounded down (i.e. towards negative infinity).
+                    </p>
+
+                    <p>
+                        You do not need to memorize or understand any of this right now.
+                        Just understand that you may not get the result you expect when
+                        using <kbd>%</kbd> with negative operands.
+                    </p>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <h3>Float</h3>
 
     <p>
         The <i>float</i> data type represents the set of real
-        numbers. This set includes integer values, such as the ones shown
-        previously, as well as values with decimal points, such as <kbd>1.5</kbd>,
-        <kbd>-99.99</kbd>, and <kbd>3.14159</kbd>. The float data type
+        numbers. This set is composed of numbers that include decimal points,
+        such as <kbd>-99.999</kbd>, 
+        <kbd>1.0</kbd>, and <kbd>3.14159</kbd>. The float data type
         supports mostly the same operations as the int data type. Notably,
         float values also support division.
     </p>
@@ -335,6 +801,345 @@
         </tbody>
     </table>
 
+    <p class='frame'>
+        Note that any arithmetic operation involving an int value and a float
+        value will always result in a value of the <em>float</em> data type. For example,
+        the operation
+        <kbd>1 + 1.0</kbd> will always result in <samp>2.0</samp> (a float),
+        and never <samp>2</samp> (an int).
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            
+            <ul class='dropdown-contents examples' hidden>
+                <p>
+                    We used a
+                    <a href='interpreter.html'>Python interpreter</a> to test out
+                    the results of the following operations.
+                </p>
+            
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>1.0 + -1.0</kbd>
+</samp>0.0</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-1.5 - 1.5</kbd>
+</samp>-3.0</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-8.25 * -2.0</kbd>
+</samp>16.5</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>0.5 ** 2</kbd>
+</samp>0.25</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>6.5 / 2.5</kbd>
+</samp>2.6</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>6.5 // 2.5</kbd>
+</samp>2.0</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>6.5 % 2.5</kbd>
+</samp>1.5</samp>
+</pre>
+                </li>
+                <li class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>--1.25</kbd>
+</samp>1.25</samp>
+</pre>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter. You may use a calculator if necessary.
+                </p>
+
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='2.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.0 ** 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+               <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='9.5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 / 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='9.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 // 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='-10.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-4.75 // 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='9.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>-4.75 // -0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0.25'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 % 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0.25'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.25 % 0.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 // 5.25</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='4.75'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 % 5.25</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 % 0.25</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='0.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>4.75 % 4.75</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+       
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents advice' hidden>
+                <li class='frame'>
+                        You may find that float operations sometimes produce unexpected results.
+                        For example, if you enter <kbd>0.1 + 0.2</kbd> into an interpreter, you
+                        might get the result <samp>0.30000000000000004</samp> instead of the
+                        <samp>0.3</samp> that you probably expected. This is due to a phenomena
+                        known as
+                        <a href='https://en.wikipedia.org/wiki/Round-off_error'>round-off error</a>,
+                        and should be considered an advanced topic. Feel free to ignore these
+                        strange results for now.
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <h3>String</h3>
 
     <p>
@@ -343,21 +1148,10 @@
         characters, and represents text. Strings in Python are denoted by
         characters enclosed in either single quotes (<kbd>'</kbd>), or double
         quotes (<kbd>"</kbd>). Examples include <kbd>"Beans"</kbd>,
-        <kbd>'To be, or not to be'</kbd>, and <kbd>""</kbd> (this is
+        <kbd>'To be, or not to be.'</kbd>, and <kbd>""</kbd> (this is
         a sequence of zero characters, and is referred to as an
         <i>empty string</i> or <i>null string</i>).
     </p>
-
-    <div class='frame'>
-        <p>
-            What happens if we want to place quotes <em>within</em> a string? How
-            will the interpreter know which quotes are supposed to close a string
-            and which quotes are supposed to be part of the string? Consider the
-            example <kbd>"I had a "great" time"</kbd>. The Python interpreter
-            would see two strings in this case: <samp>"I had a "</samp>, and
-            <samp>" time"</samp>. These questions are answered in the next section.
-        </p>
-    </div>
 
      <table class='operations-table'>
         <caption>String Operators in Python</caption>
@@ -392,6 +1186,219 @@
         string operand and one integer operand, and produces a new string by
         repeating the original string the specified number of times.
     </p>
+
+     <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter.
+                </p>
+
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;applecinnamon&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"apple" + "cinnamon"</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;Brain teaser&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"Brain " + "teaser"</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;11&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"1" + "1"</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;123123&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"123" + "123"</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;  &apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>" " + " "</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;Hacker&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"Hacker" + ""</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;!!!&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"!" * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;   &apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>" " * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to enclose your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos; ** ** **&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>" **" * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+    </div>
+
+
+    <h3>Escape Sequences</h3>
 
     <p>
         What if we want a string to contain special characters such as a tab
@@ -451,7 +1458,7 @@
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>"Dwayne \"The Rock\" Johnson"</span>)</code>
 <samp>Dwayne "The Rock" Johnson</samp>
 </pre>
@@ -466,7 +1473,7 @@
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>'Dwayne "The Rock" Johnson'</span>)</code>
 </pre>
                     </div>
@@ -476,284 +1483,197 @@
 
         <div class='dropdown-section'>
             <div class='dropdown'>
-                <h3>Tasks</h3>
+                <h3>Practice</h3>
                 <span class='arrow-icon'></span>
             </div>
-            <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
-                    <div class='task'>
-                        <span class='label'>Task 2.1</span>
-                        <p>
-                            Using a single <kbd>print()</kbd> statement,
-                            write a program that produces the following
-                            output.
-                        </p>
 
-                        <div class='terminal'>
-<pre>
-<span class='prompt'>$</span><kbd>python two_lines.py</kbd>
-<samp>Line 1
-Line 2</samp>
-</pre>
-                        </div>
-                    </div>
-                    <div class='solution dropdown-section'>
-                        <div class='dropdown'>
-                            <span class='label'>Solution</span>
-                            <span class='arrow-icon'></span>
-                        </div>
-                        <div class='dropdown-contents snippet' hidden>
-                            <div class='filename'>two_lines.py</div>
-<pre class='program-text'>
-<span class='lnum'>1</span><code>print(<span class='str'>"Line 1\nLine 2"</span>)</code>
-</pre>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <h2>Variables</h2>
-
-    <p>
-        Variables are one of the most fundamental concepts in computer
-        programming. Conceptually, In Python, a <dfn>variable</dfn> is a
-        name that we give to a storage unit which stores a single value of a
-        single data type. That is, we <i>initialize</i> a name with
-        a storage unit containing a value. You might visualize this as asking
-        Python to give you a box, placing the value inside, and sticking a
-        label on it with your chosen name. In Python, this entire process is
-        done using the <i>assignment</i> (<kbd>=</kbd>) operator.
-        Once we have created a variable, we are able to assign any new value of
-        any data type to it, and we are able to use it as an operand in an
-        expression as if it were a regular value.
-    </p>
-
-    <div class='aux-section-group'>
-        <div class='dropdown-section'>
-            <div class='dropdown'>
-                <h3>Examples</h3>
-                <span class='arrow-icon'></span>
-            </div>
-            <ul class='dropdown-contents examples' hidden>
-                <li class='frame'>
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><code>name <span class='op'>=</span> <span class='str'>"John Doe"</span></code>
-<span class='prompt'>&gt;&gt;&gt;</span><code>age <span class='op'>=</span> <span class='lit'>35</span></code>
-</pre>
-                    </div>
-
-                    <p>
-                        Note that the first statement assigns a name to a string,
-                        and the second statement assigns a name a to an integer.
-                    </p>
-
-                    <p>
-                        These statements may be visualized as follows.
-                    </p>
-                    
-                    <img class='diagram'
-                        src='images/variables/assignment.png'
-                        alt='A diagram illustrating the assigment process.'
-                        width='1325'
-                        height='235'/>
-                </li>
-
-                <li class='frame'>
-                    <p>
-                        We are allowed to assign new values to variables,
-                        even if the new value has a different data type than
-                        the original value.
-                    </p>
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='str'>"Monty Python"</span></code>
-<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='lit'>35</span></code>
-</pre>
-                    </div>
-                </li>
-
-                <li class='frame'>
-                    <p>
-                        We can use variables as part of operations, as if they
-                        were regular values.
-                    </p>
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><code>width <span class='op'>=</span> <span class='lit'>3</span></code>
-<span class='prompt'>&gt;&gt;&gt;</span><code>height <span class='op'>=</span> <span class='lit'>4</span></code>
-<span class='prompt'>&gt;&gt;&gt;</span><code>area <span class='op'>=</span> width <span class='op'>*</span> height</code>
-</pre>
-                    </div>
- 
-                    <p>
-                        Once the third statement executes, we will have a
-                        variable named <var>area</var> containing the value
-                        <kbd>12</kbd>.
-                    </p>
-                </li>
-
-                <li class='frame'>
-                    <p>
-                        We can assign variables to other variables. Python
-                        treats this as though we had attached another tag with
-                        a new name to the same box as the first variable.
-                    </p>
-
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>x <span class='op'>=</span> <span class='lit'>3</span></kbd>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>y <span class='op'>=</span> x</kbd>
-</pre>
-                    </div>
-
-                    <img class='diagram'
-                        src='images/variables/double_assignment.png'
-                        alt='A diagram illustrating the assignment of one variable to another in Python.'
-                        width='345'
-                        height='205'/>
-                </li>
-            </ul>
-        </div>
-
-
-        <div class='dropdown-section'>
-            <div class='dropdown'>
-                <h3>Tasks</h3>
-                <span class='arrow-icon'></span>
-            </div>
-            <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
-                    <div class='task'>
-                        <span class='label'>Task 2.2</span>
-                        <p>
-                            Write a program that creates a variable and then
-                            prints the value of that variable using
-                            <kbd>print()</kbd>.
-                        </p>
-                    </div>
-                    <div class='solution dropdown-section'>
-                        <div class='dropdown'>
-                            <span class='label'>Solution</span>
-                            <span class='arrow-icon'></span>
-                        </div>
-                        <div class='dropdown-contents' hidden>
-                            <div class='snippet'>
-                                <div class='filename'>print_var.py</div>
-<pre class='program-text'>
-<span class='lnum'>1</span><code>message <span class='op'>=</span> <span class='str'>"Hello, world!"</span></code>
-<span class='lnum'>2</span><code>print(message)</code>
-</pre>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-                        
-    <div class='frame'>
-        <p>
-            Although in mathematics <kbd>=</kbd> is used to mean
-            <em>equality</em>, many programming languages do not share these
-            semantics. This is the reason why statements such as
-            <code>x = x + 1</code> make sense in Python and other programming
-            languages. In words, this statement means "retrieve the value
-            stored in <code>x</code> and add <code>1</code> to it, then
-            <em>assign</em> the name <code>x</code> to that new value.
-        </p>
-        <p>
-            If <code>x</code> originally contained the value <code>4</code>
-            before the statement executed, it will contain the value
-            <code>5</code> after.
-        </p>
-        <img class='diagram'
-            src='images/variables/assignment2.png'
-            alt='A diagram illustrating the assignment of x to x plus one.'
-            width='685'
-            height='405'/>
-    </div>
-
-    <div class='frame'>
-        <p>
-            It is sometimes useful to distinguish between variables and
-            literals. Simply put, <dfn>literals</dfn> are plain values
-            such as <kbd>7</kbd> (an integer literal), or <kbd>3.14</kbd> (a
-            float literal), and <kbd>"Python"</kbd> (a string literal).
-            Variables, on the other hand, refer to the names which store
-            values, such as <var>num</var>, <var>pi</var>, or <var>language</var>.
-        </p>
-    </div>
-    
-    <h3>Variable Names</h3>
-
-    <p>
-        There are rules as to what constitutes a valid
-        <i>identifier</i> (i.e. name). Although these rules in Python
-        are rather complicated, let it suffice to say that identifiers may
-        only contain letters, digits, and underscores (<kbd>_</kbd>), and
-        must begin with either a letter or underscore. Furthermore,
-        <i>reserved words</i> may not be used as identifiers. We
-        will learn many reserved words in time, but if you are curious now,
-        you can reference the
-        <a href='https://docs.python.org/3/reference/lexical_analysis.html#keywords'>
-        official Python website </a> for a list.
-    </p>
-
-    <div class='frame'>
-        <p>
-            Although not strictly necessary, we <em>highly recommend</em> that
-            you adhere to the following naming conventions when naming your
-            variables.
-        </p>
-
-        <ul>
-            <div class='list-title'>Do</div>
-            <li>
+            <ul class='dropdown-contents practice'>
                 <p>
-                    Use only English letters (capital and lowercase A through Z),
-                    numbers, and underscores.
+                    Try to solve the following problems without using an
+                    interpreter.
                 </p>
-            </li>
-            <li>
-               <p>Begin an identifier with a lowercase letter.</p>
-            </li>
-        </ul>
 
-        <ul>
-            <div class='list-title'>Do Not</div>
-            <li>
-                <p>Begin or end an identifier with an underscore (e.g. <var>_num_</var>)</p>
-            </li>
-            <li>
-                <p>Use foreign characters (e.g. <var>すうじ</var>)</p>
-            </li>
-            <li>
-                <p>Use predefined names (e.g. <var>print</var>)</p>
-            </li>
-            <li>
-                <p>Begin an identifier with a capital letter (e.g. <var>Num</var>)</p>
-            </li>
-            <li>
-                <p>Use all capital letters (e.g. <var>FIRST_NAME</var>)</p>
-            </li>
-        </ul>
+                <p class='problem-prompt'></p>
 
-        <p>
-            As always, some exceptions will be made in some circumstances, but
-            that will have to wait until you have sufficient knowledge and
-            experience.
-        </p>
-    </div>
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Make sure there are no extra spaces at the end of either line.'
+                        disabled hidden/>
 
-    <div class='frame'>
-        <p>
-            Note that identifiers in Python are <i>case sensitive</i>, meaning
-            that identifiers such as <var>num</var>, <var>Num</var>, and
-            <var>NUM</var> are all different.
-        </p>
+                    <input class='problem-solution'
+                        type='text'
+                        value='Venus\nMars'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>Venus</samp>
+<samp>Mars</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Make sure there are no extra spaces at the end of the first line, and one extra space at the end of the second line.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='Enter a number:\n> '
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string long' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>Enter a number:</samp>
+<samp>&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Make sure there are no extra spaces at the end of the line.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='A \"funny\" joke'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string long' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>A "funny" joke</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Make sure there are no extra spaces at the end of the line.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='C:\\Users'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>C:\Users</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Make sure there are no extra spaces at the end of the line.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='C:\\\\Users'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>C:\\Users</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. Each visible character is separated by a single tab character. Do not use any space characters.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='1\t2\t3'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>1&#09;2&#09;3</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. The second line begins with one tab character, and the third line begins with two tab characters. Do not use any space characters.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='1\n\t2\n\t\t3'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>1</samp>
+<samp>&#09;2</samp>
+<samp>&#09;&#09;3</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing text required to produce the following output. The second line begins with one tab character, and the third line begins with two tab characters. Do not use any space characters.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='\"1\"\n\t\"2\"\n\t\t\"3\"'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>print("</kbd><input class='problem-answer operand string long' type='text' autocomplete='off'/><kbd>")</kbd>
+<samp>"1"</samp>
+<samp>&#09;"2"</samp>
+<samp>&#09;&#09;"3"</samp>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
     </div>
 
     <h2>Expressions</h2>
@@ -818,24 +1738,6 @@ Line 2</samp>
 
     <div class='frame'>
         <p>
-            The bottom line is that all expressions evaluate down to a single value
-            of a single data type. This means that we can use expressions in place
-            of <em>any</em> value that has the same data type as the result of the
-            expression. For example, we can replace the value given to a
-            <code>print()</code> command with an expression.
-        </p>
-
-        <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 9</kbd>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x ** 2)</kbd>
-<samp>81</samp>
-</pre>
-        </div>
-    </div>
-
-    <div class='frame'>
-        <p>
             Python offers a command named <code>type()</code> that we can use
             to learn about the data type of a value. Since expressions always
             evaluate down to a single value, we can also use
@@ -844,23 +1746,23 @@ Line 2</samp>
         </p>
 
         <p>
-            Consider which data type the result of an arithmetic expression
-            containing both an <code>int</code> operand and
-            <code>float</code> operand may be. We can find out the type of
-            the result as follows.
+            The <code>type()</code> command calls values
+            of the integer data type <i>int</i>, values of the float data type
+            <i>float</i>, and values of the string data type <i>str</i>.
+            Consider the following example.
         </p>
 
         <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>type(4 / 2.0)</kbd>
-<samp>&lt;class 'float'&gt;</samp>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>type(3 * "a")</kbd>
+<samp>&lt;class 'str'&gt;</samp>
 </pre>
         </div>
 
         <p>
             Without worrying about the meaning of the "class" portion of the
             output, we see that the result of this expression is a
-            <code>float</code>. We will learn more about what "class" means in
+            string. We will learn more about what "class" means in
             a future guide.
         </p>
     </div>
@@ -874,7 +1776,7 @@ Line 2</samp>
             <ul class='dropdown-contents examples' hidden>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * 3 + 4</kbd>
 <samp>10</samp>
 </pre>
@@ -882,7 +1784,7 @@ Line 2</samp>
                 </li>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * (3 + 4)</kbd>
 <samp>14</samp>
 </pre>
@@ -890,7 +1792,7 @@ Line 2</samp>
                 </li>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 ** 3 ** 2</kbd>
 <samp>512</samp>
 </pre>
@@ -898,7 +1800,7 @@ Line 2</samp>
                 </li>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>(2 ** 3) ** 2</kbd>
 <samp>64</samp>
 </pre>
@@ -906,7 +1808,7 @@ Line 2</samp>
                 </li>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * 'Py' + 'thon'</kbd>
 <samp>'PyPyPython'</samp>
 </pre>
@@ -914,30 +1816,950 @@ Line 2</samp>
                 </li>
                 <li class='frame'>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * ('Py' + 'thon')</kbd>
 <samp>'PythonPythonPython'</samp>
 </pre>
                     </div>
                 </li>
-                <li class='frame'>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter. You may use a calculator if necessary.
+                </p>
+
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='7'
+                        disabled hidden/>
+
                     <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 3</kbd>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>y = x * 2</kbd>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>x + y</kbd>
-<samp>9</samp>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>1 + 2 * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
 </pre>
                     </div>
                 </li>
-                <li class='frame'>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='int'
+                        disabled hidden/>
+
                     <div class='terminal'>
-<pre>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>fruit = 'apples'</kbd>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>print('I really love ' + fruit)</kbd>
-<samp>I really love apples</samp>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type(1 + 2 * 3)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
 </pre>
                     </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to surround your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;1222&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"1" + "2" * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type("1" + "2" * 3)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to surround your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;121212&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>("1" + "2") * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type(("1" + "2") * 3)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='1.0'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>(1 + 2) / 3.0</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='float'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type((1 + 2) / 3.0)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of this statement. Make sure to surround your answer in single quotes the way an interpreter would.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='&apos;11222&apos;'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>"1" * 2 + "2" * 3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type("1" * 2 + "2" * 3)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        The important point to remember is that all expressions
+                        evaluate down to a single value of a single data type.
+                        This means that we can use expressions in <em>any</em>
+                        location that requires a value. For example, we can use an
+                        expression from within a <code>print()</code> command.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 9</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x ** 2)</kbd>
+<samp>81</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        This is sometimes preferable to creating a new variable
+                        only for that variable to be used once in a <code>print()</code>
+                        statement, for example. The following example
+                        illustrates this second scenario.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 9</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>result = x ** 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(result)</kbd>
+<samp>81</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Since both versions produce identical results, deciding on
+                        which version to use is largely a matter of personal
+                        preference and style.
+                        Feel free to use whichever version you find most
+                        readable.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Variables</h2>
+
+    <p>
+        Variables are one of the most fundamental concepts in computer
+        programming. Conceptually, In Python, a <dfn>variable</dfn> is a
+        name that we give to a storage unit which stores a single value of a
+        single data type. That is, we <i>initialize</i> a name with
+        a storage unit containing a value. You might visualize this as asking
+        Python to give you a box, placing the value inside, and sticking a
+        label on it with your chosen name. In Python, this entire process is
+        done using the <i>assignment</i> (<kbd>=</kbd>) operator. For example,
+        the statement <kbd>x = 1</kbd> creates a new variable with the name
+        <var>x</var> and assigns to it the integer value <code>1</code>.
+        Once we have created a variable, we are able to assign any new value of
+        any data type to it, and we are able to use it as an operand in an
+        expression as if it were a regular value.
+    </p>
+
+    <div class='frame'>
+        <p>
+            Although in mathematics <kbd>=</kbd> is used to mean
+            <em>equality</em>, many programming languages do not share these
+            semantics. This is the reason why statements such as
+            <code>x = x + 1</code> make sense in Python and other programming
+            languages. In words, this statement means "retrieve the value
+            stored in <code>x</code> and add <code>1</code> to it, then
+            <em>assign</em> the name <code>x</code> to that new value.
+        </p>
+        <p>
+            If <code>x</code> originally contained the value <code>4</code>
+            before the statement executed, it will contain the value
+            <code>5</code> after.
+        </p>
+        <img class='diagram'
+            src='images/variables/assignment2.png'
+            alt='A diagram illustrating the assignment of x to x plus one.'
+            width='685'
+            height='405'/>
+    </div>
+
+    <div class='frame'>
+        <p>
+            It is sometimes useful to distinguish between variables and
+            literals. Simply put, <dfn>literals</dfn> are plain values
+            such as <kbd>7</kbd> (an integer literal), or <kbd>3.14</kbd> (a
+            float literal), and <kbd>"Python"</kbd> (a string literal).
+            Variables, on the other hand, refer to the names which store
+            values, such as <var>num</var>, <var>pi</var>, or <var>language</var>.
+        </p>
+    </div>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><code>name <span class='op'>=</span> <span class='str'>"John Doe"</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>age <span class='op'>=</span> <span class='lit'>35</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that the first statement assigns a name to a string,
+                        and the second statement assigns a name a to an integer.
+                    </p>
+
+                    <p>
+                        These statements may be visualized as follows.
+                    </p>
+                    
+                    <img class='diagram'
+                        src='images/variables/assignment.png'
+                        alt='A diagram illustrating the assigment process.'
+                        width='1325'
+                        height='235'/>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We are allowed to assign new values to variables,
+                        even if the new value has a different data type than
+                        the original value.
+                    </p>
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='str'>"Monty Python"</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>x <span class='op'>=</span> <span class='lit'>35</span></code>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We can use variables as part of operations, as if they
+                        were regular values.
+                    </p>
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><code>width <span class='op'>=</span> <span class='lit'>3</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>height <span class='op'>=</span> <span class='lit'>4</span></code>
+<span class='prompt'>&gt;&gt;&gt;</span><code>area <span class='op'>=</span> width <span class='op'>*</span> height</code>
+</pre>
+                    </div>
+ 
+                    <p>
+                        Once the third statement executes, we will have a
+                        variable named <var>area</var> containing the value
+                        <kbd>12</kbd>.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We can assign variables to other variables. Python
+                        treats this as though we had attached another tag with
+                        a new name to the same box as the first variable.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x <span class='op'>=</span> <span class='lit'>3</span></kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y <span class='op'>=</span> x</kbd>
+</pre>
+                    </div>
+
+                    <img class='diagram'
+                        src='images/variables/double_assignment.png'
+                        alt='A diagram illustrating the assignment of one variable to another in Python.'
+                        width='345'
+                        height='205'/>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter.
+                </p>
+
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='4'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 4</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='2'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x * 2)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y = 3</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x + y)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='8'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = x + 6</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y = 3</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = x + y</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='8'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>y = 3</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = x + y</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x + y)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = x + 1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = x + 2</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='ab'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text + "b")</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='aba'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>letter1 = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>letter2 = "b"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(letter1 + letter2 + letter1)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='aaa'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text * 3)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='aaaaa'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>repeat = 5</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text * repeat)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='abbba'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>letter1 = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>letter2 = "b"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(letter1 + 3 * letter2 + letter1)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Determine the output of the following sequence of statements.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='abaabaaba'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = "aba"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>repeat = 3</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text * repeat)</kbd>
+<input class='problem-answer string' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing value required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='b'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>part1 = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>part2 = "<input class='problem-answer operand string short' type='text' autocomplete='off'/>"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = part1 + 2 * part2 + part1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text)</kbd>
+<samp>abba</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the missing value required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='bc'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>part1 = "a"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>part2 = "<input class='problem-answer operand string short' type='text' autocomplete='off'/>"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>text = part1 + 2 * part2 + part1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(text * 2)</kbd>
+<samp>abcbcaabcbca</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='int'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>val = 1</kbd>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type(val)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='float'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>val = 1.0</kbd>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type(val)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Complete the output of this statement.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>val = "abc"</kbd>
+<samp class='prompt'>&gt;&gt;&gt;</samp><kbd>type(val)</kbd>
+<samp>&lt;class '<input class='problem-answer inline' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+   </div>
+
+    <h3>Variable Names</h3>
+
+    <p>
+        There are rules as to what constitutes a valid
+        <i>identifier</i> (i.e. name). Although these rules in Python
+        are rather complicated, let it suffice to say that identifiers may
+        only contain letters, digits, and underscores (<kbd>_</kbd>), and
+        must begin with either a letter or underscore. Furthermore,
+        <i>reserved words</i> may not be used as identifiers. We
+        will learn many reserved words in time, but if you are curious now,
+        you can reference the
+        <a href='https://docs.python.org/3/reference/lexical_analysis.html#keywords'>
+        official Python website </a> for a list.
+    </p>
+
+    <p class='frame'>
+        Note that identifiers in Python are <i>case sensitive</i>, meaning
+        that identifiers such as <var>num</var>, <var>Num</var>, and
+        <var>NUM</var> are all different.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Although not strictly necessary, we <em>highly recommend</em> that
+                        you adhere to the following naming conventions when naming your
+                        variables.
+                    </p>
+
+                    <ul>
+                        <div class='list-title'>Do</div>
+                        <li>
+                            <p>
+                                Use only English letters (capital and lowercase A through Z),
+                                numbers, and underscores.
+                            </p>
+                        </li>
+                        <li>
+                           <p>Begin an identifier with a lowercase letter.</p>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <div class='list-title'>Do Not</div>
+                        <li>
+                            <p>Begin or end an identifier with an underscore (e.g. <var>_num_</var>)</p>
+                        </li>
+                        <li>
+                            <p>Use foreign characters (e.g. <var>すうじ</var>)</p>
+                        </li>
+                        <li>
+                            <p>Use predefined names (e.g. <var>print</var>)</p>
+                        </li>
+                        <li>
+                            <p>Begin an identifier with a capital letter (e.g. <var>Num</var>)</p>
+                        </li>
+                        <li>
+                            <p>Use all capital letters (e.g. <var>FIRST_NAME</var>)</p>
+                        </li>
+                    </ul>
+
+                    <p>
+                        As always, some exceptions will be made in some circumstances, but
+                        that will have to wait until you have sufficient knowledge and
+                        experience.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        <a href='https://en.wikipedia.org/wiki/Naming_convention_(programming)'>Many conventions exist for naming your variables</a>.
+                        Python programmers tend to use either the <i>snake case</i> or
+                        <i>camel case</i> naming conventions.
+                    </p>
+
+                    <p>
+                        The <i>snake case</i> naming convention specifies to use only lowercase
+                        characters, and to separate individual words in your names
+                        using underscore characters. Examples include <var>day_of_month</var>,
+                        <var>key_length</var>, and <var>prize_amount</var>.
+                    </p>
+
+                    <p>
+                        The <i>camel case</i> naming convention specifies to use only lowercase
+                        characters, except to captilize the first letter of a word in the
+                        name. The first character is always lowercase, however. Examples include
+                        <var>dayOfMonth</var>, <var>keyLength</var>, and <var>prizeAmount</var>.
+                    </p>
+
+                    <p>
+                        The
+                        <a href='https://peps.python.org/pep-0008/#function-and-variable-names'>official Python website</a>
+                        offers a guide on naming conventions to use when programming in
+                        Python. That guide recommends using snake case when naming
+                        variables, so that is the convention we have chosen to follow.
+                        It is likely wise for you to do the same.
+                    </p>
                 </li>
             </ul>
         </div>
@@ -960,7 +2782,7 @@ Line 2</samp>
         pressing the <kbd>Return</kbd> (i.e. <kbd>Enter</kbd>) key.
     </p>
 
-    <p>
+    <p class='frame'>
         Choosing the variable identifier <var>name</var> suggests that the
         programmer is expecting the user to supply the program with some kind
         of name. The user, however, has no way of knowing this. To solve this
@@ -976,26 +2798,63 @@ Line 2</samp>
     <div class='aux-section-group'>
         <div class='dropdown-section'>
             <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        Consider the following program.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>name <span class='op'>=</span> input(<span class='str'>"Enter your name: "</span>)</code>
+<samp class='lnum'>2</samp><code>print(name)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Running this program produces the follow output. We've
+                        used a different color to highlight text that is entered
+                        by the user into standard input.
+                    </p>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp><kbd>python3 example.py</kbd>
+<samp>Enter your name: </samp><kbd class='user-input'>Luis</kbd>
+<samp>Luis</samp>
+</pre>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
                 <h3>Tasks</h3>
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
                 <li class='task-and-solution'>
                     <div class='task'>
-                        <span class='label'>Task 2.3</span>
+                        <span class='label'>Task 2.1</span>
                         <p>
                             Write a program that reads a name from standard input
                             and writes (prints) a message back to the user. Refer
                             to the example run below.
                         </p>
                         <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python greet.py</kbd>
 <samp>Enter your name: </samp><kbd class='user-input'>Sara</kbd>
 <samp>Hello, Sara!</samp>
 </pre>
                         </div>
                     </div>
+
                     <div class='solution dropdown-section'>
                         <div class='dropdown'>
                             <span class='label'>Solution</span>
@@ -1005,9 +2864,406 @@ Line 2</samp>
                             <div class='filename'>greet.py</div>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>name <span class='op'>=</span> input(<span class='str'>"Enter your name: "</span>)</code></code>
-<span class='lnum'>3</span><code>print(<span class='str'>"Hello, "</span> <span class='op'>+</span> name)</code>
+<span class='lnum'>2</span><code>print(<span class='str'>"Hello, "</span> <span class='op'>+</span> name)</code>
 </pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
+    <h3>Using User Input</h3>
+
+    <p>
+        It is important to note that
+        the result of <code>input()</code> is always a <em>string</em> value.
+        However, sometimes you will want to perform integer
+        or float operations on these values, such as addition or subtraction.
+        In order to do this, you will have to convert the original string
+        values into the correct data
+        type. To this end, Python offers the <code>int()</code> and <code>float()</code>
+        commands, which convert a string value (such as those produced by
+        the <code>input()</code> command), into either an int or float
+        respectively.
+    </p>
+
+    <p class='frame'>
+        Note that we can provide multiple values to <code>print()</code> by
+        separating them with commas. Each of these values will be written
+        (i.e. printed) to standard output with a space inserted after each
+        value. For example, <code>print(1, 'Two', 3.0)</code> will
+        print <samp>1 Two 3.0</samp>. This is especially useful when printing
+        multiple values of different data types on the same line.
+    </p>
+
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        The following program reads in an integer from standard
+                        input (i.e. from the <code>input()</code> command),
+                        and prints out that integer doubled.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>num <span class='op'>=</span> input(<span class='str'>"Enter an integer: "</span>)</code>
+<span class='lnum'>2</span><code>num <span class='op'>=</span> int(num)</code>
+<span class='lnum'>3</span><code>print(num <span class='op'>*</span> <span class='lit'>2</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        One example run of this program is shown below.
+                    </p>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>python3 example.py</kbd>
+<samp>Enter an integer: </samp><kbd class='user-input'>3</kbd>
+<samp>6</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Practice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+
+            <ul class='dropdown-contents practice'>
+                <p>
+                    Try to solve the following problems without using an
+                    interpreter.
+                </p>
+
+                <p class='problem-prompt'></p>
+
+                <div class='problem-top-bar'>
+                    <div class='problem-counter'>
+                        <span class='current-problem'>0</span>
+                        /
+                        <span class='total-problems'>0</span>
+                    </div>
+                    <div class='answer-marker'>
+                        <span class='marker'></span>
+                    </div>
+                    <div class='problem-select-bar'>
+                        <button class='prev-button' type='button'>
+                            <span class='left-arrow'></span>
+                        </button>
+                        <button class='next-button' type='button'>
+                            <span class='right-arrow'></span>
+                        </button>
+                    </div>
+                </div>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='Python'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>print(x)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>Python</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+ 
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>xtype <span class='op'>=</span> type(x)</code>
+<samp class='lnum'>3</samp><code>print(xtype)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>Python</kbd>
+<samp>&lt;class '<input class='problem-answer inline string' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>xtype <span class='op'>=</span> type(x)</code>
+<samp class='lnum'>3</samp><code>print(xtype)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>1</kbd>
+<samp>&lt;class '<input class='problem-answer inline string' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+              
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='str'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>xtype <span class='op'>=</span> type(x)</code>
+<samp class='lnum'>3</samp><code>print(xtype)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>1.5</kbd>
+<samp>&lt;class '<input class='problem-answer inline string' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+ 
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='6'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>x <span class='op'>=</span> int(x)</code>
+<samp class='lnum'>3</samp><code>print(x <span class='op'>*</span> <span class='lit'>2</span>)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>3</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+              
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='int'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>x <span class='op'>=</span> int(x)</code>
+<samp class='lnum'>3</samp><code>xtype <span class='op'>=</span> type(x)</code>
+<samp class='lnum'>4</samp><code>print(xtype)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>3</kbd>
+<samp>&lt;class '<input class='problem-answer inline string' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+  
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='5.0'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>x <span class='op'>=</span> float(x)</code>
+<samp class='lnum'>3</samp><code>print(x <span class='op'>*</span> <span class='lit'>2</span>)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>2.5</kbd>
+<input class='problem-answer' type='text' autocomplete='off'/>
+</pre>
+                    </div>
+                </li>
+              
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Read the following program and determine the missing output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='float'
+                        disabled hidden/>
+
+                    <div class='snippet'>
+                        <div class='filename'>practice.py</div>
+<pre class='program-text'>
+<samp class='lnum'>1</samp><code>x <span class='op'>=</span> input(<span class='str'>"Enter a value: "</span>)</code>
+<samp class='lnum'>2</samp><code>x <span class='op'>=</span> float(x)</code>
+<samp class='lnum'>3</samp><code>xtype <span class='op'>=</span> type(x)</code>
+<samp class='lnum'>4</samp><code>print(xtype)</code>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<samp class='prompt'>$</samp></kbd>python3 practice.py</kbd>
+<samp>Enter a value: </samp><kbd class='user-input'>2.5</kbd>
+<samp>&lt;class '<input class='problem-answer inline string' type='text' autocomplete='off'/>'&gt;</samp>
+</pre>
+                    </div>
+                </li>
+              
+                <button class='check-button' type='button'>Check</button>
+            </ul>
+        </div>
+
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution'>
+                    <div class='task'>
+                        <span class='label'>Task 2.2</span>
+
+                        <p>
+                            Recall from mathematics that the <i>square</i> of a
+                            number is the product of the number multiplied by
+                            itself.
+                        </p>
+
+                        <p>
+                            Write a program that reads a value from standard input
+                            and then prints the number, followed by a space,
+                            followed by the square of that number.
+                        </p>
+
+                        <p>
+                            Remember to convert the value to a float before
+                            attempting to perform any arithmetic operations on it.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>square.py</kbd>
+<samp>Enter a number: </samp><kbd class='user-input'>2.5</kbd>
+<samp>2.5 6.25</samp>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents snippet' hidden>
+                            <div class='filename'>square.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>num <span class='op'>=</span> input(<span class='str'>"Enter a number: "</span>)</code></code>
+<span class='lnum'>2</span><code>num <span class='op'>=</span> float(num)</code>
+<span class='lnum'>3</span><code>print(num, num <span class='op'>**</span> 2)</code>
+</pre>
                         </div>
                     </div>
                 </li>
@@ -1017,37 +3273,6 @@ Line 2</samp>
 
     <hr/>
     
-    <div class='frame'>
-        <p>
-            In order to complete the following projects, you will need to
-            read values from standard input using the <code>input()</code>
-            function described previously. It is important to note that
-            the result of <code>input()</code> is always a string value.
-            However, some of these projects require you to perform integer
-            or float operations on these values. In order to do this, you
-            will have to convert the original values into the correct data
-            type using the <code>int()</code> and <code>float()</code>
-            functions.
-        </p>
-
-        <p>
-            For example, suppose that we have already stored an input
-            string in a variable named <var>x</var>. To convert <var>x</var>
-            to an integer, we could execute the statement <code>x = int(x)</code>.
-            Similarly, to convert <var>x</var> to a float, we could execute the
-            statement <code>x = float(x)</code>
-        </p>
-
-        <p>
-            Another fact that will be useful in completing these projects is
-            that we can provide multiple values to <code>print()</code> by
-            separating them with commas. Each of these values will be written
-            (i.e. printed) to standard output with a space inserted after each
-            value. For example, <code>print(1, 'Two', 3.0)</code> will
-            print <samp>1 Two 3.0</samp>.
-        </p>
-    </div>
-
     <div class='aux-section-group'>
         <div class='dropdown-section'>
             <div class='dropdown'>
@@ -1065,7 +3290,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>fullname.py</kbd>
 <samp>Enter your first name: </samp><kbd class='user-input'>Monty</kbd>
 <samp>Enter your last name: </samp><kbd class='user-input'>Python</kbd>
@@ -1091,41 +3316,13 @@ Line 2</samp>
                     </p>
                     
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>record.py</kbd>
 <samp>Enter a first name: </samp><kbd class='user-input'>Monty</kbd>
 <samp>Enter a last name: </samp><kbd class='user-input'>Python</kbd>
 <samp>Enter a gender: </samp><kbd class='user-input'>Male</kbd>
 <samp>Enter an age: </samp><kbd class='user-input'>35</kbd>
 <samp>Monty Python --Male-- (Age 35)
-</pre>
-                    </div>
-                </li>
-
-                 <li class='frame'>
-                    <span class='label'>Squared Number</span>
-                    <p>
-                        Recall from mathematics that the <i>square</i> of a
-                        number is the product of the number multiplied by
-                        itself.
-                    </p>
-
-                    <p>
-                        Write a program that reads a value from standard input
-                        and then prints the number, followed by a space,
-                        followed by the square of that number.
-                    </p>
-
-                    <p>
-                        Remember to convert the value to a float before
-                        attempting to perform any arithmetic operations on it.
-                    </p>
-
-                    <div class='terminal'>
-<pre>
-<span class='prompt'>$</span><kbd>square.py</kbd>
-<samp>Enter a number: </samp><kbd class='user-input'>2.5</kbd>
-<samp>2.5 6.25</samp>
 </pre>
                     </div>
                 </li>
@@ -1139,7 +3336,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python calc.py</kbd>
 <samp>Enter the first number: </samp><kbd class='user-input'>3</kbd>
 <samp>Enter the second number: </samp><kbd class='user-input'>6</kbd>
@@ -1187,7 +3384,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python division.py</kbd>
 <samp>Please enter positive integers only.</samp>
 <samp>Enter a: </samp><kbd class='user-input'>14</kbd>
@@ -1213,7 +3410,7 @@ Line 2</samp>
                     </p>
                     
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python distance.py</kbd>
 <samp>Enter Tom's X coordinate: </samp><kbd class='user-input'>1.98</kbd>
 <samp>Enter Tom's Y coordinate: </samp><kbd class='user-input'>-1.72</kbd>
@@ -1278,7 +3475,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python3 change.py</kbd>
 <samp>Enter bill amount: $</samp><kbd class='user-input'>117.32</kbd>
 <samp>Enter paid amount: $</samp><kbd class='user-input'>200.00</kbd>
@@ -1308,7 +3505,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <samp>    Sir Lancelot
 <samp>*~.~**~.~**~.~**~.~*
 </pre>
@@ -1332,7 +3529,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <samp>Enter the text: </samp><kbd class='user-input'>123456789</kbd>
 <samp>     123456789
 <samp>*~.~**~.~**~.~**~.~*
@@ -1360,7 +3557,7 @@ Line 2</samp>
                     </p>
 
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>len("Python")</kbd>
 <samp>6</samp>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>len(" ")</kbd>
@@ -1408,7 +3605,7 @@ Line 2</samp>
                         down to the nearest integer.
                     </p>
                     <div class='terminal'>
-<pre>
+<pre class='contents'>
 <span class='prompt'>$</span><kbd>python loadbar.py</kbd>
 <samp>Enter the total number of records: </samp><kbd class='user-input'>31152</kbd>
 <samp>Enter the number of records transferred: </samp><kbd class='user-input'>26437</kbd>
