@@ -161,7 +161,8 @@ span.label {
 .frame {
     background-color: #eee;
     color: black;
-    border: solid #222 1px;
+    border: solid #444 1px;
+    border-top-width: 8px;
     border-radius: 3px;
     margin: 32px; 8px;
     padding: 8px;

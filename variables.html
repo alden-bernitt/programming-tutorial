@@ -564,7 +564,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % </kbd><input class='problem-answer operand' type='text'/>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % </kbd><input class='problem-answer operand number' type='text' autocomplete='off'/>
 <samp>4</samp>
 </pre>
                     </div>
@@ -583,7 +583,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % </kbd><input class='problem-answer operand' type='text'/>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % </kbd><input class='problem-answer operand number' type='text' autocomplete='off'/>
 <samp>4</samp>
 </pre>
                     </div>
@@ -602,11 +602,31 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 // </kbd><input class='problem-answer operand' type='text'/>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 // </kbd><input class='problem-answer operand number' type='text' autocomplete='off'/>
 <samp>2</samp>
 </pre>
                     </div>
                 </li>
+
+                <li class='problem' hidden>
+                    <input class='problem-prompt-text'
+                        type='text'
+                        value='Enter the largest possible integer required to produce the output.'
+                        disabled hidden/>
+
+                    <input class='problem-solution'
+                        type='text'
+                        value='7'
+                        disabled hidden/>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>14 // </kbd><input class='problem-answer operand number' type='text' autocomplete='off'/>
+<samp>2</samp>
+</pre>
+                    </div>
+                </li>
+
 
                 <li class='problem' hidden>
                     <input class='problem-prompt-text'
@@ -621,7 +641,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand' type='text'/><kbd> % 5</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand number' type='text' autocomplete='off'/><kbd> % 5</kbd>
 <samp>2</samp>
 </pre>
                     </div>
@@ -640,7 +660,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand' type='text'/><kbd> % 5</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand number' type='text' autocomplete='off'/><kbd> % 5</kbd>
 <samp>2</samp>
 </pre>
                     </div>
@@ -659,7 +679,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand' type='text'/><kbd> // 5</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><input class='problem-answer operand number' type='text' autocomplete='off'/><kbd> // 5</kbd>
 <samp>2</samp>
 </pre>
                     </div>
@@ -678,7 +698,7 @@
 
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>&gt;&gt;&gt;</span><kbd><input class='problem-answer operand' type='text'/><kbd> // 5</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd><input class='problem-answer operand number' type='text' autocomplete='off'/><kbd> // 5</kbd>
 <samp>2</samp>
 </pre>
                     </div>
@@ -1424,7 +1444,7 @@
         <tbody>
             <tr>
                 <td><kbd>\n</kbd></td>
-                <td>Newline (line break)</td>
+                <td>Newline (line feed, line break)</td>
             </tr>
             <tr>
                 <td><kbd>\t</kbd></td>
@@ -1454,6 +1474,88 @@
             <ul class='dropdown-contents examples' hidden>
                 <li class='frame'>
                     <p>
+                        Tab characters are often useful for spacing tabular
+                        output, as is done in the following example.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='contents'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Cost\tRevenue\tProfit"</span>)</code>
+<span class='lnum'>2</span><code>print(<span class='str'>"10\t12\t2"</span>)</code>
+<span class='lnum'>3</span><code>print(<span class='str'>"7\t8\t1"</span>)</code>
+<span class='lnum'>4</span><code>print(<span class='str'>"3\t9\t6"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Running this program produces the following output.
+                    </p>
+
+                    <div class='terminal'>
+                        <div class='label'>terminal</div>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>example.py</kbd>
+<samp>Cost&#09;Revenue&#09;Profit</samp>
+<samp>10&#09;12&#09;2</samp>
+<samp>7&#09;8&#09;1</samp>
+<samp>3&#09;9&#09;6</samp>
+</pre>
+                    </div>
+                </li>
+                
+                <li class='frame'>
+                    <p>
+                        Windows file paths often use backslash characters to
+                        separate directories, as is done in the path
+                        <kbd>C:\Users\Monty\Programs</kbd>.
+                        Since the <kbd>\</kbd> character is used to
+                        start an escape sequence, we cannot simply place
+                        them in a string as-is.
+                    </p>
+
+                    <p>
+                        To get around this problem, we must use an escape
+                        sequence for the backslash character itself. In
+                        the following example, we print the previously
+                        mentioned file path.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(<span class='str'>"C:\\Users\\Monty\\Programs"</span>)</kbd>
+<samp>C:\Users\Monty\Programs</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        It is sometimes useful to be able to handle newline
+                        characters (aka <i>line feed</i> or
+                        <i>line break</i> characters) as individual characters.
+                        A newline character is used to end the current line and
+                        move to the next.
+                    </p>
+
+                    <p>
+                        Using newline characters, we can print to multiple
+                        lines using a single <code>print()</code> statement,
+                        as is done in the following example.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(<span class='str'>"Line 1\nLine 2\nLine 3"</span>)</kbd>
+<samp>Line 1</samp>
+<samp>Line 2</samp>
+<samp>Line 3</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
                         To embed quotes within a string, we could write
                         <kbd>"Dwayne \"The Rock\" Johnson"</kbd>. We might
                         use this string with a <kbd>print()</kbd>
@@ -1480,6 +1582,11 @@
 <span class='prompt'>&gt;&gt;&gt;</span><code>print(<span class='str'>'Dwayne "The Rock" Johnson'</span>)</code>
 </pre>
                     </div>
+
+                    <p>
+                        The same concept holds true if we switched the 
+                        double-quotes and single-quotes.
+                    </p>
                 </li>
             </ul>
         </div>
@@ -1778,53 +1885,46 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents examples' hidden>
-                <li class='frame'>
-                    <div class='terminal'>
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * 3 + 4</kbd>
 <samp>10</samp>
 </pre>
-                    </div>
                 </li>
-                <li class='frame'>
-                    <div class='terminal'>
+
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 * (3 + 4)</kbd>
 <samp>14</samp>
 </pre>
-                    </div>
                 </li>
-                <li class='frame'>
-                    <div class='terminal'>
+
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>2 ** 3 ** 2</kbd>
 <samp>512</samp>
 </pre>
-                    </div>
                 </li>
-                <li class='frame'>
-                    <div class='terminal'>
+
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>(2 ** 3) ** 2</kbd>
 <samp>64</samp>
 </pre>
-                    </div>
                 </li>
-                <li class='frame'>
-                    <div class='terminal'>
+
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * 'Py' + 'thon'</kbd>
 <samp>'PyPyPython'</samp>
 </pre>
-                    </div>
                 </li>
-                <li class='frame'>
-                    <div class='terminal'>
+
+                <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>3 * ('Py' + 'thon')</kbd>
 <samp>'PythonPythonPython'</samp>
 </pre>
-                    </div>
                 </li>
             </ul>
         </div>
@@ -2846,7 +2946,7 @@
             <ul class='dropdown-contents task-list' hidden>
                 <li class='task-and-solution'>
                     <div class='task'>
-                        <span class='label'>Task 2.1</span>
+                        <span class='label'>Task</span>
                         <p>
                             Write a program that reads a name from standard input
                             and writes (prints) a message back to the user. Refer
@@ -2895,14 +2995,9 @@
     </p>
 
     <p class='frame'>
-        Note that we can provide multiple values to <code>print()</code> by
-        separating them with commas. Each of these values will be written
-        (i.e. printed) to standard output with a space inserted after each
-        value. For example, <code>print(1, 'Two', 3.0)</code> will
-        print <samp>1 Two 3.0</samp>. This is especially useful when printing
-        multiple values of different data types on the same line.
+        Python also provides a <code>str()</code> command for converting
+        int or float values into strings.
     </p>
-
 
     <div class='aux-section-group'>
         <div class='dropdown-section'>
@@ -2939,6 +3034,22 @@
 <samp>6</samp>
 </pre>
                     </div>
+                </li>
+                
+                <li class='frame'>
+                    <p>
+                        In this example, we store the integer <code>9</code>
+                        into the variable <var>x</var> and then convert it
+                        to a string.
+                    </p>
+        <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = 9</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>x = str(x)</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(x * 3)</kbd>
+<samp>'999'</samp>
+</pre>
+        </div>
                 </li>
             </ul>
         </div>
@@ -3231,7 +3342,7 @@
             <ul class='dropdown-contents task-list' hidden>
                 <li class='task-and-solution'>
                     <div class='task'>
-                        <span class='label'>Task 2.2</span>
+                        <span class='label'>Task</span>
 
                         <p>
                             Recall from mathematics that the <i>square</i> of a
@@ -3272,6 +3383,76 @@
 <span class='lnum'>3</span><code>print(num, num <span class='op'>**</span> 2)</code>
 </pre>
                         </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Bonus</h2>
+
+    <p>
+        Note that we can provide multiple values to <code>print()</code> by
+        separating them with commas. Each of these values will be written
+        (i.e. printed) to standard output with a space inserted after each
+        value. For example, <code>print(1, 'Two', 3.0)</code> will
+        print <samp>1 Two 3.0</samp>. This is especially useful when printing
+        multiple values of different data types on the same line.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Note that when dealing with only strings, the following
+                        two uses of <code>print()</code> are identical:
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>a = "apple"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>b = "pie"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(a + " " + b)</kbd>
+<samp>apple pie</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(a, b)</kbd>
+<samp>apple pie</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        However, when dealing with non-strings, only the
+                        second version of <code>print()</code> is valid.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>a = 0</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>b = 1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(a, b)</kbd>
+<samp>0 1</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        We could, however, convert any non-string values into
+                        strings and then use the first version if we were
+                        inclined to do so. This can be useful for when we
+                        want to combine strings with non-string values.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>symbol = "#"</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>num = 1</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>num = str(num)</kbd>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>print(symbol + num)</kbd>
+<samp>#1</samp>
+</pre>
                     </div>
                 </li>
             </ul>
