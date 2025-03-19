@@ -107,7 +107,7 @@
     font-weight: 500;
 }
 
-.check-button {
+.check-button, .solve-button {
     display: block;
     color: white;
     background-color: #333;

@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-color: #c4b897;
+    background-color: #d7d0be;
     width: 800px;
     margin: 0;
     line-height: 1.5;
@@ -29,6 +29,7 @@ main {
     padding: 16px;
     padding-top: 0;
     padding-bottom: 64px;
+    border: 2px solid black;
 }
 
 h1 {
