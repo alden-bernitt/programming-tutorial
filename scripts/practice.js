@@ -6,17 +6,15 @@ const problemIncorrectClass = 'incorrect';
 const checkmarkClass = 'checkmark';
 const xmarkClass = 'xmark';
 
-const calcOutputPrompt = 'Determine the output of this code.';
-
 function setProblemPrompt(problemArgs)
 {
     problemArgs.problemPrompt.textContent =
-            problemArgs.problemData[problemArgs.currProblem].promptText;
+            problemArgs.problemData[problemArgs.currIndex].promptText;
 }
 
 function answerIsCorrect(problemArgs)
 {
-    const data = problemArgs.problemData[problemArgs.currProblem];
+    const data = problemArgs.problemData[problemArgs.currIndex];
 
     if (data.answerInput.value === "")
         data.checkedCorrect = false;
@@ -30,7 +28,7 @@ function updateResultUi(problemArgs)
 {
     const section = problemArgs.section;
     const marker = problemArgs.resultMarker;
-    const data = problemArgs.problemData[problemArgs.currProblem];
+    const data = problemArgs.problemData[problemArgs.currIndex];
 
     if (data.answerInput.value === "") {
         section.classList.remove(problemAnsweredClass);
@@ -61,13 +59,13 @@ function updateProblemUi(problemArgs)
 {
     setProblemPrompt(problemArgs);
     updateResultUi(problemArgs);
-    problemArgs.currentCounter.textContent = problemArgs.currProblem + 1;
+    problemArgs.currentCounter.textContent = problemArgs.currIndex + 1;
 }
 
 function navigateProblem(problemArgs, offset)
 {
     const len = problemArgs.problems.length;
-    const curr = problemArgs.currProblem;
+    const curr = problemArgs.currIndex;
 
     // Normalize offset.
     offset %= len;
@@ -78,7 +76,7 @@ function navigateProblem(problemArgs, offset)
     // We have to add the problem list length before the modulo operation
     // to prevent ever performing a modulo on a negative value.
     const next  = (curr + offset + len) % len;
-    problemArgs.currProblem = next;
+    problemArgs.currIndex = next;
     problemArgs.problems[next].hidden = false;
 
     updateProblemUi(problemArgs);
@@ -88,7 +86,7 @@ function navigateProblem(problemArgs, offset)
 
 function submitAnswer(problemArgs)
 {
-    let curr = problemArgs.currProblem;
+    let curr = problemArgs.currIndex;
     const problem = problemArgs.problemData[curr];
 
     // If the answer was already checked and was correct, move to the
@@ -105,6 +103,13 @@ function submitAnswer(problemArgs)
     problemArgs.problemData[curr].answerInput.focus();
 }
 
+function solveProblem(problemArgs)
+{
+    const program = problemArgs.problemData[problemArgs.currIndex];
+    program.answerInput.value = program.solutionText;
+    submitAnswer(problemArgs);
+}
+
 // Setup practice sections.
 const psections = document.getElementsByClassName('practice');
 for (const sect of psections) {
@@ -116,6 +121,7 @@ for (const sect of psections) {
     const prevButton = sect.querySelector('.prev-button');
     const nextButton = sect.querySelector('.next-button');
     const checkButton = sect.querySelector('.check-button');
+    const solveButton = sect.querySelector('.solve-button');
 
     // Cache problem data.
     const problemData = [];
@@ -139,7 +145,7 @@ for (const sect of psections) {
         currentCounter: currentCounter,
         resultMarker: resultMarker,
         problemData: problemData,
-        currProblem: 0
+        currIndex: 0
     };
 
     // Setup problem navigation.
@@ -150,9 +156,13 @@ for (const sect of psections) {
         navigateProblem(problemArgs, 1);
     });
 
-    // Setup problem checking.
+    // Setup button callbacks
     checkButton.addEventListener('click', () => {
         submitAnswer(problemArgs);       
+    });
+
+    solveButton.addEventListener('click', () => {
+        solveProblem(problemArgs);
     });
 
     // Setup keyboard shortcuts.
@@ -164,7 +174,7 @@ for (const sect of psections) {
     });
 
     // Setup the first problem.
-    problems[problemArgs.currProblem].hidden = false;
+    problems[problemArgs.currIndex].hidden = false;
     updateProblemUi(problemArgs);
     totalCounter.textContent = problems.length;
 }
