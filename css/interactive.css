@@ -47,6 +47,17 @@
     }
 }
 
+.dropdown-contents {
+    margin: 0;
+
+    > .frame {
+        margin: 0;
+        border-width: 0 0 12px 0;
+        border-color: #aaa;
+        border-radius: 0;
+    }
+}
+
 .aux-section-group {
     list-style: none;
     padding: 0;

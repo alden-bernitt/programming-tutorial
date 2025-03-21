@@ -7,7 +7,7 @@
     <meta name='author' content='Alden Bernitt'/>
     <meta
         name='description'
-        content='An introduction to branching in Python.'
+        content='An introduction to branching using Python.'
     />
 
     <link rel='stylesheet' href='css/site.css'/>
@@ -125,10 +125,12 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents examples' hidden>
-                <li class='snippet'>
+                <li class='frame'>
+                    <div class='snippet'>
 <pre class='program-text'>
 <span class='lnum'>1</span><code>print(<span class='str'>"Hello, world!"</span>) <span class='comment'># This text is ignored</span></code>
 </pre>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -351,10 +353,10 @@
     <div class='aux-section-group'>
         <div class='dropdown-section'>
             <div class='dropdown'>
-                <h3>Advice</h3>
+                <h3>Examples</h3>
                 <span class='arrow-icon'></span>
             </div>
-            <ul class ='dropdown-contents advice' hidden>
+            <ul class ='dropdown-contents examples' hidden>
                 <li class='frame'>
                     <p>
                         If you are ever having trouble determining the result of
@@ -654,15 +656,15 @@
         change the statements it executes based on a set of conditions.
         Choosing to
         execute a set of statements based on a set of conditions is
-        known as <i>branching</i>.
+        known as <i>branching</i> or <i>flow control</i>.
     </p>
 
     <h3>If</h3>
 
     <p>
         The most fundamental branching statement is the <i>if-statement</i>.
-        An if-statement is composed of a boolean value and a sequence of statements.
-        The boolean value is called the <dfn>condition</dfn> of the if-statement,
+        An if-statement is composed of a boolean expression and a sequence of statements.
+        The boolean expression is called the <dfn>condition</dfn> of the if-statement,
         and the sequence of statements is called the <dfn>body</dfn>.
         If the condition of an if-statement evaluates to <code>True</code>,
         then the body
@@ -702,9 +704,22 @@
                     </div>
 
                     <p>
-                        When the program reaches the if-statement, the value
-                        of <var>num</var> will be compared to 7. If they are
-                        equal, then the program prints the following output.
+                        In this example, the <em>condition</em> is the 
+                        boolean expression <code>num == 7</code> (which is
+                        either <code>True</code> or <code>False</code>).
+                    </p>
+
+                    <p>
+                        The <em>body</em> consists of the two statements
+                        <code>print("Your number is 7.")</code> and
+                        <code>print("That's a lucky number!")</code>.
+                    </p>
+
+                    <p>
+                        When the program reaches this if-statement, the value
+                        of <var>num</var> will be compared to <code>7</code>.
+                        If they are equal (i.e. the condition is equal to
+                        <code>True</code>), then the program prints the following output.
                     </p>
 
                     <div class='terminal'>
@@ -716,69 +731,14 @@
                     </div>
 
                     <p>
-                        If <var>num</var> has any value other than 7, only the
-                        last line will be printed.
-                    </p>
-                </li>
-            </ul>
-        </div>
-
-        <div class='dropdown-section'>
-            <div class='dropdown'>
-                <h3>Advice</h3>
-                <span class='arrow-icon'></span>
-            </div>
-            <ul class ='dropdown-contents advice' hidden>
-                <li class='frame'>
-                    <p>
-                        Don't forget to include a <code>:</code>
-                        character after the condition of an if-statement.
-                    </p>
-                </li>
-                
-                <li class='frame'>
-                    Both tabs and spaces can be used to indent the statements
-                    within an if-statement.
-                    Although you have the freedom to use whichever characters you
-                    choose, we recommend against mixing
-                    tabs and spaces for your indentations. Our recommendation
-                    is to use a single tab character per level of indentation.
-                </li>
-
-                <li class='frame'>
-                    <p>
-                        Once an indentation has been found, Python expects all
-                        following indentations to use the same spacing as the
-                        original indentation. Failing to do so results in an error.
+                        If <var>num</var> has any value other than
+                        <code>7</code> (i.e. the condition is equal to
+                        <code>False</code>), only the last line will be printed:
                     </p>
 
-                    <p>
-                        The following program erroneously uses two spaces to
-                        indent the first statement within an if-statement and
-                        a single space to indent the second.
-                    </p>
-
-                    <div class='snippet'>
-                        <div class='filename'>bad_indent.py</div>
-<pre class='program-text'>
-<span class='lnum'>1</span><code><span class='kw'>if</span> <span class='lit'>True</span>:</code>
-<span class='lnum'>2</span><code>  print(<span class='str'>"Line 1"</span>) <span class='comment'># Two-space indent</span></code>
-<span class='lnum'>3</span><code> print(<span class='str'>"Line 2"</span>) <span class='comment'># One-space indent</span></code>
-</pre>
-                    </div>
-
-                    <p>
-                        Attempting to run this program will result in the
-                        following error.
-                    </p>
-                    
                     <div class='terminal'>
 <pre class='contents'>
-<span class='prompt'>$</span><kbd>python3 bad_indent.py</kbd>
-<samp>  File "/home/alden/test.py", line 3</samp>
-<samp>    print("Line 2") # One-space indent</samp>
-<samp>                                      ^</samp>
-<samp>IndentationError: unindent does not match any outer indentation level</samp>
+<samp>See you next time!</samp>
 </pre>
                     </div>
                 </li>
@@ -791,7 +751,7 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
+                <li class='task-and-solution frame'>
                     <div class='task'>
                         <span class='label'>Task</span>
                         <p>
@@ -876,6 +836,69 @@
                 </li>
             </ul>
         </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Don't forget to include a <code>:</code>
+                        character after the condition of an if-statement.
+                    </p>
+                </li>
+                
+                <li class='frame'>
+                    Both tabs and spaces can be used to indent the statements
+                    within an if-statement.
+                    Although you have the freedom to use whichever characters you
+                    choose, we recommend against mixing
+                    tabs and spaces for your indentations. Our recommendation
+                    is to use a single tab character per level of indentation.
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Be consistent with your indentation.
+                        Once an indentation has been found, Python expects all
+                        following indentations to use the same spacing as the
+                        original indentation. Failing to do so results in an error.
+                    </p>
+
+                    <p>
+                        The following program erroneously uses two spaces to
+                        indent the first statement within an if-statement and
+                        a single space to indent the second.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>bad_indent.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>if</span> x <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<span class='lnum'>2</span><code>  print(<span class='str'>"Line 1"</span>) <span class='comment'># Two-space indent</span></code>
+<span class='lnum'>3</span><code> print(<span class='str'>"Line 2"</span>) <span class='comment'># One-space indent</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        Attempting to run this program will result in the
+                        following error.
+                    </p>
+                    
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>python3 bad_indent.py</kbd>
+<samp>  File "/home/alden/test.py", line 3</samp>
+<samp>    print("Line 2") # One-space indent</samp>
+<samp>                                      ^</samp>
+<samp>IndentationError: unindent does not match any outer indentation level</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <h3>Else</h3>
@@ -937,7 +960,7 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
+                <li class='task-and-solution frame'>
                     <div class='task'>
                         <span class='label'>Task</span>
                     <div>
@@ -1073,7 +1096,7 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
+                <li class='task-and-solution frame'>
                     <div class='task'>
                         <span class='label'>Task</span>
                         <p>
@@ -1129,9 +1152,113 @@
                 </li>
             </ul>
         </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Avoid duplicating the exact same bodies across multiple
+                        if and/or elif statements. Instead, combine those
+                        branch statements into a single branch statement
+                        by using an <code>or</code> operator.
+                    </p>
+
+                    <p>
+                        Consider the following example.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   print(<span class='str'>"Stop"</span>)</code>
+<code><span class='kw'>elif</span> num <span class='op'>==</span> <span class='lit'>1</span>:</code>
+<code>   print(<span class='str'>"Start"</span>)</code>
+<code><span class='kw'>elif</span> num <span class='op'>==</span> <span class='lit'>2</span>:</code>
+<code>   print(<span class='str'>"Start"</span>)</code>
+<code><span class='kw'>else</span>:</code>
+<code>   print(<span class='str'>"Shutdown"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that bodies of the two elif statements are identical.
+                        This code can be simplified into the following much
+                        more preferred option.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   print(<span class='str'>"Stop"</span>)</code>
+<code><span class='kw'>elif</span> num <span class='op'>==</span> <span class='lit'>1</span> <span class='op'>or</span> num <span class='op'>==</span> <span class='lit'>2</span>:</code>
+<code>   print(<span class='str'>"Start"</span>)</code>
+<code><span class='kw'>else</span>:</code>
+<code>   print(<span class='str'>"Shutdown"</span>)</code>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Avoid duplicating the same group of statements across
+                        the bodies of every if/elif/else statement. Instead,
+                        we can remove those statements from each body and add
+                        it after the end of the group of branch statements.
+                    </p>
+
+                    <p>
+                        Consider the following example.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   num <span class='op'>=</span> num <span class='op'>+</span> <span class='lit'>1</span></code>
+<code>   print(<span class='str'>"Zero"</span>)</code>
+<code><span class='kw'>elif</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   num <span class='op'>=</span> num <span class='op'>+</span> <span class='lit'>1</span></code>
+<code>   print(<span class='str'>"One"</span>)</code>
+<code><span class='kw'>else</span>:</code>
+<code>   num <span class='op'>=</span> num <span class='op'>+</span> <span class='lit'>1</span></code>
+<code>   print(<span class='str'>"Two"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        The <code>num = num + 1</code> statement can be
+                        moved from each body into a single statement after
+                        the final branch statement. The following version
+                        is much more preferred.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<code><span class='kw'>if</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   print(<span class='str'>"Zero"</span>)</code>
+<code><span class='kw'>elif</span> num <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<code>   print(<span class='str'>"One"</span>)</code>
+<code><span class='kw'>else</span>:</code>
+<code>   print(<span class='str'>"Two"</span>)</code>
+<code>num <span class='op'>=</span> num <span class='op'>+</span> <span class='lit'>1</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        The act of removing duplicated code in this manner
+                        is an example of <i>factoring</i> and is an
+                        <em>extremely important</em>
+                        concept to practice in software development.
+                    </p>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <h3>Nested If</h3>
+    <h3 id='nested_if'>Nested If</h3>
 
     <p>
         There are some situations where we are interested in making a
@@ -1274,7 +1401,7 @@
 
                     <p>
                         This code can be simplified into the following much
-                        more preferable option.
+                        more preferred option.
                     </p>
 
                     <div class='snippet'>

@@ -228,65 +228,108 @@
             </div>
             
             <ul class='dropdown-contents examples' hidden>
-                <p>
-                    We used a
-                    <a href='interpreter.html'>Python interpreter</a> to test out
-                    the results of the following operations.
-                </p>
+                <li class='frame'>
+                    <p>
+                        Recall that one way to perform division is to calculate
+                        a quotient and remainder separately as integers.
+                        For example, instead of writing
+                    </p>
 
-                <li class='terminal'>
+                    <div class='display'>7 &divide; 4 = 1.75</div>
+
+                    <p>
+                        We could write
+                    </p>
+
+                    <div class='display'>7 &divide; 4 = 1 remainder 3</div>
+
+                    <p>
+                        That is, the <i>quotient</i> is 1, and the <i>remainder</i>
+                        is 3. When dealing with positive integers, this is precisely
+                        the result of the <code>//</code> and <code>%</code>
+                        operators respectively. See the example below for a
+                        demonstration of this.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>7 // 4</kbd>
+<samp>1</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>7 % 4</kbd>
+<samp>3</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Beware that this perspective of <code>//</code> and
+                        <code>%</code> only holds true when both operands
+                        are positive.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        We used a
+                        <a href='interpreter.html'>Python interpreter</a> to test out
+                        the results of the following operations.
+                    </p>
+                    
+                    <ul class='no-indent'>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>1 + -1</kbd>
 </samp>0</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>-1 - 1</kbd>
 </samp>-2</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>-8 * -2</kbd>
 </samp>16</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>4 ** 2</kbd>
 </samp>16</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>5 / 2</kbd>
 </samp>2.5</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>5 // 2</kbd>
 </samp>2</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % 5</kbd>
 </samp>4</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>14 % 10</kbd>
 </samp>4</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>--1</kbd>
 </samp>1</samp>
 </pre>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -838,59 +881,97 @@
             </div>
             
             <ul class='dropdown-contents examples' hidden>
-                <p>
-                    We used a
-                    <a href='interpreter.html'>Python interpreter</a> to test out
-                    the results of the following operations.
-                </p>
-            
-                <li class='terminal'>
+                <li class='frame'>
+                    <p>
+                        Note that the <code>//</code> and <code>%</code> operators
+                        using floats are conceptually identical to the versions
+                        that use integers; <code>//</code> calculates the number
+                        of times the second operand can "go into" the first
+                        operand, while <code>%</code> produces whatever is
+                        leftover from that calculation.
+                    </p>
+
+                    <p>
+                        For example, the float 1.25 can "go into" 2.75 two
+                        times with 0.25 leftover. This is reflected by the
+                        <code>//</code> and <code>%</code> operators
+                        respectively, as shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>2.75 // 1.25</kbd>
+<samp>2.0</samp>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>2.75 % 1.25</kbd>
+<samp>0.25</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Beware that this perspective of <code>//</code> and
+                        <code>%</code> only holds true when both operands
+                        are positive.
+                    </p>
+                </li>
+                
+                <li class='frame'>
+                    <p>
+                        We used a
+                        <a href='interpreter.html'>Python interpreter</a> to test out
+                        the results of the following operations.
+                    </p>
+                    
+                    <ul class='no-indent'>
+                    
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>1.0 + -1.0</kbd>
 </samp>0.0</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>-1.5 - 1.5</kbd>
 </samp>-3.0</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>-8.25 * -2.0</kbd>
 </samp>16.5</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>0.5 ** 2</kbd>
 </samp>0.25</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>6.5 / 2.5</kbd>
 </samp>2.6</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>6.5 // 2.5</kbd>
 </samp>2.0</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>6.5 % 2.5</kbd>
 </samp>1.5</samp>
 </pre>
-                </li>
-                <li class='terminal'>
+                        </li>
+                        <li class='terminal'>
 <pre class='contents'>
 <span class='prompt'>&gt;&gt;&gt;</span><kbd>--1.25</kbd>
 </samp>1.25</samp>
 </pre>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -2944,7 +3025,7 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
+                <li class='task-and-solution frame'>
                     <div class='task'>
                         <span class='label'>Task</span>
                         <p>
@@ -3340,7 +3421,7 @@
                 <span class='arrow-icon'></span>
             </div>
             <ul class='dropdown-contents task-list' hidden>
-                <li class='task-and-solution'>
+                <li class='task-and-solution frame'>
                     <div class='task'>
                         <span class='label'>Task</span>
 

@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+
+<html lang='en-us'>
+<head>
+    <title>Python | Flow Control: Looping</title>
+
+    <meta name='author' content='Alden Bernitt'/>
+    <meta
+        name='description'
+        content='An introduction to looping using Python.'
+    />
+
+    <link rel='stylesheet' href='css/site.css'/>
+    <link rel='stylesheet' href='css/code.css'/>
+    <link rel='stylesheet' href='css/interactive.css'/>
+
+    <script src='scripts/dropdown.js' defer></script>
+</head>
+<body>
+<h1>Flow Control: Looping</h1>
+
+<main>
+    <h2>Background</h2>
+
+    <p>
+        There are many different scenarios in which we are interested in
+        repeatedly executing a sequence of statements until a certain
+        condition occurs. In the world of computer science, this is referred
+        to as <i>looping</i>. In this guide, we will cover the fundmental
+        concepts behind looping and how it can be done using Python.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    Systems that use passwords will often repeatedly ask a user
+                    to enter their credentials until the correct information
+                    has been entered.
+                </li>
+
+                <li class='frame'>
+                    A microwave oven will heat its contents until a certain
+                    condition has occurred, such as a timer expiring.
+                </li>
+
+                <li class='frame'>
+                    A database system might search through multiple records in
+                    a database until a desired record is found.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Looping</h2>
+
+    <h3>While</h3>
+
+    <p>
+        The <i>while</i> loop is the most fundamental looping construct. A
+        <i>while-statement</i> functions identically to an if-statement,
+        except that it will continually execute its body until its condition
+        becomes false.
+    </p>
+
+    <p class='frame'>
+        One execution of a loop's body is called an <dfn>iteration</dfn> of
+        that loop.
+    </p>
+
+    <p>
+        A while-loop is created using a <i>while-statement</i>. Just like an
+        if-statement, a while-statement consists of condition,
+        which is a boolean expression, and a body, which is a sequence of
+        statements.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        The following program uses a while-loop to print all
+                        integers from 0 to 3.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>i <span class='op'>=</span> <span class='lit'>0</span></code>
+<span class='lnum'>2</span><code><span class='kw'>while</span> i <span class='op'>&lt;=</span> <span class='lit'>3</span>:</code>
+<span class='lnum'>3</span><code>   print(i)</code>
+<span class='lnum'>4</span><code>   i <span class='op'>=</span> i <span class='op'>+</span> <span class='lit'>1</span></code>
+<span class='lnum'>5</span><code>print(<span class='str'>"Done"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Before the while-loop executes, the condition is
+                        checked (in this case, the condition is
+                        <code>i &lt;= 1</code>). If the condition is
+                        <code>False</code>, the body
+                        is skipped and the program continues from the first
+                        statement after the body, just like an if-statement.
+                    </p>
+
+                    <p>
+                        If the condition is <code>True</code>, then the body
+                        executes once. Once the body has finished executing,
+                        the condition-checking process is performed again.
+                        This sequence of checks and executes will
+                        repeat until the condition is <code>False</code>, at
+                        which point the program will continue from the first
+                        statement after the body.
+                    </p>
+
+                    <p>
+                        Note that the loop condition checks against the value of
+                        <var>i</var>, which is incremented during the last
+                        statement of the loop body. This means that every time
+                        the condition check occurs, that value of <var>i</var>
+                        will be one more than it was during the previous check.
+                        This guarantees that the condition <code>i &lt;= 3</code>
+                        will eventually be false, causing the loop to terminate.
+                    </p>
+
+                    <p>
+                        Shown below is the results of running this program.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>python3 example.py</kbd>
+<samp>0</samp>
+<samp>1</samp>
+<samp>2</samp>
+<samp>3</samp>
+<samp>Done</samp>
+</pre>
+                    </div>
+
+                    <p class='frame'>
+                        Since the first iteration of this loop uses <var>i</var>
+                        at a value of 0, and the last iteration uses <var>i</var>
+                        at a value of 3, we say that this loop <i>iterates</i>
+                        over <var>i</var> from 0 to 3, or simply, this loop
+                        <i>iterates</i> from 0 to 3.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Recall that if-statements are themselves statements. This
+                        means that we can use them within the bodies of loops.
+                    </p>
+
+                    <p>
+                        The following program demonstrates this by looping
+                        through the first eleven integers starting from 0.
+                        Each iteration of the loop prints the integer and
+                        some text indicating whether that integer is even 
+                        or odd.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>i <span class='op'>=</span> <span class='lit'>0</span></code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code><span class='kw'>while</span> i <span class='op'>&lt;=</span> <span class='lit'>10</span>:</code>
+<span class='lnum'>4</span><code>   parity <span class='op'>=</span> <span class='str'>"Odd"</span></code>
+<span class='lnum'>5</span><code>   <span class='kw'>if</span> i <span class='op'>%</span> <span class='lit'>2</span> <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<span class='lnum'>6</span><code>      parity <span class='op'>=</span> <span class='str'>"Even"</span></code>
+<span class='lnum'>7</span>
+<span class='lnum'>8</span><code>   print(i, parity)</code>
+<span class='lnum'>9</span><code>   i <span class='op'>=</span> i <span class='op'>+</span> <span class='lit'>1</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        Shown below is the results of running this program.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>0 Even</samp>
+<samp>1 Odd</samp>
+<samp>2 Even</samp>
+<samp>3 Odd</samp>
+<samp>4 Even</samp>
+<samp>5 Odd</samp>
+<samp>6 Even</samp>
+<samp>7 Odd</samp>
+<samp>8 Even</samp>
+<samp>9 Odd</samp>
+<samp>10 Even</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <span class='label'>Task</span>
+
+                        <p>
+                            Write a program that echoes the user's input until
+                            the user enters the text <kbd>Stop</kbd>. Then, print
+                            the message <samp>Exiting.</samp> to standard output
+                            before terminating the program.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>&gt; </samp><kbd class='user-input'>Eggs</kbd>
+<samp>Eggs</samp>
+<samp>&gt; </samp><kbd class='user-input'>Bacon</kbd>
+<samp>Bacon</samp>
+<samp>&gt; </samp><kbd class='user-input'>Stop</kbd>
+<samp>Exiting.</samp>
+</pre>
+
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents snippet' hidden>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>prompt <span class='op'>=</span> <span class='str'>"&gt; "</span></code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code class='comment'># Get the first value from standard input.</code>
+<span class='lnum'>4</span><code>text <span class='op'>=</span> input(prompt)</code>
+<span class='lnum'>5</span><code><span class='kw'>while</span> text <span class='op'>!=</span> <span class='str'>"Stop"</span>:</code>
+<span class='lnum'>6</span><code>   print(text)</code>
+<span class='lnum'>7</span><code class='comment'>   # Get the next value from standard input.</code>
+<span class='lnum'>8</span><code>   text <span class='op'>=</span> input(prompt)</code>
+<span class='lnum'>9</span>
+<span class='lnum'>10</span><code>print(<span class='str'>"Exiting."</span>)</code>
+</pre>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <span class='label'>Task</span>
+
+                        <p>
+                            Write a program that uses a while-loop to print a
+                            table of the first
+                            ten positive integers squared. Use tab characters
+                            to separate the columns of the table. Refer to
+                            the example below.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>x&#09;x**2</samp>
+<samp>1&#09;1</samp>
+<samp>2&#09;4</samp>
+<samp>3&#09;9</samp>
+<samp>4&#09;16</samp>
+<samp>5&#09;25</samp>
+<samp>6&#09;36</samp>
+<samp>7&#09;49</samp>
+<samp>8&#09;64</samp>
+<samp>9&#09;81</samp>
+<samp>10&#09;100</samp>
+</pre>
+                        </div>
+
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"x\tx**2"</span>)</code>
+<span class='lnum'>2</span><code>i <span class='op'>=</span> <span class='lit'>1</span></code>
+<span class='lnum'>3</span><code><span class='kw'>while</span> i <span class='op'>&lt;=</span> <span class='lit'>10</span>:</code>
+<span class='lnum'>4</span><code>   print(str(num) <span class='op'>+</span> <span class='str'>"\t"</span> <span class='op'>+</span> str(num <span class='op'>**</span> <span class='lit'>2</span>))</code>
+<span class='lnum'>5</span><code>   i <span class='op'>=</span> i <span class='op'>+</span> <span class='lit'>1</span></code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        Make sure that your loop conditions eventually evaluate
+                        to <code>False</code>. Failing to do so will result in
+                        what is known as an <i>infinite loop</i>, which, as the
+                        name suggests, is a loop that never terminates.
+                    </p>
+
+                    <p>
+                        The following example demonstrates one way in which
+                        an infinite loop may occur.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>i <span class='op'>=</span> <span class='lit'>0</span></code>
+<span class='lnum'>2</span><code><span class='kw'>while</span> i <span class='op'>&lt;=</span> <span class='lit'>3</span>:</code>
+<span class='lnum'>3</span><code>   print(i)</code>
+<span class='lnum'>4</span><code>print(<span class='str'>"Done"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Note that the value of <var>i</var> never changes. Since
+                        <var>i</var> is given the initial value 0, this means
+                        that the condition <code>i &lt;= 3</code> will always
+                        be <code>True</code>, resulting in an infinite loop.
+                    </p>
+
+                    <p>
+                        The partial output of running this program is shown
+                        below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>python3 example.py</kbd>
+<samp>0</samp>
+<samp>0</samp>
+<samp>0</samp>
+<samp>0</samp>
+<samp>0</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        If you ever find your program in an infinite loop,
+                        pressing <kbd>Ctrl + C</kbd> should force your
+                        program to terminate. If all else fails, closing
+                        the terminal entirely will solve the problem.
+                    </p>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        You may be still be suspicious about the usefulness of
+                        loops. Consider a program that prints a table of square
+                        numbers. We could implement this by simply using a series
+                        of <code>print()</code> statements; no looping required.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='lit'>1</span>, <span class='lit'>1</span>)</code>
+<span class='lnum'>2</span><code>print(<span class='lit'>2</span>, <span class='lit'>4</span>)</code>
+<span class='lnum'>3</span><code>print(<span class='lit'>3</span>, <span class='lit'>9</span>)</code>
+<span class='lnum'>4</span><code><span class='comment'># ...</span></code>
+</pre>
+                    </div>
+
+                    <p>
+                        This approach, however, comes with at least two major flaws:
+                    </p>
+
+                    <ol>
+                        <li>
+                            <b>No scalability</b>
+
+                            <p>
+                                What if you were asked to print a table of the first
+                                one-hundred or one-thousand square numbers? Even if
+                                you did write all of those print statements by hand,
+                                are you sure <em>all</em> of them are correct?
+                                Could you prove it if you were asked to?
+                            </p>
+                        </li>
+
+                        <li>
+                            <b>No flexibility</b>
+                            
+                            <p>
+                                What if you wanted the program to vary the size
+                                of the table according to some value, such as
+                                one provided through user-input? Using this
+                                approach, the size of the table is fixed.
+                            </p>
+                        </li>
+                    </ol>
+
+                    <p>
+                        All of these problems go away with 5 lines of code:
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>count <span class='op'>=</span> <span class='lit'>10</span></code>
+<span class='lnum'>2</span><code>i <span class='op'>=</span> <span class='lit'>1</span></code>
+<span class='lnum'>3</span><code><span class='kw'>while</span> i <span class='op'>&lt;=</span> count:</code>
+<span class='lnum'>4</span><code>   print(i, i <span class='op'>**</span> <span class='lit'>2</span>)</code>
+<span class='lnum'>5</span><code>   i <span class='op'>=</span> i <span class='op'>+</span> <span class='lit'>1</span></code>
+</pre>
+                    </div>
+
+                    <p class='frame'>
+                        By assigning to <var>count</var> a value supplied by
+                        the user (e.g. via <code>input()</code>), we are able
+                        to vary the size of the table accordingly.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>For</h3>
+
+    <p>
+        Conceptually, a for-loop <i>iterates</i> over a sequence of values.
+        That is, the body of a for-loop executes once for each value in a
+        sequence.
+    </p>
+
+    <p>
+        A for-loop is created using a <i>for-statement</i> which consists of a
+        variable name, a sequence of values
+        (Python calls such sequences <i>iterables</i>), and a body.
+    </p>
+
+    <p class='frame'>
+        Python provides a <code>range()</code> command which takes an integer
+        value and produces a sequence of values. For example, the command
+        <code>range(3)</code> produces the sequence of values 0, 1, 2. Note
+        that this sequence begins at 0 and does <em>not</em> include 3.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        The following program uses a for-loop to print the
+                        first 4 integers starting from 0. Each integer is
+                        printed on its own line.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>4</span>):</code>
+<span class='lnum'>2</span><code>   print(i)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        This loop works by iterating through the values
+                        of the sequence produced by the <code>range()</code>
+                        command. Since we specified <code>range(4)</code>,
+                        the sequence produced is the first four integers
+                        starting from 0 (i.e. the sequence 0, 1, 2, 3). During each
+                        iteration, the
+                        variable <i>i</i> is assigned the next value in the
+                        sequence starting from the first. That is, the variable
+                        <var>i</var> is given 0 for the first iteration, the
+                        value 1 for the second iteration, the value 2 for the
+                        third iteration, and the value 4 for the fourth
+                        and final iteration. This iterative assignment is
+                        performed by the <code>in</code> operator.
+                    </p>
+
+                    <p>
+                        We can see the output of this program below:
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>&gt;&gt;&gt;</span><kbd>python3 example.py</kbd>
+<samp>0</samp>
+<samp>1</samp>
+<samp>2</samp>
+<samp>3</samp>
+</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <span class='label'>Task</span>
+
+                        <p>
+                            Write a program that uses a for-loop to print a
+                            table of the first
+                            ten positive integers squared. Use tab characters
+                            to separate the columns of the table. Refer to
+                            the example below.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>x&#09;x**2</samp>
+<samp>1&#09;1</samp>
+<samp>2&#09;4</samp>
+<samp>3&#09;9</samp>
+<samp>4&#09;16</samp>
+<samp>5&#09;25</samp>
+<samp>6&#09;36</samp>
+<samp>7&#09;49</samp>
+<samp>8&#09;64</samp>
+<samp>9&#09;81</samp>
+<samp>10&#09;100</samp>
+</pre>
+                        </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"x\tx**2"</span>)</code>
+<span class='lnum'>2</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>3</span><code>   num <span class='op'>=</span> i <span class='op'>+</span> <span class='lit'>1</span></code>
+<span class='lnum'>4</span><code>   print(str(num) <span class='op'>+</span> <span class='str'>"\t"</span> <span class='op'>+</span> str(num <span class='op'>**</span> <span class='lit'>2</span>))</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <span class='label'>Task</span>
+                    </div>
+
+                    <p>
+                        Write a program that uses a for-loop to print a skewed
+                        pyramid of <samp>*</samp> characters. The pyramid should be ten
+                        layers high. Refer to the sample below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>*</samp>
+<samp>**</samp>
+<samp>***</samp>
+<samp>****</samp>
+<samp>*****</samp>
+<samp>******</samp>
+<samp>*******</samp>
+<samp>********</samp>
+<samp>*********</samp>
+<samp>**********</samp>
+</pre>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>2</span><code>   print(<span class='str'>"*"</span> <span class='op'>*</span> (i <span class='op'>+</span> <span class='lit'>1</span>))</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <p>
+                            Write a program that prints a skewed pyramid of
+                            <samp>*</samp> characters. The height of the pyramid should
+                            be specified through standard input.
+                        </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter the height of the pyramid: </samp><kbd class='user-input'>4</kbd>
+<samp>*</samp>
+<samp>**</samp>
+<samp>***</samp>
+<samp>****</samp>
+</pre>
+                    </div>
+
+
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>height <span class='op'>=</span> input(<span class='str'>"Enter the height of the pyramid: "</span>)</code>
+<span class='lnum'>2</span><code>height <span class='op'>=</span> int(height)</code>
+<span class='lnum'>a</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(height):</code>
+<span class='lnum'>4</span><code>   print(<span class='str'>"*"</span> <span class='op'>*</span> i)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        A <i>for-loop</i> does not provide any additional capabilities
+                        compared to a <i>while-loop</i>; anything that can be done with a
+                        <i>for-loop</i> can also be done with a <i>while-loop</i>.
+                    </p>
+
+                    <p>
+                        If this is the case, then how do we decide on whether
+                        to use a for-loop or a while-loop? Ultimately, it
+                        comes down to a matter of convenience and personal
+                        preference. However, choosing one type of loop over
+                        another might suggest to readers of your code what
+                        that loop is doing. In general, a while-loop is used
+                        to signify that the loop will iterate until some
+                        condition occurs. In contrast, a for-loop suggests
+                        that the loop will iterate through all values in
+                        some sequence. Because of this, we use the following
+                        guideline: if the loop iterates over a sequence of
+                        values, use a for-loop; in all other cases, use a
+                        while-loop.
+                    </p>
+
+                    <p>
+                        For example, the task of printing the double of
+                        all numbers between 1 and 100 involves iterating over the
+                        sequence 1, 2, ..., 100, so we would choose to use a
+                        for-loop to implement a program that does this.
+                    </p>
+
+                    <p>
+                        On the other hand, the task of summing numbers entered
+                        by a user until a negative number is entered does not
+                        involve a well-defined sequence, so we would choose
+                        to use a while-loop to implement a program that does
+                        this.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Nested Loops</h3>
+
+    <p>
+        Because while-statements and for-statements are themselves
+        <em>statements</em>, we can use them within the bodies of other
+        while-statements and for-statements. This is similar to the way that
+        created nested if-statements in the
+        <a href='branching.html#nested_if'>Nested If</a> section of the
+        previous guide. All of the indentation rules that apply to nested
+        if-statements also apply to nested loops.
+    </p>
+
+    <p class='frame'>
+        In fact, we can place while-statements and for-statements within
+        if-statements as well.
+    </p>
+
+    <p class='frame'>
+        We use analogous terminology when talking about nested loops as we
+        do when talking about nested if-statements. That is, we use
+        terms such as <i>inner loop</i>, <i>outer loop</i>, and
+        <i>top-most loop</i>. See the
+        <a href='branching.html#nested_if'>Nested If</a> section of the
+        previous guide for details.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        In the following example, we demonstrate the
+                        relationship between inner and outer loops. At the
+                        start of each iteration of the outer loop, we will
+                        print the text <samp>Outer</samp>. At the start of each iteration
+                        of the inner loop, we will print the text <samp>Inner</samp>,
+                        using a single tab character for indentation.
+                    </p>
+
+                    <div class='snippet'>
+                        <div class='filename'>example.py</div>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>3</span>):</code>
+<span class='lnum'>2</span><code>   print(<span class='str'>"Outer"</span>)</code>
+<span class='lnum'>3</span><code>   <span class='kw'>for</span> j <span class='op'>in</span> range(<span class='lit'>2</span>):</code>
+<span class='lnum'>4</span><code>      print(<span class='str'>"\tInner"</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        The results of running this program are shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<span class='prompt'>$</span><kbd>python3 example.py</kbd>
+<samp>Outer</samp>
+<samp>&#09;Inner</samp>
+<samp>&#09;Inner</samp>
+<samp>Outer</samp>
+<samp>&#09;Inner</samp>
+<samp>&#09;Inner</samp>
+<samp>Outer</samp>
+<samp>&#09;Inner</samp>
+<samp>&#09;Inner</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        As we can see, the inner loop is executed in its
+                        entirety for <em>every</em> iteration of the outer
+                        loop. Note that we are not obligated to make use of
+                        either of the variables <var>i</var> and <var>j</var>.
+                    </p>
+
+                    <p> 
+                        As always, be careful to use proper indentation to
+                        indicate which statements belong to which loop body.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <p>
+                            Given an integer <var>n</var> from standard input,
+                            write a program that prints all possible two-number
+                            combinations of the integers in the range 0 to n-1.
+                            Duplicate integers are allowed. Refer to the sample
+                            below.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>Enter the upper bound: </samp><kbd class='user-input'>3</kbd>
+<samp>0 0</samp>
+<samp>0 1</samp>
+<samp>0 2</samp>
+<samp>1 0</samp>
+<samp>1 1</samp>
+<samp>1 2</samp>
+<samp>2 0</samp>
+<samp>2 1</samp>
+<samp>2 2</samp>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>upper <span class='op'>=</span> input(<span class='str'>"Enter the upper bound: "</span>)</code>
+<span class='lnum'>2</span><code>upper <span class='op'>=</span> int(upper)</code>
+<span class='lnum'>3</span>
+<span class='lnum'>4</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(upper):</code>
+<span class='lnum'>5</span><code>   <span class='kw'>for</span> j <span class='op'>in</span> range(upper):</code>
+<span class='lnum'>6</span><code>      print(i, j)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <p>
+                            Write a program that creates a "staircase" of
+                            <samp>#</samp> characters. The <i>length</i> of a step of
+                            the staircase
+                            will be the number of lines that make up a single
+                            step. The number of steps and their length will be
+                            supplied through standard input.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>Enter the step length: </samp><kbd class='user-input'>2</kbd>
+<samp>Enter the number of steps: </samp><kbd class='user-input'>4</kbd>
+<samp>#</samp>
+<samp>#</samp>
+<samp>##</samp>
+<samp>##</samp>
+<samp>###</samp>
+<samp>###</samp>
+<samp>####</samp>
+<samp>####</samp>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>step_len <span class='op'>=</span> input(<span class='str'>"Enter the step length: "</span>)</code>
+<span class='lnum'>2</span><code>step_len <span class='op'>=</span> int(step_len)</code>
+<span class='lnum'>3</span><code>num_steps <span class='op'>=</span> input(<span class='str'>"Enter the number of steps: "</span>)</code>
+<span class='lnum'>4</span><code>num_steps <span class='op'>=</span> int(num_steps)</code>
+<span class='lnum'>5</span>
+<span class='lnum'>6</span><code class='comment'># Print each step</code>
+<span class='lnum'>7</span><code><span class='kw'>for</span> step_num <span class='op'>in</span> range(num_steps):</code>
+<span class='lnum'>8</span><code>   <span class='comment'># Print each line of the current step</span></code>
+<span class='lnum'>9</span><code>   <span class='kw'>for</span> count <span class='op'>in</span> range(step_len):</code>
+<span class='lnum'>10</span><code>      <span class='comment'># The height of the step is equal to the step number</span></code>
+<span class='lnum'>11</span><code>      print(<span class='str'>"#"</span> <span class='op'>*</span> step_num)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Jump Statements</h2>
+
+    <p>
+        There are situations in which it is useful to be able to exit a loop early
+        or skip certain parts of a loop under certain conditions. <i>Jump statements</i>
+        are statements that alter the usual flow of a loop.
+    </p>
+
+    <h3>Break</h3>
+
+    <p>
+        The first jump statement that we will discuss is the <i>break</i>
+        statement. It is used to immediately exit the loop that is containing
+        it. Most often, a break statement is used with a branching statement
+        to exit the loop when a certain condition occurs.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        The following program echoes text from standard
+                        input until the text <samp>quit</samp> is read. However,
+                        if the word <samp>error</samp> is read, the program prints
+                        the message <samp>An error has occurred.</samp> and proceeds
+                        to exit. Before terminating, the program prints
+                        <samp>Exiting.</samp> to standard output.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>prompt <span class='op'>=</span> <span class='str'>"&gt; "</span></code>
+<span class='lnum'>2</span><code></code>
+<span class='lnum'>3</span><code class='comment'># Read the first string from standard input</code>
+<span class='lnum'>4</span><code>text <span class='op'>=</span> input(prompt)</code>
+<span class='lnum'>5</span>
+<span class='lnum'>6</span><code><span class='kw'>while</span> text <span class='op'>!=</span> <span class='str'>"quit"</span>:</code>
+<span class='lnum'>7</span><code>   <span class='kw'>if</span> text <span class='op'>==</span> <span class='str'>"error"</span>:</code>
+<span class='lnum'>8</span><code>      print(<span class='str'>"An error has occurred."</span>)</code>
+<span class='lnum'>9</span><code>      <span class='kw'>break</span></code>
+<span class='lnum'>10</span><code>   print(text)</code>
+<span class='lnum'>11</span><code>   <span class='comment'># Read the next string from standard input</span></code>
+<span class='lnum'>12</span><code>   text <span class='op'>=</span> input(prompt)</code>
+<span class='lnum'>13</span>
+<span class='lnum'>14</span><code>print(<span class='str'>"Exiting."</span>)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        In the following sample run, the program exits due to
+                        "quit" being entered.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>&gt; </samp><kbd class='user-input'>elderberries</kbd>
+<samp>elderberries</samp>
+<samp>&gt; </samp><kbd class='user-input'>quit</kbd>
+<samp>Exiting.</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        In this sample run, the program exits due to "error"
+                        being entered.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>&gt; </samp><kbd class='user-input'>elderberries</kbd>
+<samp>elderberries</samp>
+<samp>&gt; </samp><kbd class='user-input'>error</kbd>
+<samp>An error has occurred.</samp>
+<samp>Exiting.</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <p>
+                        Suppose we want to write a program that repeatedly
+                        performs division on two float values. The program
+                        should exit silently if the user enters <kbd>quit</kbd>
+                        at any time. If the user enters 0 for the divisor,
+                        the program should exit with the message
+                        <samp>Error: Cannot divide by zero.</samp>. Recall that
+                        in the division a &divide; b, the number <i>a</i> is
+                        called the <i>dividend</i> and the number <i>b</i>
+                        is called the <i>divisor</i>.
+                    </p>
+
+                    <p>
+                        Two sample runs are shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter the dividend: </samp><kbd class='user-input'>1</kbd>
+<samp>Enter the divisor: </samp><kbd class='user-input'>2</kbd>
+<samp>1.0 / 2.0 = 0.5</samp>
+<samp>Enter the divisor: </samp><kbd class='user-input'>quit</kbd>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter the dividend: </samp><kbd class='user-input'>1</kbd>
+<samp>Enter the divisor: </samp><kbd class='user-input'>0</kbd>
+<samp>Error: Cannot divide by zero.</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        The catch to this problem is that the user may exit the
+                        program by entering <kbd>quit</kbd> when asked for either
+                        the dividend or the divisor. Furthermore, the program
+                        must forcefully exit if the user ever enters a zero for
+                        the divisor. All of this must take place <em>before</em>
+                        any division calculation occurs, but <em>after</em> user
+                        input has been read.
+                    </p>
+
+                    <p>
+                        Our solution is shown below.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>exit_cmd <span class='op'>=</span> <span class='str'>"quit"</span></code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code><span class='kw'>while</span> <span class='lit'>True</span>:</code>
+<span class='lnum'>4</span><code>   dividend <span class='op'>=</span> input(<span class='str'>"Enter the dividend: "</span>)</code>
+<span class='lnum'>5</span><code>   <span class='kw'>if</span> dividend <span class='op'>==</span> exit_cmd:</code>
+<span class='lnum'>6</span><code>      <span class='kw'>break</span></code>
+<span class='lnum'>7</span>
+<span class='lnum'>8</span><code>   divisor <span class='op'>=</span> input(<span class='str'>"Enter the divisor: "</span>)</code>
+<span class='lnum'>9</span><code>   <span class='kw'>if</span> divisor <span class='op'>==</span> exit_cmd:</code>
+<span class='lnum'>10</span><code>      <span class='kw'>break</span></code>
+<span class='lnum'>11</span>
+<span class='lnum'>12</span><code>   dividend <span class='op'>=</span> float(dividend)</code>
+<span class='lnum'>13</span><code>   divisor <span class='op'>=</span> float(divisor)</code>
+<span class='lnum'>14</span>
+<span class='lnum'>15</span><code>   <span class='kw'>if</span> divisor <span class='op'>==</span> <span class='lit'>0.0</span>:</code>
+<span class='lnum'>16</span><code>      print(<span class='str'>"Error: Cannot divide by zero."</span>)</code>
+<span class='lnum'>17</span><code>      <span class='kw'>break</span></code>
+<span class='lnum'>18</span>
+<span class='lnum'>19</span><code>   print(dividend, <span class='str'>"/"</span>, divisor, <span class='str'>"="</span>, dividend <span class='op'>/</span> divisor)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        Perhaps the strangest part about this code is the
+                        condition on the <code>while</code> statement, that
+                        is, the line <code>while True:</code>.
+                    </p>
+                    
+                    <p>
+                        Recall that before the start of an iteration, a while-loop
+                        will check its condition and only execute the body if 
+                        the condition is <samp>True</samp>. In this case, the
+                        condition is always <samp>True</samp>, so the body will
+                        always execute. It appears as though we have induced
+                        an <i>infinite loop</i>. However, thanks to the
+                        <code>break</code> statements, the program will exit
+                        the loop when either the user either enters <kbd>quit</kbd>
+                        or enters a zero divisor.
+                    </p>
+
+                    <p>
+                        We chose to take this approach because we cannot
+                        provide a sufficient condition for the while-statement;
+                        we only ever need to exit the loop <em>after</em>
+                        the body has already begun executing and
+                        <em>before</em> it finishes.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <p>
+                            Write a program that generates a random secret
+                            integer between 1 and 10 and repeatedly asks
+                            the user to guess the integer. If the user
+                            correctly guesses the number, print
+                            <samp>Correct!</samp> to standard input and exit
+                            the program. Otherwise, print <samp>Sorry,
+                            try again.</samp>, and ask the user to guess
+                            again. Refer to the sample below.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>I've thought of a secret number between 1 and 10.</samp>
+<samp>Guess the secret number: </samp><kbd class='user-input'>1</kbd>
+<samp>Sorry, try again.</samp>
+<samp>Guess the secret number: </samp><kbd class='user-input'>2</kbd>
+<samp>Correct!</samp>
+</pre>
+                        </div>
+
+                        <p>
+                            To generate the random integer, enter the following
+                            statements into the first two lines of your program:
+                        </p>
+
+                        <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='op'>import</span> random</code>
+<span class='lnum'>2</span><code>secret <span class='op'>=</span> random.randint(<span class='lit'>1</span>, <span class='lit'>10</span>)</code>
+</pre>
+                        </div>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='op'>import</span> random</code>
+<span class='lnum'>2</span><code>secret <span class='op'>=</span> random.randint(<span class='lit'>1</span>, <span class='lit'>10</span>)</code>
+<span class='lnum'>3</span>
+<span class='lnum'>3</span><code><span class='kw'>while</span> <span class='lit'>True</span>:</code>
+<span class='lnum'>3</span><code>   guess <span class='op'>=</span> input(<span class='str'>"Guess the secret number: "</span>)</code>
+<span class='lnum'>3</span><code>   guess <span class='op'>=</span> int(guess)</code>
+<span class='lnum'>3</span>
+<span class='lnum'>3</span><code>   <span class='kw'>if</span> guess <span class='op'>==</span> secret:</code>
+<span class='lnum'>3</span><code>      print(<span class='str'>"Correct!"</span>)</code>
+<span class='lnum'>3</span><code>      <span class='kw'>break</span></code>
+<span class='lnum'>3</span><code></code>
+<span class='lnum'>3</span><code>   print(<span class='str'>"Sorry, try again."</span>)</code>
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Continue</h3>
+
+    <p>
+        The second jump statement that we will cover is the <i>continue</i> statement.
+        This statement is used to immediately stop the current iteration of
+        the loop and proceed with the next. Similar to the <i>break</i>
+        statement, this statement is most often used within a branching statement.
+    </p>
+
+    <p class='frame'>
+        Note that the condition for the next iteration is still checked
+        before it is executed.
+    </p>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Examples</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents examples' hidden>
+                <li class='frame'>
+                    <p>
+                        In the following example, we print the first
+                        10 integers, skipping multiples of 3.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>2</span><code>   <span class='kw'>if</span> i <span class='op'>%</span> <span class='lit'>3</span> <span class='op'>==</span> <span class='lit'>0</span>:</code>
+<span class='lnum'>3</span><code>      <span class='kw'>continue</span></code>
+<span class='lnum'>4</span>
+<span class='lnum'>5</span><code>   print(i)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        The output of this program is shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>0</samp>
+<samp>1</samp>
+<samp>2</samp>
+<samp>4</samp>
+<samp>5</samp>
+<samp>7</samp>
+<samp>8</samp>
+</pre>
+                    </div>
+
+                    <p>
+                        Notice that when the continue statement
+                        executes, any following statements in the body are
+                        skipped entirely.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Tasks</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents task-list' hidden>
+                <li class='task-and-solution frame'>
+                    <div class='task'>
+                        <p>
+                            Write a program that reads three strings from the user.
+                            The program echoes each string, preceeded by a tab,
+                            unless the string is
+                            equal to <kbd>ni!</kbd>, in which case no output is
+                            produced. Refer to the sample run below.
+                        </p>
+
+                        <div class='terminal'>
+<pre class='contents'>
+<samp>Enter three strings:</samp>
+<samp>1. <samp><kbd class='user-input'>chicken</kbd>
+<samp>&#09;chicken</samp>
+<samp>2. <samp><kbd class='user-input'>ni!</kbd>
+<samp>3. <samp><kbd class='user-input'>duck</kbd>
+<samp>&#09;duck</samp>
+</pre>
+                        </div>
+
+                        <p>
+                            Use a <code>continue</code> statement where applicable.
+                        </p>
+                    </div>
+
+                    <div class='solution dropdown-section'>
+                        <div class='dropdown'>
+                            <span class='label'>Solution</span>
+                            <span class='arrow-icon'></span>
+                        </div>
+                        <div class='dropdown-contents' hidden>
+                            <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code>print(<span class='str'>"Enter three strings:"</span>)</code>
+<span class='lnum'>2</span>
+<span class='lnum'>3</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>3</span>):</code>
+<span class='lnum'>4</span><code>   text <span class='op'>=</span> input(str(i) <span class='op'>+</span> <span class='str'>". "</span>)</code>
+<span class='lnum'>5</span>
+<span class='lnum'>6</span><code>   <span class='kw'>if</span> text <span class='op'>==</span> <span class='str'>"ni!"</span>:</code>
+<span class='lnum'>7</span><code>      <span class='kw'>continue</span></code>
+<span class='lnum'>8</span>
+<span class='lnum'>9</span><code>   print(<span class='str'>"\t"</span> <span class='op'>+</span> text)</code>
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Advice</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class ='dropdown-contents advice' hidden>
+                <li class='frame'>
+                    <p>
+                        You may have noticed that the continue statement does
+                        not actually offer any capabilities that we did not
+                        already have access to previously. To demonstrate this,
+                        consider the following example:
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>2</span><code>   <span class='kw'>if</span> i <span class='op'>%</span> <span class='lit'>2</span> <span class='op'>==</span> <span class='lit'>0</span>: <span class='comment'># if i is even</span></code>
+<span class='lnum'>3</span><code>      <span class='kw'>continue</span></code>
+<span class='lnum'>4</span>
+<span class='lnum'>5</span><code>   <span class='kw'>for</span> j <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>6</span><code>      print(i, j)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        As you can see, the inner for-loop is skipped whenever
+                        <var>i</var> is even. In other words, the inner loop is only
+                        executed when <var>i</var> is odd. We can rewrite this
+                        as demonstrated below.
+                    </p>
+
+                    <div class='snippet'>
+<pre class='program-text'>
+<span class='lnum'>1</span><code><span class='kw'>for</span> i <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>2</span><code>   <span class='kw'>if</span> i <span class='op'>%</span> <span class='lit'>2</span> <span class='op'>!=</span> <span class='lit'>0</span>: <span class='comment'># if i is odd</span></code>
+<span class='lnum'>4</span><code>      <span class='kw'>for</span> j <span class='op'>in</span> range(<span class='lit'>10</span>):</code>
+<span class='lnum'>5</span><code>         print(i, j)</code>
+</pre>
+                    </div>
+
+                    <p>
+                        The results of this version are exactly the same as the
+                        original version, except that we've introduced another
+                        layer of nesting. Excessive nesting makes your code
+                        more difficult to understand and therefore more difficult
+                        to write correctly and fix if something goes wrong.
+                    </p>
+
+                    <p>
+                        While the benefits provided by the original version
+                        may not seem significant in an example
+                        as small as this one, such improvements go a long way
+                        in more complex programs.
+                    </p>
+
+                    <p>
+                        Because of this, nesting should be minimized as much
+                        possible. Continue statements are one tool that
+                        programmers use to achieve that goal.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Bonus</h2>
+
+    <h3>Compound Operators</h3>
+
+    <p>
+        Statements that increase a variable by some amount such as
+        <code>i = i + 1</code> are very common in programming, particularly
+        when dealing with loops. They are so common, in fact, that many
+        programming languages provide a shorthand notation for it. The
+        general form is <code>x += y</code>, where x is a variable, and y
+        is an expression. The meaning can be stated in words as "increase
+        the value stored in <var>x</var> by an amount equal to <var>y</var>.
+    </p>
+
+    <p>
+        This notation extends beyond just addition; we can use the same notation
+        for <em>all</em> arithmetic operators. A list of compound operators is
+        shown below.
+    </p>
+
+    <ul>
+        <li>
+            <code>x += y</code> is the same as <code>x = x + y</code>
+        </li>
+        <li>
+            <code>x -= y</code> is the same as <code>x = x - y</code>
+        </li>
+        <li>
+            <code>x *= y</code> is the same as <code>x = x * y</code>
+        </li>
+        <li>
+            <code>x /= y</code> is the same as <code>x = x / y</code>
+        </li>
+        <li>
+            <code>x **= y</code> is the same as <code>x = x ** y</code>
+        </li>
+        <li>
+            <code>x //= y</code> is the same as <code>x = x // y</code>
+        </li>
+        <li>
+            <code>x %= y</code> is the same as <code>x = x % y</code>
+        </li>
+    </ul>
+
+    <hr/>
+
+    <div class='aux-section-group'>
+        <div class='dropdown-section'>
+            <div class='dropdown'>
+                <h3>Projects</h3>
+                <span class='arrow-icon'></span>
+            </div>
+            <ul class='dropdown-contents projects' hidden>
+                <li class='frame'>
+                    <span class='label'>Curious Child</span>
+
+                    <p>
+                        Write a program that mimics a small child. This program
+                        will read in an integer value representing the
+                        tolerance level of the mother. The program will then
+                        print the text <samp>Child: Why?</samp> once per line a number
+                        of times equal to the mother's tolerance level. Once
+                        the mother's tolerance level has been exceeded, print
+                        the text <samp>Mother: Because I said so!</samp>.
+                    </p>
+
+                    <p>
+                        If the mother's tolerance is zero or less, print the
+                        line <samp>Child: Wh..</samp> followed by
+                        <samp>Mother: Go ask your father.</samp> instead.
+                    </p>
+
+                    <p>
+                        Two sample runs are shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter mother's tolerance level: </samp><kbd class='user-input-'>2</kbd>
+<samp>Child: Why?</samp>
+<samp>Child: Why?</samp>
+<samp>Child: Why?</samp>
+<samp>Mother: Because I said so!</samp>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter mother's tolerance level: </samp><kbd class='user-input-'>0</kbd>
+<samp>Child: Wh..</samp>
+<samp>Mother: Go ask your father.</samp>
+</pre>
+                    </div>
+                </li>
+
+                <li class='frame'>
+                    <span class='label'>Count to Three</span>
+                    <p>
+                        Write a program that checks to make sure the user
+                        can count to 3. The user must enter the integers
+                        1, 2, 3, in that order. If the user enters any
+                        integer incorrectly, the program prints <samp>Incorrect!</samp>
+                        to standard output and exits. If the user successfully
+                        counts to 3, the program prints <samp>Congratulations!</samp> instead
+                        before exiting.
+                    </p>
+
+                    <p>
+                        Use a loop to implement your solution.
+                    </p>
+
+                    <p>
+                        Two sample runs are shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Can you count to three?</samp>
+<samp>&gt; </samp><kbd class='user-input'>1</kbd>
+<samp>&gt; </samp><kbd class='user-input'>4</kbd>
+<samp>Incorrect!</samp>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Can you count to three?</samp>
+<samp>&gt; </samp><kbd class='user-input'>1</kbd>
+<samp>&gt; </samp><kbd class='user-input'>2</kbd>
+<samp>&gt; </samp><kbd class='user-input'>3</kbd>
+<samp>Congratulations!</samp>
+</pre>
+                    </div>
+                </li>
+                <li class='frame'>
+                    <span class='label'>Keep or Pass</span>
+                    <p>
+                        Write a program that plays a game with the user
+                        by repeatedly generating random
+                        integers between -5 and 5, and asking the user to
+                        either <samp>keep</samp> or <samp>pass</samp>. If
+                        the user chooses
+                        <kbd>keep</kbd>, the integer is added to their running
+                        total. If the user chooses <kbd>pass</kbd>, a new random
+                        number is generated, and the user's total is not
+                        affected. If the user enters "quit", exit the game
+                        immediately. The game should end automatically once
+                        the user's total <em>exceeds</em> 10. Before
+                        exiting, the program should print
+                        <samp>Game over! (Total winnings: x)</samp>,
+                        where <var>x</var> is the user's running total.
+                    </p>
+
+                    <p>
+                        Two sample runs are shown below.
+                    </p>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter "quit" to stop the game.</samp>
+<samp></samp>
+<samp>&#09;Your number is 5</samp>
+<samp></samp>
+<samp>("keep" or "pass"): </samp><kbd class='user-input'>keep</kbd>
+<samp></samp>
+<samp>&#09;Your number is 5</samp>
+<samp></samp>
+<samp>("keep" or "pass"): </samp><kbd class='user-input'>keep</kbd>
+<samp></samp>
+<samp>&#09;Your number is 3</samp>
+<samp></samp>
+<samp>("keep" or "pass"): </samp><kbd class='user-input'>keep</kbd>
+<samp></samp>
+<samp>Game over! (Total winnings: 13)</samp>
+</pre>
+                    </div>
+
+                    <div class='terminal'>
+<pre class='contents'>
+<samp>Enter "quit" to stop the game.</samp>
+<samp></samp>
+<samp>&#09;Your number is 1</samp>
+<samp></samp>
+<samp>("keep" or "pass"): </samp><kbd class='user-input'>keep</kbd>
+<samp></samp>
+<samp>&#09;Your number is -3</samp>
+<samp></samp>
+<samp>("keep" or "pass"): </samp><kbd class='user-input'>quit</kbd>
+<samp></samp>
+<samp>Game over! (Total winnings: 1)</samp>
+</pre>
+                    </div>
+               </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='bottom-nav'>
+        <a href='branching.html'>Flow Control: Branching</a>
+        <a href='index.html'>Home</a>
+        <a href='arrays.html'>Data Structures: Arrays</a>
+    </div>
+</main>
+</body>
+</html>
+
+

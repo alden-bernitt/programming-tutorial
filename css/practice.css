@@ -114,8 +114,6 @@
     width: 95%;
     padding: 0.5em 1em;
     margin: auto;
-    margin-top: 16px;
-    margin-bottom: 16px;
     border: none;
     border-radius: 256px;
     font-size: large;
@@ -123,6 +121,16 @@
     &:active {
         background-color: #444;
     }
+}
+
+.check-button {
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.solve-button {
+    margin-top: 4px;
+    margin-bottom: 16px;
 }
 
 .answered {

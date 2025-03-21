@@ -106,8 +106,11 @@ function submitAnswer(problemArgs)
 function solveProblem(problemArgs)
 {
     const program = problemArgs.problemData[problemArgs.currIndex];
-    program.answerInput.value = program.solutionText;
-    submitAnswer(problemArgs);
+
+    if (!program.checkedCorrect) {
+        program.answerInput.value = program.solutionText;
+        submitAnswer(problemArgs);
+    }
 }
 
 // Setup practice sections.

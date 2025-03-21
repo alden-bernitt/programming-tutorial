@@ -48,6 +48,10 @@ h3 {
     font-size: 1.4em;
 }
 
+ul.no-indent {
+    padding-left: 0;
+}
+
 dfn {
     font-weight: bold;
     font-style: normal;
@@ -64,12 +68,16 @@ img.diagram {
     margin-bottom: 16px;
 }
 
-p, td, .display {
+kbd, samp, code, var {
+    background-color: #ccc;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-style: normal;
+}
+
+td, .terminal, .snippet {
     kbd, samp, code, var {
-        background-color: #ccc;
-        padding: 0 4px;
-        border-radius: 3px;
-        font-style: normal;
+        background-color: unset;
     }
 }
 
